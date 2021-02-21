@@ -30,7 +30,7 @@ public class Main extends Application {
 
     public void initRootLayout() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("views/rootLayout.fxml"));
+        loader.setLocation(Main.class.getResource("view/rootLayout.fxml"));
         rootLayout = (BorderPane) loader.load();
         Scene scene = new Scene(rootLayout);
         primaryStage.setScene(scene);
@@ -40,7 +40,7 @@ public class Main extends Application {
 
     public void showMainPage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("views/mainPage.fxml"));
+        loader.setLocation(Main.class.getResource("view/mainPage.fxml"));
         AnchorPane mainPage = (AnchorPane) loader.load();
         rootLayout.setCenter(mainPage);
         MainPageController controller = loader.getController();
