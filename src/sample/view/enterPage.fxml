@@ -21,16 +21,16 @@
           <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField promptText="Введите данные" GridPane.columnIndex="1" />
+            <TextField fx:id="userLogEmailField" promptText="Введите данные" GridPane.columnIndex="1" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Логин/Email:  " />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Пароль:  " GridPane.rowIndex="1" />
-            <PasswordField promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <HBox layoutX="117.0" layoutY="212.0" prefHeight="31.0" prefWidth="177.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Вход" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Отмена" />
+            <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="31.0" prefWidth="74.0" text="Вход" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="31.0" prefWidth="74.0" text="Отмена" />
          </children>
       </HBox>
    </children>

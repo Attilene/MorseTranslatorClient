@@ -20,5 +20,5 @@ public class DateUtil {
         } catch (DateTimeParseException e) { return null; }
     }
 
-    public static boolean validDate(String dateString) { return DateUtil.validDate(dateString); }
+    public static boolean validDate(String dateString) { return DateUtil.parse(dateString) != null; }
 }

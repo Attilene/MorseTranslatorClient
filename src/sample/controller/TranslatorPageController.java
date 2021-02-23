@@ -4,7 +4,5 @@ import javafx.fxml.FXML;
 
 public class TranslatorPageController {
     @FXML
-    private void initialize() {
-
-    }
+    private void initialize() {}
 }

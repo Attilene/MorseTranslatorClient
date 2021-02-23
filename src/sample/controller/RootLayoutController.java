@@ -4,7 +4,5 @@ import javafx.fxml.FXML;
 
 public class RootLayoutController {
     @FXML
-    private void initialize() {
-
-    }
+    private void initialize() {}
 }

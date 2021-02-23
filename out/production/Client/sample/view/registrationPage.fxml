@@ -27,23 +27,23 @@
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="* Логин:  " GridPane.rowIndex="2" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="* Email:  " textAlignment="CENTER" GridPane.rowIndex="3" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Номер телефона:  " GridPane.rowIndex="4" />
-            <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="День рождения:  " GridPane.rowIndex="5" />
-            <TextField promptText="Введите данные" GridPane.columnIndex="1" />
-            <TextField promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Дата рождения:  " GridPane.rowIndex="5" />
+            <TextField fx:id="firstNameField" promptText="Введите данные" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameField" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="loginField" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="emailField" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="phoneNumberField" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="* Пароль:  " GridPane.rowIndex="6" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="* Повтор пароля:  " GridPane.rowIndex="7" />
-            <DatePicker maxWidth="1.7976931348623157E308" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <PasswordField promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <PasswordField promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <DatePicker fx:id="birthdayField" editable="false" maxWidth="1.7976931348623157E308" promptText="dd.mm.yyyy" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <PasswordField fx:id="repeatPasswordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <HBox layoutX="106.0" layoutY="412.0" spacing="30.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="105.0">
+      <HBox layoutX="106.0" layoutY="415.0" spacing="30.0" AnchorPane.bottomAnchor="30.600000000000023" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="105.0">
          <children>
-            <Button layoutX="161.0" layoutY="372.0" mnemonicParsing="false" text="Регистрация" />
-            <Button layoutX="287.0" layoutY="372.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.8" text="Отмена" />
+            <Button layoutX="161.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleRegistration" text="Регистрация" />
+            <Button layoutX="287.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="84.8" text="Отмена" />
          </children>
       </HBox>
       <Label layoutX="95.0" layoutY="29.0" text="Регистрация" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="30.0">

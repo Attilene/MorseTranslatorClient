@@ -10,7 +10,28 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controller\RegistrationPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\model\AuditPerson.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\model\Person.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\util\Alerts.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

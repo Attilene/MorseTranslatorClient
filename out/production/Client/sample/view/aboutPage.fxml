@@ -45,7 +45,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="306.0" layoutY="449.0" mnemonicParsing="false" text="Назад" />
+      <Button layoutX="305.0" layoutY="448.0" mnemonicParsing="false" onAction="#handleBackAction" text="Назад" />
       <TextArea editable="false" layoutX="385.0" layoutY="160.0" prefHeight="162.0" prefWidth="219.0" text="Приложение для перевода &#10;текста с русского или &#10;английского языков в код&#10;Морзе и обратно.&#10;Прежде, чем начать перевод, &#10;необходимо зарегистрироваться&#10;или войти в личный кабинет.&#10;" AnchorPane.rightAnchor="49.799999999999955" />
       <Line endX="350.0" layoutX="154.0" layoutY="255.0" opacity="0.63" rotate="90.0" stroke="#868282" strokeWidth="2.0" />
       <Label layoutX="477.0" layoutY="412.0" text="© Artem Bakanov, 2021" />
