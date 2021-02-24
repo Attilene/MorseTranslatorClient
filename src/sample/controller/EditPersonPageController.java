@@ -30,7 +30,7 @@ public class EditPersonPageController {
     @FXML
     private PasswordField repeatPasswordField;
 
-    private boolean okClicked = false, delete = false;
+    private boolean delete = false;
     private Stage dialStage;
     private Person person;
     private Main main;
@@ -47,7 +47,7 @@ public class EditPersonPageController {
         repeatPasswordField.setText(this.person.getRepeatPassword());
     }
 
-    public boolean isOkClicked() { return okClicked; }
+    public Person getPerson() { return person; }
 
     public boolean isDelete() { return delete; }
 
@@ -67,7 +67,6 @@ public class EditPersonPageController {
             person.setPassword(passwordField.getText());
             person.setRepeatPassword(repeatPasswordField.getText());
             main.getPersonData().add(person);
-            okClicked = true;
             dialStage.close();
         }
     }

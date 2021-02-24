@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\src\sample\Main.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\controller\EditPersonPageController.java">
           <value>
             <Attribute>
@@ -31,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controller\TranslatorPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\model\AuditPerson.java">
           <value>
             <Attribute>
@@ -53,6 +67,13 @@
           </value>
         </entry>
         <entry key="\src\sample\util\AlertsUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\util\DateUtil.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

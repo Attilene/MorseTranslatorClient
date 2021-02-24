@@ -9,9 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.controller.EnterPageController;
-import sample.controller.MainPageController;
-import sample.controller.RegistrationPageController;
+import sample.controller.*;
 import sample.model.Person;
 
 import java.io.IOException;
@@ -40,25 +38,33 @@ public class Main extends Application {
     }
 
     public void initRootLayout() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("view/rootLayout.fxml"));
-        rootLayout = (BorderPane) loader.load();
-        Scene scene = new Scene(rootLayout);
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/rootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void showMainPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("view/mainPage.fxml"));
-        AnchorPane mainPage = (AnchorPane) loader.load();
-        rootLayout.setCenter(mainPage);
-        MainPageController controller = loader.getController();
-        controller.setMainApp(this);
+    public void showMainPage() {
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/mainPage.fxml"));
+            AnchorPane mainPage = (AnchorPane) loader.load();
+            rootLayout.setCenter(mainPage);
+            MainPageController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public boolean showEnterPage() {
+    public Person showEnterPage() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/enterPage.fxml"));
@@ -74,10 +80,10 @@ public class Main extends Application {
             controller.setDialStage(dialStage);
             controller.setMain(this);
             dialStage.showAndWait();
-            return controller.isOkClicked();
+            return controller.getPerson();
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 
@@ -104,16 +110,70 @@ public class Main extends Application {
         }
     }
 
-    public boolean showTranslatorPage() {
-        return true;
+    public void showTranslatorPage(Person person) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/translatorPage.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialStage = new Stage();
+            dialStage.setTitle("Переводчик Морзе");
+            dialStage.initModality(Modality.WINDOW_MODAL);
+            dialStage.initOwner(primaryStage);
+            dialStage.setResizable(false);
+            Scene scene = new Scene(page);
+            dialStage.setScene(scene);
+            TranslatorPageController controller = loader.getController();
+            controller.setDialStage(dialStage);
+            controller.setPerson(person);
+            controller.setMain(this);
+            dialStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public boolean showAboutPage() {
-        return true;
+    public static void showAboutPage(Stage stage) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/aboutPage.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialStage = new Stage();
+            dialStage.setTitle("Справка");
+            dialStage.initModality(Modality.WINDOW_MODAL);
+            dialStage.initOwner(stage);
+            dialStage.setResizable(false);
+            Scene scene = new Scene(page);
+            dialStage.setScene(scene);
+            AboutPageController controller = loader.getController();
+            controller.setDialStage(dialStage);
+            dialStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public boolean showEditPersonPage() {
-        return true;
+    public EditPersonPageController showEditPersonPage(Stage stage, Person person) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/editPersonPage.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialStage = new Stage();
+            dialStage.setTitle("Настройка личного кабинета");
+            dialStage.initModality(Modality.WINDOW_MODAL);
+            dialStage.initOwner(stage);
+            dialStage.setResizable(false);
+            Scene scene = new Scene(page);
+            dialStage.setScene(scene);
+            EditPersonPageController controller = loader.getController();
+            controller.setDialStage(dialStage);
+            controller.setMain(this);
+            controller.setPerson(person);
+            dialStage.showAndWait();
+            return controller;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static void main(String[] args) { launch(args); }

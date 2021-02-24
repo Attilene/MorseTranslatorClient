@@ -15,7 +15,6 @@ public class EnterPageController {
     private PasswordField passwordField;
 
     private Stage dialStage;
-    private boolean okClicked = false;
     private Person person;
     private Main main;
 
@@ -26,7 +25,7 @@ public class EnterPageController {
         person = new Person();
     }
 
-    public boolean isOkClicked() { return okClicked; }
+    public Person getPerson() { return person; }
 
     public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
 
@@ -38,7 +37,6 @@ public class EnterPageController {
                 person = main.getPersonData().get(0);
                 if (person.getLogin().equals(userLogEmailField.getText()) ||
                         person.getEmail().equals(userLogEmailField.getText())) {
-                    okClicked = true;
                     dialStage.close();
                 } else {
                     AlertsUtil.showNoValidEnterAlert(dialStage);

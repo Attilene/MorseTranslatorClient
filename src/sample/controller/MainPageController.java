@@ -2,14 +2,15 @@ package sample.controller;
 
 import javafx.fxml.FXML;
 import sample.Main;
+import sample.model.Person;
 
 public class MainPageController {
     public Main main;
 
     @FXML
     private void handleEnterAction() {
-        boolean okClicked = main.showEnterPage();
-        if (okClicked) { System.out.println("Enter in profile"); } // TODO: Добавить запрос
+        Person person = main.showEnterPage();
+        if (person.getLogin() != null) { main.showTranslatorPage(person); } // TODO: Добавить запрос
     }
 
     @FXML
