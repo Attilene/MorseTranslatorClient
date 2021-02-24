@@ -58,18 +58,28 @@ public class Main extends Application {
         controller.setMainApp(this);
     }
 
-//    public boolean showEnterPage() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(MainPageController.class.getResource("view/PersonOverview.fxml"));
-//            AnchorPane personOverview = (AnchorPane) loader.load();
-//            EnterPageController controller = loader.getController();
-//            controller.setMainApp(this);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
+    public boolean showEnterPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/enterPage.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialStage = new Stage();
+            dialStage.setTitle("Вход в личный кабинет");
+            dialStage.initModality(Modality.WINDOW_MODAL);
+            dialStage.initOwner(primaryStage);
+            dialStage.setResizable(false);
+            Scene scene = new Scene(page);
+            dialStage.setScene(scene);
+            EnterPageController controller = loader.getController();
+            controller.setDialStage(dialStage);
+            controller.setMain(this);
+            dialStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public boolean showRegistrationPage() {
         try {

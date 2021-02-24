@@ -8,14 +8,14 @@ public class MainPageController {
 
     @FXML
     private void handleEnterAction() {
-//        boolean okClicked = main.showEnterPage();
-//        if (okClicked) { System.out.println("Request"); } // TODO: Добавить запрос
+        boolean okClicked = main.showEnterPage();
+        if (okClicked) { System.out.println("Enter in profile"); } // TODO: Добавить запрос
     }
 
     @FXML
     private void handleRegistrationAction() {
         boolean okClicked = main.showRegistrationPage();
-        if (okClicked) { System.out.println(main.getPersonData().get(0).toString()); } // TODO: Добавить запрос
+        if (okClicked) { System.out.println(main.getPersonData().get(0)); } // TODO: Добавить запрос
     }
 
     public void setMainApp(Main main) { this.main = main; }

@@ -71,9 +71,7 @@ public class RegistrationPageController {
     }
 
     @FXML
-    private void handleCancel() {
-        dialStage.close();
-    }
+    private void handleCancel() { dialStage.close(); }
 
     private boolean isInputValid() {
         String errorMessage = "";
