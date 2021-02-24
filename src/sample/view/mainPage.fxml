@@ -7,7 +7,7 @@
 <AnchorPane prefHeight="264.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.MainPageController">
    <HBox alignment="CENTER_RIGHT" layoutX="117.0" layoutY="188.0" prefHeight="31.0" prefWidth="197.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="117.0">
       <children>
-         <Button layoutX="90.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleEnterAction" prefHeight="31.2" prefWidth="84.8" text="Вход" />
+         <Button defaultButton="true" layoutX="90.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleEnterAction" prefHeight="31.2" prefWidth="84.8" text="Вход" />
          <Button layoutX="215.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleRegistrationAction" prefHeight="31.2" text="Регистрация" />
       </children>
    </HBox>

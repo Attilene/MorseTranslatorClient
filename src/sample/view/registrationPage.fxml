@@ -42,7 +42,7 @@
       </GridPane>
       <HBox layoutX="106.0" layoutY="415.0" spacing="30.0" AnchorPane.bottomAnchor="30.600000000000023" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="105.0">
          <children>
-            <Button layoutX="161.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleRegistration" text="Регистрация" />
+            <Button defaultButton="true" layoutX="161.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleRegistration" text="Регистрация" />
             <Button layoutX="287.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="84.8" text="Отмена" />
          </children>
       </HBox>
