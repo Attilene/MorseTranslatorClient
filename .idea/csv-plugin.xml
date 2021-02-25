@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controller\AboutPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\controller\EditPersonPageController.java">
           <value>
             <Attribute>
