@@ -11,9 +11,9 @@
          <Button layoutX="215.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleRegistrationAction" prefHeight="31.2" text="Регистрация" />
       </children>
    </HBox>
-   <ImageView fitHeight="141.0" fitWidth="326.0" layoutX="37.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="97.84093475341797" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="25.0">
+   <ImageView fitHeight="141.0" fitWidth="326.0" layoutX="55.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="132.43955993652344" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="42.0">
       <image>
-         <Image url="@../resources/images/logo_F.png" />
+         <Image url="@../resources/images/morse_logo.png" />
       </image>
    </ImageView>
 </AnchorPane>
