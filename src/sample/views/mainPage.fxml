@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="264.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainPageController">
+   <HBox alignment="CENTER_RIGHT" layoutX="117.0" layoutY="188.0" prefHeight="31.0" prefWidth="197.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="117.0">
+      <children>
+         <Button defaultButton="true" layoutX="90.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleEnterAction" prefHeight="31.2" prefWidth="84.8" text="Вход" />
+         <Button layoutX="215.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleRegistrationAction" prefHeight="31.2" text="Регистрация" />
+      </children>
+   </HBox>
+   <ImageView fitHeight="141.0" fitWidth="326.0" layoutX="37.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="97.84093475341797" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="25.0">
+      <image>
+         <Image url="@../resources/images/logo_F.png" />
+      </image>
+   </ImageView>
+</AnchorPane>

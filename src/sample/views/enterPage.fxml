@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnterPageController">
+   <children>
+      <Label layoutX="162.0" layoutY="28.0" text="Вход">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="20.0" layoutY="100.0" prefHeight="85.0" prefWidth="360.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="94.6" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="412.0" minWidth="10.0" prefWidth="276.6" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="userLogEmailField" promptText="Введите данные" GridPane.columnIndex="1" />
+            <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Логин/Email:  " />
+            <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Пароль:  " GridPane.rowIndex="1" />
+            <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <HBox layoutX="117.0" layoutY="212.0" prefHeight="31.0" prefWidth="177.0" spacing="30.0">
+         <children>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleEnter" prefHeight="31.0" prefWidth="74.0" text="Вход" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="31.0" prefWidth="74.0" text="Отмена" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
