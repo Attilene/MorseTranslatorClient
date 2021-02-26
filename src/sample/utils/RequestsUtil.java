@@ -1,4 +1,4 @@
 package sample.utils;
 
-public class RequestsUtil {
+public abstract class RequestsUtil {
 }

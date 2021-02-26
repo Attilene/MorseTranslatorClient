@@ -62,9 +62,7 @@ public class Person implements Serializable {
         this(firstName, lastName, login, email, null, null, password, repeatPassword);
     }
 
-    public Person() {
-        this(null, null, null, null, null, null, null, null);
-    }
+    public Person() { this(null, null, null, null, null, null, null, null); }
 
     public String getFirstName() { return firstName.get(); }
 
