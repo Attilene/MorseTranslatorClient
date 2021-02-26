@@ -8,9 +8,7 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.models.Person;
 import sample.utils.AlertsUtil;
-import sample.utils.DateUtil;
-
-import java.time.format.DateTimeFormatter;
+import sample.utils.ValidUtil;
 
 public class EditPersonPageController {
     @FXML
@@ -56,24 +54,37 @@ public class EditPersonPageController {
     @FXML
     private void handleUpdate () {
         if (isInputValid()) {
-            // TODO: Веб-запрос на обновление данных пользователя
-            main.getPersonData().remove(person);
-            person.setFirstName(firstNameField.getText());
-            person.setLastName(lastNameField.getText());
-            person.setLogin(loginField.getText());
-            person.setEmail(emailField.getText());
-            person.setPhoneNumber(phoneNumberField.getText());
-            person.setBirthday(birthdayField.getValue());
-            person.setPassword(passwordField.getText());
-            person.setRepeatPassword(repeatPasswordField.getText());
-            main.getPersonData().add(person);
-            dialStage.close();
+            if (!ValidUtil.checkEmail(emailField.getText()))
+                AlertsUtil.showIncorrectEmailAlert(this.dialStage);
+            else if (!ValidUtil.checkPassword(passwordField.getText()))
+                AlertsUtil.showWrongFormatPasswordAlert(this.dialStage);
+            else if ((phoneNumberField.getText() != null && phoneNumberField.getText().length() != 0)
+                    && !ValidUtil.checkPhoneNumber(phoneNumberField.getText())) {
+                AlertsUtil.showWrongFormatPhoneNumberAlert(this.dialStage);
+            } else {
+                // TODO: Веб-запрос на обновление данных пользователя
+                main.getPersonData().remove(person);
+                person.setFirstName(firstNameField.getText());
+                person.setLastName(lastNameField.getText());
+                person.setLogin(loginField.getText());
+                person.setEmail(emailField.getText());
+                person.setPhoneNumber(phoneNumberField.getText());
+                person.setBirthday(birthdayField.getValue());
+                person.setPassword(passwordField.getText());
+                person.setRepeatPassword(repeatPasswordField.getText());
+                main.getPersonData().add(person);
+                dialStage.close();
+            }
         }
     }
 
     @FXML
     private void handleDeleteProfile() {
-        delete = AlertsUtil.showDeleteProfileConfirmationAlert(dialStage, main, person);
+        delete = AlertsUtil.showDeleteProfileConfirmationAlert(dialStage);
+        if (delete) {
+            // TODO: запрос на удаление профиля клиента
+            main.getPersonData().remove(person);
+        }
     }
 
     @FXML
@@ -92,17 +103,6 @@ public class EditPersonPageController {
         }
         if (emailField.getText() == null || emailField.getText().length() == 0) {
             errorMessage += "Нет почты!\n";
-        }
-        if (phoneNumberField.getText() != null && phoneNumberField.getText().length() != 0) {
-            try { Long.parseLong(phoneNumberField.getText()); }
-            catch (NumberFormatException e) {
-                errorMessage += "Неправильный формат номера телефона!\n";
-            }
-        }
-        if (birthdayField.getValue() != null) {
-            if (!DateUtil.validDate(birthdayField.getValue().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")))) {
-                errorMessage += "Неправильный формат даты рождения. Используйте формат dd.mm.yyyy!\n";
-            }
         }
         if (passwordField.getText() == null || passwordField.getText().length() == 0) {
             errorMessage += "Нет пароля!\n";
