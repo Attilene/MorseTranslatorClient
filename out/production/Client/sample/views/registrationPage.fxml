@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -42,8 +43,14 @@
       </GridPane>
       <HBox layoutX="106.0" layoutY="415.0" spacing="30.0" AnchorPane.bottomAnchor="30.600000000000023" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="105.0">
          <children>
-            <Button defaultButton="true" layoutX="161.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleRegistration" text="Регистрация" />
-            <Button layoutX="287.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="84.8" text="Отмена" />
+            <Button layoutX="161.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleRegistration" text="Регистрация">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="287.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="84.8" text="Отмена">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </HBox>
       <Label layoutX="95.0" layoutY="29.0" text="Регистрация" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="30.0">

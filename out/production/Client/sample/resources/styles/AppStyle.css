@@ -1,0 +1,138 @@
+.background {
+    -fx-background-color: #cdefed;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "SansSerif";
+    -fx-text-fill: #035b5b;
+    -fx-opacity: 0.6;
+}
+
+.label-big-logo {
+    -fx-font-family: "SansSerif";
+    -fx-font-size: 36px;
+    -fx-text-fill: #035b5b;
+    -fx-font-weight: bold;
+}
+
+.label-logo {
+    -fx-font-family: "SansSerif";
+    -fx-font-size: 24px;
+    -fx-text-fill: #035b5b;
+    -fx-font-weight: bold;
+}
+
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: "SansSerif";
+    -fx-text-fill: #035b5b;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "SansSerif";
+    -fx-text-fill: #035b5b;
+    -fx-opacity: 1;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-border-color: transparent #01695e transparent #01695e;
+    -fx-background-color: transparent, derive(#01695e,20%);
+}
+
+.split-pane {
+    -fx-padding: 1 0 0 0;
+}
+
+.menu-bar {
+    -fx-background-color: derive(#16a291,20%);
+}
+
+.context-menu, .menu-item:focused {
+    -fx-background-color: derive(#16a291,50%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "SansSerif";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu .left-container {
+    -fx-background-color: #0d5869;
+}
+
+.menu:hover, .menu-item:hover {
+    -fx-background-color: derive(#035b5b,30%);
+}
+
+.menu {
+    -fx-background-color: derive(#16a291,20%);
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: "SansSerif";
+}
+
+.button {
+    -fx-padding: 5 22 5 22;
+    -fx-background-radius: 50;
+    -fx-background-color: #16a291;
+    -fx-font-family: "SansSerif";
+    -fx-font-size: 11pt;
+    -fx-text-fill: #ffffff;
+}
+
+.button:hover {
+    -fx-background-color: derive(#035b5b,30%);
+}
+
+.button:pressed, .button:default:hover:pressed {
+    -fx-background-color: #074673;
+    -fx-text-fill: #c2caca;
+}
+
+.button:focused {
+    -fx-border-color: #070343, #070343;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 50, 50;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #16a291;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: #16a291;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(#035b5b,30%);
+}
+
+.hyperlink {
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 50, 50;
+    -fx-border-insets: 1 1 1 1, 0;
+    -fx-background-radius: 50;
+    -fx-background-color: #16a291;
+    -fx-text-fill: white;
+    -fx-font-family: "SansSerif";
+}
+
+.hyperlink:hover {
+    -fx-background-color: derive(#035b5b,30%);
+}
+
+.image {
+    -fx-background-color: #16a291;
+}

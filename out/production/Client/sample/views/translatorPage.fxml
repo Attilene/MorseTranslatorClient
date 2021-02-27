@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -32,11 +33,20 @@
       </HBox>
       <Label alignment="CENTER" layoutX="82.0" layoutY="202.0" prefHeight="21.0" prefWidth="155.0" text="Текст для перевода:" />
       <Label alignment="CENTER" layoutX="356.0" layoutY="202.0" prefHeight="21.0" prefWidth="162.0" text="Результат перевода:" />
-      <Button layoutX="262.0" layoutY="200.0" mnemonicParsing="false" onAction="#handlerTranslate" text="Перевести" />
+      <Button layoutX="262.0" layoutY="200.0" mnemonicParsing="false" onAction="#handlerTranslate" text="Перевести">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <HBox layoutX="119.0" layoutY="443.0" spacing="20.0" AnchorPane.bottomAnchor="30.0">
          <children>
-            <Button layoutX="103.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerExitPC" prefHeight="30.0" prefWidth="170.0" text="Выйти из личного кабинета" />
-            <Button layoutX="345.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerUpdatePC" prefHeight="30.0" prefWidth="170.0" text="Настроить личный кабинет" />
+            <Button layoutX="103.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerExitPC" prefHeight="30.0" prefWidth="170.0" text="Выйти из личного кабинета">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="345.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerUpdatePC" prefHeight="30.0" prefWidth="170.0" text="Настроить личный кабинет">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </HBox>
       <TextField fx:id="loginField" alignment="CENTER" editable="false" layoutX="201.0" layoutY="410.0" prefHeight="26.0" prefWidth="196.0" promptText="Логин пользователя" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="203.0" />

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -47,10 +48,19 @@
       </GridPane>
       <HBox layoutX="123.0" layoutY="82.0" spacing="30.0">
          <children>
-            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleUpdate" text="Изменить" />
-            <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="70.4" text="Отмена" />
+            <Button mnemonicParsing="false" onAction="#handleUpdate" text="Изменить">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="70.4" text="Отмена">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </HBox>
-      <Button layoutX="132.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleDeleteProfile" text="Удалить личный кабинет" textFill="RED" underline="true" />
+      <Button layoutX="132.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleDeleteProfile" text="Удалить личный кабинет" textFill="RED" underline="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

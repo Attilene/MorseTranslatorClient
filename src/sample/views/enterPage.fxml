@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -29,8 +30,14 @@
       </GridPane>
       <HBox layoutX="117.0" layoutY="212.0" prefHeight="31.0" prefWidth="177.0" spacing="30.0">
          <children>
-            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleEnter" prefHeight="31.0" prefWidth="74.0" text="Вход" />
-            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="31.0" prefWidth="74.0" text="Отмена" />
+            <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="31.0" prefWidth="74.0" text="Вход">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="31.0" prefWidth="74.0" text="Отмена">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </HBox>
    </children>
