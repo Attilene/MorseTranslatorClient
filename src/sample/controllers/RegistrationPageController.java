@@ -53,26 +53,34 @@ public class RegistrationPageController {
     @FXML
     private void handleRegistration () {
         if (isInputValid()) {
-            if (!ValidUtil.checkEmail(emailField.getText()))
-                AlertsUtil.showIncorrectEmailAlert(this.dialStage);
-            else if (!ValidUtil.checkPassword(passwordField.getText()))
-                AlertsUtil.showWrongFormatPasswordAlert(this.dialStage);
-            else if ((phoneNumberField.getText() != null && phoneNumberField.getText().length() != 0)
-                    && !ValidUtil.checkPhoneNumber(phoneNumberField.getText())) {
-                AlertsUtil.showWrongFormatPhoneNumberAlert(this.dialStage);
-            } else {
-                // TODO: Веб-запрос на обновление данных пользователя
-                main.getPersonData().remove(person);
-                person.setFirstName(firstNameField.getText());
-                person.setLastName(lastNameField.getText());
-                person.setLogin(loginField.getText());
-                person.setEmail(emailField.getText());
-                person.setPhoneNumber(phoneNumberField.getText());
-                person.setBirthday(birthdayField.getValue());
-                person.setPassword(passwordField.getText());
-                person.setRepeatPassword(repeatPasswordField.getText());
-                main.getPersonData().add(person);
-                dialStage.close();
+            if (isInputValidLength()) {
+                if (!ValidUtil.checkStandard(firstNameField.getText()))
+                    AlertsUtil.showWrongFormatStandardAlert(dialStage, "Имя");
+                else if (!ValidUtil.checkStandard(lastNameField.getText()))
+                    AlertsUtil.showWrongFormatStandardAlert(dialStage, "Фамилия");
+                else if (!ValidUtil.checkStandard(loginField.getText()))
+                    AlertsUtil.showWrongFormatStandardAlert(dialStage, "Логин");
+                else if (!ValidUtil.checkEmail(emailField.getText()))
+                    AlertsUtil.showIncorrectEmailAlert(this.dialStage);
+                else if (!ValidUtil.checkPassword(passwordField.getText()))
+                    AlertsUtil.showWrongFormatPasswordAlert(this.dialStage);
+                else if ((phoneNumberField.getText() != null && phoneNumberField.getText().length() != 0)
+                        && !ValidUtil.checkPhoneNumber(phoneNumberField.getText())) {
+                    AlertsUtil.showWrongFormatPhoneNumberAlert(this.dialStage);
+                } else {
+                    // TODO: Веб-запрос на обновление данных пользователя
+                    main.getPersonData().remove(person);
+                    person.setFirstName(firstNameField.getText());
+                    person.setLastName(lastNameField.getText());
+                    person.setLogin(loginField.getText());
+                    person.setEmail(emailField.getText());
+                    person.setPhoneNumber(phoneNumberField.getText());
+                    person.setBirthday(birthdayField.getValue());
+                    person.setPassword(passwordField.getText());
+                    person.setRepeatPassword(repeatPasswordField.getText());
+                    main.getPersonData().add(person);
+                    dialStage.close();
+                }
             }
         }
     }
@@ -110,6 +118,26 @@ public class RegistrationPageController {
             AlertsUtil.showInputValidAlert(dialStage, errorMessage);
             return false;
         }
+    }
+
+    private boolean isInputValidLength() {
+        if (!ValidUtil.checkLength(firstNameField.getText(), 40)) {
+            AlertsUtil.showBigStringAlert(dialStage, "Имя", 40);
+            return false;
+        }
+        if (!ValidUtil.checkLength(lastNameField.getText(), 40)) {
+            AlertsUtil.showBigStringAlert(dialStage, "Фамилия", 40);
+            return false;
+        }
+        if (!ValidUtil.checkLength(loginField.getText(), 60)) {
+            AlertsUtil.showBigStringAlert(dialStage, "Логин", 60);
+            return false;
+        }
+        if (!ValidUtil.checkLength(emailField.getText(), 50)) {
+            AlertsUtil.showBigStringAlert(dialStage, "Email", 50);
+            return false;
+        }
+        return true;
     }
 
     public void setMain(Main main) { this.main = main; }

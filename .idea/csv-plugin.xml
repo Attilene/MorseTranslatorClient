@@ -52,6 +52,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controllers\EditPersonPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\controllers\EnterPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\controllers\RegistrationPageController.java">
           <value>
             <Attribute>

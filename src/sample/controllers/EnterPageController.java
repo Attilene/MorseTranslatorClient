@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.models.Person;
 import sample.utils.AlertsUtil;
+import sample.utils.ValidUtil;
 
 public class EnterPageController {
     @FXML
@@ -33,14 +34,14 @@ public class EnterPageController {
     private void handleEnter() {
         if (isInputValid()) {
             // TODO: Веб-запрос на получение пользователя
-            if (!main.getPersonData().isEmpty()) {
+            if (!main.getPersonData().isEmpty()
+                    && (ValidUtil.checkStandard(userLogEmailField.getText())
+                    || ValidUtil.checkEmail(userLogEmailField.getText()))) {
                 person = main.getPersonData().get(0);
                 if (person.getLogin().equals(userLogEmailField.getText()) ||
                         person.getEmail().equals(userLogEmailField.getText())) {
                     dialStage.close();
-                } else {
-                    AlertsUtil.showNoValidEnterAlert(dialStage);
-                }
+                } else AlertsUtil.showNoValidEnterAlert(dialStage);
             }
             else AlertsUtil.showNoValidEnterAlert(dialStage);
         }

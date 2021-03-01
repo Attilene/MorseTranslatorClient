@@ -28,6 +28,15 @@ public abstract class AlertsUtil {
         alert.showAndWait();
     }
 
+    public static void showWrongFormatStandardAlert(Stage stage, String name) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Неверный формат строки");
+        alert.setHeaderText("Неправильный формат текстового поля: " + name);
+        alert.setContentText("Не допускаются символы: % \" ' ; :");
+        alert.showAndWait();
+    }
+
     public static void showNoValidEnterAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -54,7 +63,7 @@ public abstract class AlertsUtil {
                 Длина пароля: не менее 8 символов
                 Пароль должен содержать:
                 заглавные буквы, строчные буквы, цифры,
-                специальные символы из списка "@#$%\"""");
+                специальные символы из списка: @ # $ %""");
         alert.showAndWait();
     }
 
@@ -64,6 +73,24 @@ public abstract class AlertsUtil {
         alert.setTitle("Неправильный формат номера телефона");
         alert.setHeaderText("Введите номер телефона в нужном формате");
         alert.setContentText("Формат: +7{номер телефона} или 8{номер телефона}");
+        alert.showAndWait();
+    }
+
+    public static void showBigStringAlert(Stage stage, String name, int symbols) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Превышение длины строки");
+        alert.setHeaderText("Длина поля " + name + " больше " + symbols + " символов!");
+        alert.setContentText("Измените значение текстового поля");
+        alert.showAndWait();
+    }
+
+    public static void showUserExistAlert(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Пользователь существует");
+        alert.setHeaderText("Пользователь с такими данными уже существует!");
+        alert.setContentText("Логин, почта или номер телефона должны быть уникальными");
         alert.showAndWait();
     }
 
