@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RegistrationPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="482.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RegistrationPageController">
    <children>
-      <GridPane layoutX="73.0" layoutY="64.0" prefHeight="282.0" prefWidth="502.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+      <GridPane layoutX="21.0" layoutY="105.0" prefHeight="344.0" prefWidth="370.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="105.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="151.4" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="307.0" />
@@ -29,31 +29,31 @@
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="* Email:  " textAlignment="CENTER" GridPane.rowIndex="3" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Номер телефона:  " GridPane.rowIndex="4" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Дата рождения:  " GridPane.rowIndex="5" />
-            <TextField fx:id="firstNameField" promptText="Введите данные" GridPane.columnIndex="1" />
-            <TextField fx:id="lastNameField" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="loginField" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="emailField" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="phoneNumberField" promptText="Введите данные" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="firstNameField" promptText="Введите имя" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameField" promptText="Введите фамилию" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="loginField" promptText="Введите логин" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="emailField" promptText="Введите email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="phoneNumberField" promptText="Введите номер телефона" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="* Пароль:  " GridPane.rowIndex="6" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="* Повтор пароля:  " GridPane.rowIndex="7" />
-            <DatePicker fx:id="birthdayField" editable="false" maxWidth="1.7976931348623157E308" promptText="dd.mm.yyyy" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <DatePicker fx:id="birthdayField" editable="false" maxWidth="1.7976931348623157E308" promptText="dd.mm.yyyy" styleClass="date-picker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <PasswordField fx:id="repeatPasswordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <PasswordField fx:id="repeatPasswordField" promptText="Введите повтор пароль" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <HBox layoutX="106.0" layoutY="415.0" spacing="30.0" AnchorPane.bottomAnchor="30.600000000000023" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="105.0">
+      <HBox layoutX="93.0" layoutY="475.0" prefHeight="38.0" prefWidth="298.0" spacing="30.0" AnchorPane.bottomAnchor="27.600000000000023" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="91.0">
          <children>
-            <Button layoutX="161.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleRegistration" text="Регистрация">
+            <Button layoutX="161.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleRegistration" prefHeight="35.0" prefWidth="132.0" text="Регистрация">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="287.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="84.8" text="Отмена">
+            <Button layoutX="287.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="35.0" prefWidth="132.0" text="Отмена">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
          </children>
       </HBox>
-      <Label layoutX="95.0" layoutY="29.0" text="Регистрация" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="30.0">
+      <Label layoutX="126.0" layoutY="36.0" prefHeight="42.0" prefWidth="230.0" styleClass="label-big-logo" text="Регистрация" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="36.0">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

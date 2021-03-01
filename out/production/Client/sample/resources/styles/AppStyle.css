@@ -52,6 +52,7 @@
 
 .context-menu, .menu-item:focused {
     -fx-background-color: derive(#16a291,50%);
+    -fx-cursor: hand;
 }
 
 .menu-bar .label {
@@ -67,15 +68,21 @@
 
 .menu:hover, .menu-item:hover {
     -fx-background-color: derive(#035b5b,30%);
+    -fx-cursor: hand;
 }
 
 .menu {
+    -fx-font-family: "SansSerif";
     -fx-background-color: derive(#16a291,20%);
 }
 
-.text-field {
+.text-field, .text-area, .password-field {
     -fx-font-size: 12pt;
     -fx-font-family: "SansSerif";
+    -fx-border-color: #0990ef, #0990ef;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-radius: 5, 5;
 }
 
 .button {
@@ -87,8 +94,21 @@
     -fx-text-fill: #ffffff;
 }
 
+.button-delete {
+    -fx-padding: 5 22 5 22;
+    -fx-background-radius: 50;
+    -fx-background-color: #ae1e1e;
+    -fx-font-family: "SansSerif";
+    -fx-font-size: 11pt;
+    -fx-text-fill: #ffffff;
+}
+
 .button:hover {
     -fx-background-color: derive(#035b5b,30%);
+}
+
+.button-delete:hover {
+    -fx-background-color: derive(#940707,30%);
 }
 
 .button:pressed, .button:default:hover:pressed {
@@ -96,11 +116,20 @@
     -fx-text-fill: #c2caca;
 }
 
-.button:focused {
+.button-delete:pressed, .button-delete:default:hover:pressed {
+    -fx-background-color: #6b0000;
+    -fx-text-fill: #ff9292;
+}
+
+.button:focused, .button-delete:focused {
     -fx-border-color: #070343, #070343;
     -fx-border-width: 1, 1;
-    -fx-border-style: solid, segments(1, 1);
+    -fx-border-style: solid;
     -fx-border-radius: 50, 50;
+}
+
+.button-delete:focused {
+    -fx-background-color: derive(#7a0000,30%);
 }
 
 .button:disabled, .button:default:disabled {
@@ -109,8 +138,19 @@
     -fx-text-fill: white;
 }
 
+.button-delete:disabled, .button-delete:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #ae1e1e;
+    -fx-text-fill: white;
+}
+
 .button:default {
     -fx-background-color: #16a291;
+    -fx-text-fill: #ffffff;
+}
+
+.button-delete:default {
+    -fx-background-color: #ae1e1e;
     -fx-text-fill: #ffffff;
 }
 
@@ -118,9 +158,13 @@
     -fx-background-color: derive(#035b5b,30%);
 }
 
+.button-delete:default:hover {
+    -fx-background-color: derive(#940707,30%);
+}
+
 .hyperlink {
     -fx-border-width: 1, 1;
-    -fx-border-style: solid, segments(1, 1);
+    -fx-border-style: solid;
     -fx-border-radius: 50, 50;
     -fx-border-insets: 1 1 1 1, 0;
     -fx-background-radius: 50;
@@ -129,10 +173,17 @@
     -fx-font-family: "SansSerif";
 }
 
-.hyperlink:hover {
+.hyperlink:pressed {
     -fx-background-color: derive(#035b5b,30%);
 }
 
-.image {
-    -fx-background-color: #16a291;
+.hyperlink:focused {
+    -fx-border-color: #070343, #070343;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-radius: 50, 50;
+}
+
+.radio-button {
+
 }

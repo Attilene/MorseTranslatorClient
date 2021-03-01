@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="264.0" prefWidth="488.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainPageController">
-   <HBox alignment="CENTER_RIGHT" layoutX="96.0" layoutY="181.0" prefHeight="35.0" prefWidth="296.0" spacing="30.0" AnchorPane.bottomAnchor="47.80000000000001" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="96.0">
+   <HBox alignment="CENTER_RIGHT" layoutX="96.0" layoutY="181.0" prefHeight="38.0" prefWidth="296.0" spacing="30.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="96.0">
       <children>
          <Button layoutX="90.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleEnterAction" prefHeight="35.0" prefWidth="132.0" text="Вход">
             <cursor>

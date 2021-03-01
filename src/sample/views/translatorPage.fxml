@@ -6,9 +6,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="521.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.TranslatorPageController">
+<AnchorPane prefHeight="521.0" prefWidth="600.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.TranslatorPageController">
    <children>
-      <Label layoutX="128.0" layoutY="26.0" text="Переводчик Морзе">
+      <Label layoutX="131.0" layoutY="34.0" styleClass="label-big-logo" text="Переводчик Морзе">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -27,29 +27,29 @@
       </HBox>
       <HBox layoutX="28.0" layoutY="235.0" spacing="15.0">
          <children>
-            <TextArea fx:id="startStringArea" layoutX="28.0" layoutY="214.0" prefHeight="153.0" prefWidth="263.0" promptText="Ввод текста" />
-            <TextArea fx:id="endStringArea" editable="false" layoutX="305.0" layoutY="214.0" prefHeight="153.0" prefWidth="263.0" promptText="Вывод текста" />
+            <TextArea fx:id="startStringArea" layoutX="28.0" layoutY="214.0" prefHeight="153.0" prefWidth="263.0" promptText="Ввод текста" styleClass="text-area" />
+            <TextArea fx:id="endStringArea" editable="false" layoutX="305.0" layoutY="214.0" prefHeight="153.0" prefWidth="263.0" promptText="Вывод текста" styleClass="text-area" />
          </children>
       </HBox>
-      <Label alignment="CENTER" layoutX="82.0" layoutY="202.0" prefHeight="21.0" prefWidth="155.0" text="Текст для перевода:" />
-      <Label alignment="CENTER" layoutX="356.0" layoutY="202.0" prefHeight="21.0" prefWidth="162.0" text="Результат перевода:" />
-      <Button layoutX="262.0" layoutY="200.0" mnemonicParsing="false" onAction="#handlerTranslate" text="Перевести">
+      <Label alignment="CENTER" layoutX="84.0" layoutY="202.0" prefHeight="21.0" prefWidth="155.0" text="Текст для перевода:" />
+      <Label alignment="CENTER" layoutX="358.0" layoutY="202.0" prefHeight="21.0" prefWidth="162.0" text="Результат перевода:" />
+      <Button layoutX="240.0" layoutY="197.0" mnemonicParsing="false" onAction="#handlerTranslate" prefHeight="32.0" text="Перевести">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <HBox layoutX="119.0" layoutY="443.0" spacing="20.0" AnchorPane.bottomAnchor="30.0">
+      <HBox layoutX="56.0" layoutY="462.0" prefHeight="35.0" prefWidth="485.0" spacing="20.0" AnchorPane.bottomAnchor="23.80000000000001">
          <children>
-            <Button layoutX="103.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerExitPC" prefHeight="30.0" prefWidth="170.0" text="Выйти из личного кабинета">
+            <Button layoutX="103.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerExitPC" prefHeight="35.0" prefWidth="232.0" text="Выйти из личного кабинета">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="345.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerUpdatePC" prefHeight="30.0" prefWidth="170.0" text="Настроить личный кабинет">
+            <Button layoutX="345.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerUpdatePC" prefHeight="35.0" prefWidth="232.0" text="Настроить личный кабинет">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
          </children>
       </HBox>
-      <TextField fx:id="loginField" alignment="CENTER" editable="false" layoutX="201.0" layoutY="410.0" prefHeight="26.0" prefWidth="196.0" promptText="Логин пользователя" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="203.0" />
-      <Line endX="449.6999816894531" layoutX="131.9000015258789" layoutY="407.0" opacity="0.63" startX="-116.4000015258789" stroke="#8f8f8f" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="17.9000244140625" />
+      <TextField fx:id="loginField" alignment="CENTER" editable="false" layoutX="201.0" layoutY="418.0" prefHeight="26.0" prefWidth="196.0" promptText="Логин пользователя" AnchorPane.bottomAnchor="68.60000000000002" AnchorPane.rightAnchor="203.0" />
+      <Line endX="449.6999816894531" layoutX="131.9000015258789" layoutY="407.0" opacity="0.63" startX="-116.4000015258789" stroke="#16a291" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="17.9000244140625" />
    </children>
 </AnchorPane>

@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnterPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="453.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnterPageController">
    <children>
-      <Label layoutX="162.0" layoutY="28.0" text="Вход">
+      <Label layoutX="181.0" layoutY="33.0" styleClass="label-big-logo" text="Вход">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -22,19 +22,19 @@
           <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="userLogEmailField" promptText="Введите данные" GridPane.columnIndex="1" />
+            <TextField fx:id="userLogEmailField" promptText="Введите логин/email" GridPane.columnIndex="1" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Логин/Email:  " />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Пароль:  " GridPane.rowIndex="1" />
             <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <HBox layoutX="117.0" layoutY="212.0" prefHeight="31.0" prefWidth="177.0" spacing="30.0">
+      <HBox layoutX="78.0" layoutY="214.0" prefHeight="38.0" prefWidth="297.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="31.0" prefWidth="74.0" text="Вход">
+            <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="35.0" prefWidth="132.0" text="Вход">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="31.0" prefWidth="74.0" text="Отмена">
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="35.0" prefWidth="132.0" text="Отмена">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
