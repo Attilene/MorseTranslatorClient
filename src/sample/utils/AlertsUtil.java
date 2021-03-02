@@ -16,7 +16,7 @@ public abstract class AlertsUtil {
         alert.setTitle("Удаление профиля");
         alert.setHeaderText("Вы уверены, что хотите удалить свой профиль?");
         for (ButtonType type: alert.getButtonTypes())
-            ((Button) alert.getDialogPane().lookupButton(type)).setDefaultButton(type == ButtonType.NO);
+            ((Button) alert.getDialogPane().lookupButton(type)).setDefaultButton(type == ButtonType.CANCEL);
         addStyleSheetToAlert(alert);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
