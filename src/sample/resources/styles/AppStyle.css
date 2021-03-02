@@ -37,15 +37,6 @@
     -fx-opacity: 1;
 }
 
-.split-pane:horizontal > .split-pane-divider {
-    -fx-border-color: transparent #01695e transparent #01695e;
-    -fx-background-color: transparent, derive(#01695e,20%);
-}
-
-.split-pane {
-    -fx-padding: 1 0 0 0;
-}
-
 .menu-bar {
     -fx-background-color: derive(#16a291,20%);
 }

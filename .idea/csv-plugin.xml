@@ -94,6 +94,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\resources\styles\DialogStyle.css">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\util\Alerts.java">
           <value>
             <Attribute>
