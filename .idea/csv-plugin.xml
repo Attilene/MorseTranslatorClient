@@ -87,6 +87,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\models\json\JsonUser.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\resources\styles\AppStyle.css">
           <value>
             <Attribute>
@@ -136,7 +143,21 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\utils\RequestsUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\utils\ValidUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\utils\requests\GetRequestUtil.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

@@ -6,7 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Main;
-import sample.models.Person;
+import sample.models.app.Person;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
 

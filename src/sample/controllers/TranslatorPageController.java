@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import sample.Main;
-import sample.models.Person;
+import sample.models.app.Person;
 
 public class TranslatorPageController {
     @FXML

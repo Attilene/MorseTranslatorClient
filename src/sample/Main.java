@@ -12,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.controllers.*;
-import sample.models.Person;
+import sample.models.app.Person;
 
 import java.io.IOException;
 

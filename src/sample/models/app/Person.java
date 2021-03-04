@@ -1,4 +1,4 @@
-package sample.models;
+package sample.models.app;
 
 import javafx.beans.property.*;
 

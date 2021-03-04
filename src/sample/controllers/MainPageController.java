@@ -2,7 +2,7 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import sample.Main;
-import sample.models.Person;
+import sample.models.app.Person;
 
 public class MainPageController {
     public Main main;
