@@ -25,6 +25,8 @@ public abstract class RequestsUtil {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        } finally {
+            conn.disconnect();
         }
     }
 

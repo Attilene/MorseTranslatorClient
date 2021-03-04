@@ -157,6 +157,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\utils\requests\DeleteRequestUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\utils\requests\GetRequestUtil.java">
           <value>
             <Attribute>
@@ -165,6 +172,13 @@
           </value>
         </entry>
         <entry key="\src\sample\utils\requests\PostRequestUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\utils\requests\PutRequestUtil.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

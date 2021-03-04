@@ -1,12 +1,9 @@
 package sample.utils.requests;
 
-import sample.models.json.JsonUser;
-import sample.models.to.dict.DictUser;
-
+import sample.models.to.dict.DictEnter;
+import sample.models.to.dict.DictRegistration;
 import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -15,17 +12,12 @@ import java.util.Map;
 
 public class PostRequestUtil extends RequestsUtil implements Runnable {
     private Map<String, String> params;
-    private Thread thread;
+    private final Thread thread;
 
-    public PostRequestUtil(String url) {
-        thread = new Thread(this, url);
-        thread.start();
-    }
+    public PostRequestUtil(String url) { thread = new Thread(this, url); }
 
     @Override
-    public void run() {
-        System.out.println(send("/users"));
-    }
+    public void run() { System.out.println(send(thread.getName())); }
 
     @Override
     public String send(String url) {
@@ -33,22 +25,14 @@ public class PostRequestUtil extends RequestsUtil implements Runnable {
             this.url = new URL(rootURL + url);
             HttpURLConnection conn = (HttpURLConnection) this.url.openConnection();
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("charset", "utf-8");
+            conn.setUseCaches( false );
             conn.setConnectTimeout(TIMEOUT);
             conn.setReadTimeout(TIMEOUT);
             conn.setDoOutput(true);
-            conn.setDoInput(true);
             BufferedOutputStream out = new BufferedOutputStream(conn.getOutputStream());
-            // TODO: Тесты
-            JsonUser jsonUser = new JsonUser();
-            jsonUser.setFirst_name("Derbin");
-            jsonUser.setLast_name("Dmitriy");
-            jsonUser.setLogin("t1mon");
-            jsonUser.setEmail("97865hyasdsfgf@mail.ru");
-            jsonUser.setPhone_number("889765432456");
-            jsonUser.setBirthday("2001-07-10");
-            out.write(gson.toJson(jsonUser).getBytes(StandardCharsets.UTF_8));
-            //
+            out.write(createRequestString().getBytes(StandardCharsets.UTF_8));
             out.flush();
             out.close();
             return readInputStream(conn);
@@ -75,14 +59,22 @@ public class PostRequestUtil extends RequestsUtil implements Runnable {
     }
 
     public static void main(String[] args) {
-        PostRequestUtil postRequestUtil = new PostRequestUtil("/users");
-//        postRequestUtil.setParams(new DictUser().setParams(new ArrayList<>() {{
+        PostRequestUtil postRequestUtil = new PostRequestUtil("/enter");
+//        postRequestUtil.setParams(new DictRegistration().setParams(new ArrayList<>() {{
 //            add("Sergey");
 //            add("Tkachev");
 //            add("yau20");
 //            add("1e2jef@mail.ru");
-//            add("89253136350");
+//            add("567890876532");
 //            add("2001-07-10");
+//            add("qwerty");
+//            add("12345");
 //        }}));
+        postRequestUtil.setParams(new DictEnter().setParams(new ArrayList<>() {{
+            add("1e2jef@mail.ru");
+            add("qwerty");
+            add("12345");
+        }}));
+        postRequestUtil.thread.start();
     }
 }

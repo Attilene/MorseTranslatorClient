@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DictUser implements DictModel {
+public class DictRegistration implements DictModel {
     @Override
     public Map<String, String> setParams(ArrayList<String> args) {
         Map<String, String> dictToSend = new HashMap<>();
@@ -14,6 +14,8 @@ public class DictUser implements DictModel {
         dictToSend.put("email", args.get(3));
         dictToSend.put("phone_number", args.get(4));
         dictToSend.put("birthday", args.get(5));
+        dictToSend.put("password_hash", args.get(6));
+        dictToSend.put("salt", args.get(7));
         return dictToSend;
     }
 }

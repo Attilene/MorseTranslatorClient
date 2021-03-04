@@ -2,7 +2,6 @@ package sample.models.app;
 
 import javafx.beans.property.*;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Person {
