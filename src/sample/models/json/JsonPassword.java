@@ -13,6 +13,12 @@ public class JsonPassword implements Serializable {
 
     public String getSalt() { return salt; }
 
+    public void setSalt(String salt) { this.salt = salt; }
+
+    public void setHash(String hash) { this.hash = hash; }
+
+    public void setId(Long id) { this.id = id; }
+
     @Override
     public String toString() {
         return "JsonPassword{" +

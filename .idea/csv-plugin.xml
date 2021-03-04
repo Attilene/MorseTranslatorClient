@@ -164,6 +164,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\utils\requests\PostRequestUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\views\translatorPage.fxml">
           <value>
             <Attribute>

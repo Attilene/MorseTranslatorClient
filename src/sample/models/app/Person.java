@@ -5,7 +5,7 @@ import javafx.beans.property.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Person implements Serializable {
+public class Person {
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty login;

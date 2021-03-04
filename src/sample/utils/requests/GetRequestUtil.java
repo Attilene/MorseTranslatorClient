@@ -6,8 +6,18 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetRequestUtil extends RequestsUtil {
-    public URL url;
+public class GetRequestUtil extends RequestsUtil implements Runnable {
+    private final Thread thread;
+
+    public GetRequestUtil(String url) {
+        thread = new Thread(this, url);
+        thread.start();
+    }
+
+    @Override
+    public void run() {
+        System.out.println(gson.fromJson(send(thread.getName()), JsonUser.class));
+    }
 
     @Override
     public String send(String url) {
@@ -26,7 +36,6 @@ public class GetRequestUtil extends RequestsUtil {
     }
 
     public static void main(String[] args) {
-        GetRequestUtil getRequestUtil = new GetRequestUtil();
-        System.out.println(gson.fromJson(getRequestUtil.send("/users/1"), JsonUser.class));
+        GetRequestUtil getRequestUtil = new GetRequestUtil("/users/4");
     }
 }

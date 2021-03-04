@@ -32,6 +32,24 @@ public class JsonUser implements Serializable {
 
     public JsonHistory[] getHistories() { return histories; }
 
+    public void setLast_name(String last_name) { this.last_name = last_name; }
+
+    public void setFirst_name(String first_name) { this.first_name = first_name; }
+
+    public void setPhone_number(String phone_number) { this.phone_number = phone_number; }
+
+    public void setEmail(String email) { this.email = email; }
+
+    public void setBirthday(String birthday) { this.birthday = birthday; }
+
+    public void setHistories(JsonHistory[] histories) { this.histories = histories; }
+
+    public void setId(Long id) { this.id = id; }
+
+    public void setLogin(String login) { this.login = login; }
+
+    public void setPassword(JsonPassword password) { this.password = password; }
+
     @Override
     public String toString() {
         return "JsonUser{" +

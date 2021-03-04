@@ -17,6 +17,14 @@ public class JsonHistory implements Serializable {
 
     public Date getOperation_time() { return operation_time; }
 
+    public void setOperation_time(Date operation_time) { this.operation_time = operation_time; }
+
+    public void setStart_string(String start_string) { this.start_string = start_string; }
+
+    public void setEnd_string(String end_string) { this.end_string = end_string; }
+
+    public void setId(Long id) { this.id = id; }
+
     @Override
     public String toString() {
         return "JsonHistory{" +
