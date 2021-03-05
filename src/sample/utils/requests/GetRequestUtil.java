@@ -1,14 +1,13 @@
 package sample.utils.requests;
 
-import sample.models.json.JsonPassword;
+import sample.models.json.JsonUser;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetRequestUtil<T> extends RequestsUtil implements Runnable {
-    private final Thread thread;
-    private final Class<T> typeClass;
+public class GetRequestUtil<T> extends RequestsUtil {
+    protected Class<T> typeClass;
 
     public GetRequestUtil(String url, Class<T> typeClass) {
         this.typeClass = typeClass;
@@ -29,14 +28,12 @@ public class GetRequestUtil<T> extends RequestsUtil implements Runnable {
             conn.setConnectTimeout(TIMEOUT);
             conn.setReadTimeout(TIMEOUT);
             return readInputStream(conn);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { e.printStackTrace(); }
         return null;
     }
 
     public static void main(String[] args) {
-        GetRequestUtil<JsonPassword> getRequestUtil = new GetRequestUtil<>("/users/1/passwords", JsonPassword.class);
+        GetRequestUtil<JsonUser> getRequestUtil = new GetRequestUtil<>("/users", JsonUser.class);
         getRequestUtil.thread.start();
     }
 }

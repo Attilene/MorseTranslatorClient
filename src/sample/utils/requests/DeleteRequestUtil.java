@@ -1,23 +1,41 @@
 package sample.utils.requests;
 
-public class DeleteRequestUtil extends RequestsUtil implements Runnable {
-    private final Thread thread;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
-    public DeleteRequestUtil(Thread thread) {
-        this.thread = thread;
-    }
+public class DeleteRequestUtil extends RequestsUtil {
+    public DeleteRequestUtil(String url) { this.thread = new Thread(this, url); }
+
+    @Override
+    public void run() { System.out.println(send(thread.getName())); }
 
     @Override
     public String send(String url) {
+        try {
+            this.url = new URL(rootURL + url);
+            HttpURLConnection conn = (HttpURLConnection) this.url.openConnection();
+            conn.setRequestMethod("DELETE");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("charset", "utf-8");
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setReadTimeout(TIMEOUT);
+            conn.setDoOutput(true);
+            BufferedOutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(createRequestString(params).getBytes(StandardCharsets.UTF_8));
+            out.flush();
+            out.close();
+            return readInputStream(conn);
+        } catch (IOException e) { e.printStackTrace(); }
         return null;
     }
 
-    @Override
-    public void run() {
-
-    }
-
     public static void main(String[] args) {
-
+        DeleteRequestUtil deleteRequestUtil = new DeleteRequestUtil("/delete");
+        deleteRequestUtil.setParams(new HashMap<>() {{ put("id", "11"); }});
+        deleteRequestUtil.thread.start();
     }
 }

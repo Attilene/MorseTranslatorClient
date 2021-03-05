@@ -3,9 +3,9 @@ package sample.models.json;
 import java.io.Serializable;
 
 public class JsonPassword implements Serializable {
-    public Long id;
-    public String hash;
-    public String salt;
+    private Long id;
+    private String hash;
+    private String salt;
 
     public Long getId() { return id; }
 

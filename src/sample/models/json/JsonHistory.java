@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class JsonHistory implements Serializable {
-    public Long id;
-    public String start_string;
-    public String end_string;
-    public Date operation_time;
+    private Long id;
+    private String start_string;
+    private String end_string;
+    private Date operation_time;
 
     public String getStart_string() { return start_string; }
 

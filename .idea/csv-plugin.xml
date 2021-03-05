@@ -87,7 +87,28 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\models\json\JsonStandartResponce.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\models\json\JsonUser.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\models\to\dict\DictUpdateUser.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\models\to\dict\DictUser.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
@@ -179,6 +200,13 @@
           </value>
         </entry>
         <entry key="\src\sample\utils\requests\PutRequestUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\utils\requests\RequestsUtil.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

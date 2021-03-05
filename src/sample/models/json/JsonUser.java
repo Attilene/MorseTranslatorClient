@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class JsonUser implements Serializable {
-    public Long id;
-    public String first_name;
-    public String last_name;
-    public String login;
-    public String email;
-    public String phone_number;
-    public String birthday;
-    public JsonPassword password;
-    public JsonHistory[] histories;
+    private Long id;
+    private String first_name;
+    private String last_name;
+    private String login;
+    private String email;
+    private String phone_number;
+    private String birthday;
+    private JsonPassword password;
+    private JsonHistory[] histories;
 
     public Long getId() { return id; }
 
