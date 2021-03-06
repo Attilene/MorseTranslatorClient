@@ -12,14 +12,28 @@ import java.util.Map;
 public abstract class RequestsUtil implements Runnable {
     protected static final String rootURL = "http://localhost:22222";
     protected static final Gson gson = new Gson();
+    protected Boolean disconnect = false;
     protected static final int TIMEOUT = 10000;
     protected Map<String, String> params;
-    protected Thread thread;
+    protected String response;
+    public Thread thread;
     protected URL url;
 
     public abstract String send(String url);
 
     public void setParams(Map<String, String> params) { this.params = params; }
+
+    public String getResponse() { return response; }
+
+    public Boolean getDisconnect() { return disconnect; }
+
+    public static int getTIMEOUT() { return TIMEOUT; }
+
+    public URL getUrl() { return url; }
+
+    public static String getRootURL() { return rootURL; }
+
+    public void setDisconnect(Boolean disconnect) { this.disconnect = disconnect; }
 
     protected static String readInputStream(HttpURLConnection conn) {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
@@ -31,7 +45,6 @@ public abstract class RequestsUtil implements Runnable {
             conn.disconnect();
             return content.toString();
         } catch (IOException e) {
-            e.printStackTrace();
             conn.disconnect();
             return null;
         }

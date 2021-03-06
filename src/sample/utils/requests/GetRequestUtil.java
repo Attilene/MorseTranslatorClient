@@ -28,12 +28,13 @@ public class GetRequestUtil<T> extends RequestsUtil {
             conn.setConnectTimeout(TIMEOUT);
             conn.setReadTimeout(TIMEOUT);
             return readInputStream(conn);
-        } catch (IOException e) { e.printStackTrace(); }
-        return null;
+        } catch (IOException e) { return null; }
     }
 
     public static void main(String[] args) {
         GetRequestUtil<JsonUser> getRequestUtil = new GetRequestUtil<>("/users", JsonUser.class);
         getRequestUtil.thread.start();
+//        Gson gson1 = new GsonBuilder().setPrettyPrinting().create();
+//        System.out.println(gson1.fromJson("{\"id\":13,\"first_name\":\"Dmitriy\",\"last_name\":\"Derbin\",\"login\":\"t1mon\",\"email\":\"t1mon@gmail.com\",\"phone_number\":\"1234567890\",\"birthday\":\"2001-03-15\",\"password\":{\"id\":13,\"hash\":\"tyhjns3gddf\",\"salt\":\"iouioytry\"},\"histories\":[]}", JsonUser.class));
     }
 }

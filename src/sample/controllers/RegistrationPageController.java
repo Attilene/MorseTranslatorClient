@@ -7,8 +7,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.models.app.Person;
+import sample.models.to.dict.DictRegistration;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
+import sample.utils.requests.PostRequestUtil;
+
+import java.net.ConnectException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class RegistrationPageController {
     @FXML
@@ -68,18 +74,31 @@ public class RegistrationPageController {
                         && !ValidUtil.checkPhoneNumber(phoneNumberField.getText())) {
                     AlertsUtil.showWrongFormatPhoneNumberAlert(this.dialStage);
                 } else {
-                    // TODO: Веб-запрос на обновление данных пользователя
-                    main.getPersonData().remove(person);
-                    person.setFirstName(firstNameField.getText());
-                    person.setLastName(lastNameField.getText());
-                    person.setLogin(loginField.getText());
-                    person.setEmail(emailField.getText());
-                    person.setPhoneNumber(phoneNumberField.getText());
-                    person.setBirthday(birthdayField.getValue());
-                    person.setPassword(passwordField.getText());
-                    person.setRepeatPassword(repeatPasswordField.getText());
-                    main.getPersonData().add(person);
-                    dialStage.close();
+                    PostRequestUtil postRequestUtil = new PostRequestUtil("/registration");
+                    postRequestUtil.setParams(new DictRegistration().setParams(new ArrayList<>() {{
+                        add(firstNameField.getText());
+                        add(lastNameField.getText());
+                        add(loginField.getText());
+                        add(emailField.getText());
+                        add(phoneNumberField.getText());
+                        if (birthdayField.getValue() == null) add(null);
+                        else add(birthdayField.getValue().toString());
+                        add(passwordField.getText());
+                        add(repeatPasswordField.getText());
+                    }}));
+                    postRequestUtil.thread.start();
+                    while (!postRequestUtil.thread.isInterrupted()) {
+                        if (postRequestUtil.getDisconnect()) {
+                            AlertsUtil.showInternalServerErrorAlert(dialStage);
+                            postRequestUtil.setDisconnect(false);
+                            break;
+                        }
+                        if (postRequestUtil.getResponse() != null) break;
+                    }
+                    if (Objects.equals(postRequestUtil.getResponse(), "registration_success")) dialStage.close();
+                    else if (!postRequestUtil.getDisconnect()
+                            && Objects.equals(postRequestUtil.getResponse(), "registration_failed"))
+                        AlertsUtil.showUserExistAlert(dialStage);
                 }
             }
         }

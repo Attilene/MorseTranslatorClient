@@ -29,8 +29,7 @@ public class DeleteRequestUtil extends RequestsUtil {
             out.flush();
             out.close();
             return readInputStream(conn);
-        } catch (IOException e) { e.printStackTrace(); }
-        return null;
+        } catch (IOException e) { return null; }
     }
 
     public static void main(String[] args) {
