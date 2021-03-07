@@ -87,6 +87,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\models\json\JsonStandardResponse.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\models\json\JsonStandartResponce.java">
           <value>
             <Attribute>

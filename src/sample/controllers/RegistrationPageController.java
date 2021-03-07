@@ -5,14 +5,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.Main;
-import sample.models.app.Person;
 import sample.models.to.dict.DictRegistration;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
 import sample.utils.requests.PostRequestUtil;
 
-import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -36,8 +33,6 @@ public class RegistrationPageController {
 
     private boolean okClicked = false;
     private Stage dialStage;
-    private Person person;
-    private Main main;
 
     @FXML
     public void initialize() {
@@ -49,7 +44,6 @@ public class RegistrationPageController {
         birthdayField.setValue(null);
         passwordField.setText(null);
         repeatPasswordField.setText(null);
-        person = new Person();
     }
 
     public boolean isOkClicked() { return okClicked; }
@@ -158,6 +152,4 @@ public class RegistrationPageController {
         }
         return true;
     }
-
-    public void setMain(Main main) { this.main = main; }
 }

@@ -85,7 +85,6 @@ public class Main extends Application {
             dialStage.setScene(scene);
             EnterPageController controller = loader.getController();
             controller.setDialStage(dialStage);
-            controller.setMain(this);
             dialStage.showAndWait();
             return controller.getPerson();
         } catch (IOException e) {
@@ -110,7 +109,6 @@ public class Main extends Application {
             dialStage.setScene(scene);
             RegistrationPageController controller = loader.getController();
             controller.setDialStage(dialStage);
-            controller.setMain(this);
             dialStage.showAndWait();
             return controller.isOkClicked();
         } catch (IOException e) {
