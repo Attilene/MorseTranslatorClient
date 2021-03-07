@@ -10,7 +10,7 @@ public class PutRequestUtil extends RequestsUtil {
     public PutRequestUtil(String url) { this.thread = new Thread(this, url); }
 
     @Override
-    public void run() { System.out.println(send(thread.getName())); }
+    public void run() { response = send(thread.getName()); }
 
     @Override
     public String send(String url) {

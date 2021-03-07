@@ -5,6 +5,7 @@ import javafx.beans.property.*;
 import java.time.LocalDate;
 
 public class Person {
+    private final LongProperty id;
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty login;
@@ -22,6 +23,7 @@ public class Person {
                   LocalDate birthday,
                   String password,
                   String repeatPassword) {
+        this.id = new SimpleLongProperty();
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.login = new SimpleStringProperty(login);
@@ -79,6 +81,8 @@ public class Person {
 
     public String getRepeatPassword() { return repeatPassword.get(); }
 
+    public Long getId() { return id.get(); }
+
     public void setFirstName(String firstName) { this.firstName.set(firstName); }
 
     public void setLastName(String lastName) { this.lastName.set(lastName); }
@@ -95,10 +99,13 @@ public class Person {
 
     public void setRepeatPassword(String repeatPassword) { this.repeatPassword.set(repeatPassword); }
 
+    public void setId(Long id) { this.id.set(id); }
+
     @Override
     public String toString() {
         return "Person{" +
-                "firstName=" + firstName.get() +
+                "id=" + id.get() +
+                ", firstName=" + firstName.get() +
                 ", lastName=" + lastName.get() +
                 ", login=" + login.get() +
                 ", email=" + email.get() +

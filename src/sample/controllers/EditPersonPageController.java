@@ -1,14 +1,25 @@
 package sample.controllers;
 
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.Main;
 import sample.models.app.Person;
+import sample.models.json.JsonPassword;
+import sample.models.json.JsonUser;
+import sample.models.to.dict.DictUpdateUser;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
+import sample.utils.requests.DeleteRequestUtil;
+import sample.utils.requests.PutRequestUtil;
+import sample.utils.requests.RequestsUtil;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class EditPersonPageController {
     @FXML
@@ -28,10 +39,10 @@ public class EditPersonPageController {
     @FXML
     private PasswordField repeatPasswordField;
 
+    private final Gson gson = new Gson();
     private boolean delete = false;
     private Stage dialStage;
     private Person person;
-    private Main main;
 
     public void setPerson(Person person) {
         this.person = person;
@@ -69,18 +80,36 @@ public class EditPersonPageController {
                         && !ValidUtil.checkPhoneNumber(phoneNumberField.getText())) {
                     AlertsUtil.showWrongFormatPhoneNumberAlert(this.dialStage);
                 } else {
-                    // TODO: Веб-запрос на обновление данных пользователя
-                    main.getPersonData().remove(person);
-                    person.setFirstName(firstNameField.getText());
-                    person.setLastName(lastNameField.getText());
-                    person.setLogin(loginField.getText());
-                    person.setEmail(emailField.getText());
-                    person.setPhoneNumber(phoneNumberField.getText());
-                    person.setBirthday(birthdayField.getValue());
-                    person.setPassword(passwordField.getText());
-                    person.setRepeatPassword(repeatPasswordField.getText());
-                    main.getPersonData().add(person);
-                    dialStage.close();
+                    PutRequestUtil putRequestUtil = new PutRequestUtil("/user");
+                    putRequestUtil.setParams(new DictUpdateUser().setParams(new ArrayList<>() {{
+                        add(person.getId().toString());
+                        add(firstNameField.getText());
+                        add(lastNameField.getText());
+                        add(loginField.getText());
+                        add(emailField.getText());
+                        add(phoneNumberField.getText());
+                        if (birthdayField.getValue() == null) add(null);
+                        else add(birthdayField.getValue().toString());
+                        add(passwordField.getText());
+                        add(repeatPasswordField.getText());
+                    }}));
+                    putRequestUtil.thread.start();
+                    RequestsUtil.runningThread(putRequestUtil, dialStage);
+                    if (!Objects.equals(putRequestUtil.getResponse(), "")) {
+                        JsonUser jsonUser = gson.fromJson(putRequestUtil.getResponse(), JsonUser.class);
+                        JsonPassword jsonPassword = jsonUser.getPassword();
+                        person.setFirstName(jsonUser.getFirst_name());
+                        person.setLastName(jsonUser.getLast_name());
+                        person.setLogin(jsonUser.getLogin());
+                        person.setEmail(jsonUser.getEmail());
+                        person.setPhoneNumber(jsonUser.getPhone_number());
+                        person.setBirthday(LocalDate.parse(jsonUser.getBirthday()));
+                        person.setPassword(jsonPassword.getHash());
+                        person.setRepeatPassword(jsonPassword.getSalt());
+                        dialStage.close();
+                    } else if (!putRequestUtil.getDisconnect()
+                            && Objects.equals(putRequestUtil.getResponse(), ""))
+                        AlertsUtil.showUserExistAlert(dialStage);
                 }
             }
         }
@@ -90,8 +119,14 @@ public class EditPersonPageController {
     private void handleDeleteProfile() {
         delete = AlertsUtil.showDeleteProfileConfirmationAlert(dialStage);
         if (delete) {
-            // TODO: запрос на удаление профиля клиента
-            main.getPersonData().remove(person);
+            DeleteRequestUtil deleteRequestUtil = new DeleteRequestUtil("/user");
+            deleteRequestUtil.setParams(new HashMap<>() {{ put("id", person.getId().toString()); }});
+            deleteRequestUtil.thread.start();
+            RequestsUtil.runningThread(deleteRequestUtil, dialStage);
+            if (Objects.equals(deleteRequestUtil.getResponse(), "delete_success")) dialStage.close();
+            else if (!deleteRequestUtil.getDisconnect()
+                    && Objects.equals(deleteRequestUtil.getResponse(), "delete_failed"))
+                AlertsUtil.showUserExistAlert(dialStage);
         }
     }
 
@@ -149,6 +184,4 @@ public class EditPersonPageController {
         }
         return true;
     }
-
-    public void setMain(Main main) { this.main = main; }
 }

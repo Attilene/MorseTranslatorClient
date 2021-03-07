@@ -25,11 +25,11 @@ public class TranslatorPageController {
     @FXML
     private RadioButton engRadioButton;
 
+    private final ToggleGroup groupMorse = new ToggleGroup();
+    private final ToggleGroup groupLang = new ToggleGroup();
     private Stage dialStage;
     private Person person;
     private Main main;
-    private ToggleGroup groupMorse;
-    private ToggleGroup groupLang;
 
     public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
 
@@ -42,8 +42,6 @@ public class TranslatorPageController {
 
     @FXML
     public void initialize() {
-        groupMorse = new ToggleGroup();
-        groupLang = new ToggleGroup();
         toMorseRadioButton.setToggleGroup(groupMorse);
         fromMorseRadioButton.setToggleGroup(groupMorse);
         rusRadioButton.setToggleGroup(groupLang);
@@ -69,8 +67,7 @@ public class TranslatorPageController {
             if (editPersonPageController.isDelete()) {
                 this.person = null;
                 dialStage.close();
-            }
-            else {
+            } else {
                 this.person = editPersonPageController.getPerson();
                 loginField.setText(this.person.getLogin());
             }

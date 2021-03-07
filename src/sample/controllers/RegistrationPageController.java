@@ -9,6 +9,7 @@ import sample.models.to.dict.DictRegistration;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
 import sample.utils.requests.PostRequestUtil;
+import sample.utils.requests.RequestsUtil;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -81,14 +82,7 @@ public class RegistrationPageController {
                         add(repeatPasswordField.getText());
                     }}));
                     postRequestUtil.thread.start();
-                    while (!postRequestUtil.thread.isInterrupted()) {
-                        if (postRequestUtil.getDisconnect()) {
-                            AlertsUtil.showInternalServerErrorAlert(dialStage);
-                            postRequestUtil.setDisconnect(false);
-                            break;
-                        }
-                        if (postRequestUtil.getResponse() != null) break;
-                    }
+                    RequestsUtil.runningThread(postRequestUtil, dialStage);
                     if (Objects.equals(postRequestUtil.getResponse(), "registration_success")) dialStage.close();
                     else if (!postRequestUtil.getDisconnect()
                             && Objects.equals(postRequestUtil.getResponse(), "registration_failed"))

@@ -73,6 +73,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controllers\TranslatorPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\model\AuditPerson.java">
           <value>
             <Attribute>
@@ -84,6 +91,13 @@
           <value>
             <Attribute>
               <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\models\app\Person.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>

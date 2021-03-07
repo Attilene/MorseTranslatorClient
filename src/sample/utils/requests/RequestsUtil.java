@@ -1,6 +1,8 @@
 package sample.utils.requests;
 
 import com.google.gson.Gson;
+import javafx.stage.Stage;
+import sample.utils.AlertsUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -62,5 +64,16 @@ public abstract class RequestsUtil implements Runnable {
         return !resultString.isEmpty()
                 ? resultString.substring(0, resultString.length() - 1)
                 : resultString;
+    }
+
+    public static void runningThread(RequestsUtil requestsUtil, Stage stage) {
+        while (!requestsUtil.thread.isInterrupted()) {
+            if (requestsUtil.getDisconnect()) {
+                AlertsUtil.showInternalServerErrorAlert(stage);
+                requestsUtil.setDisconnect(false);
+                break;
+            }
+            if (requestsUtil.getResponse() != null) break;
+        }
     }
 }

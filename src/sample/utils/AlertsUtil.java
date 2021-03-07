@@ -19,10 +19,7 @@ public abstract class AlertsUtil {
             ((Button) alert.getDialogPane().lookupButton(type)).setDefaultButton(type == ButtonType.CANCEL);
         addStyleSheetToAlert(alert);
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            stage.close();
-            return true;
-        } else { return false; }
+        return result.get() == ButtonType.OK;
     }
 
     public static void showInputValidAlert(Stage stage, String message) {

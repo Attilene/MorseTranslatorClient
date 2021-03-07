@@ -180,7 +180,6 @@ public class Main extends Application {
             dialStage.setScene(scene);
             EditPersonPageController controller = loader.getController();
             controller.setDialStage(dialStage);
-            controller.setMain(this);
             controller.setPerson(person);
             dialStage.showAndWait();
             return controller;

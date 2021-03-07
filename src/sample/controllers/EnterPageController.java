@@ -12,6 +12,7 @@ import sample.models.to.dict.DictEnter;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
 import sample.utils.requests.PostRequestUtil;
+import sample.utils.requests.RequestsUtil;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,8 +27,6 @@ public class EnterPageController {
     private final Gson gson = new Gson();
     private Stage dialStage;
     private Person person;
-    private JsonUser jsonUser;
-    private JsonPassword jsonPassword;
 
     @FXML
     private void initialize() {
@@ -52,17 +51,11 @@ public class EnterPageController {
                     add(passwordField.getText());
                 }}));
                 postRequestUtil.thread.start();
-                while (!postRequestUtil.thread.isInterrupted()) {
-                    if (postRequestUtil.getDisconnect()) {
-                        AlertsUtil.showInternalServerErrorAlert(dialStage);
-                        postRequestUtil.setDisconnect(false);
-                        break;
-                    }
-                    if (postRequestUtil.getResponse() != null) break;
-                }
+                RequestsUtil.runningThread(postRequestUtil, dialStage);
                 if (!Objects.equals(postRequestUtil.getResponse(), "")) {
-                    jsonUser = gson.fromJson(postRequestUtil.getResponse(), JsonUser.class);
-                    jsonPassword = jsonUser.getPassword();
+                    JsonUser jsonUser = gson.fromJson(postRequestUtil.getResponse(), JsonUser.class);
+                    JsonPassword jsonPassword = jsonUser.getPassword();
+                    person.setId(jsonUser.getId());
                     person.setFirstName(jsonUser.getFirst_name());
                     person.setLastName(jsonUser.getLast_name());
                     person.setLogin(jsonUser.getLogin());
