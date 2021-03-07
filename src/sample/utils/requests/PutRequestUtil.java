@@ -1,13 +1,10 @@
 package sample.utils.requests;
 
-import sample.models.to.dict.DictUpdateUser;
-
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
 public class PutRequestUtil extends RequestsUtil {
     public PutRequestUtil(String url) { this.thread = new Thread(this, url); }
@@ -32,21 +29,5 @@ public class PutRequestUtil extends RequestsUtil {
             out.close();
             return readInputStream(conn);
         } catch (IOException e) { return null; }
-    }
-
-    public static void main(String[] args) {
-        PutRequestUtil putRequestUtil = new PutRequestUtil("/update");
-        putRequestUtil.setParams(new DictUpdateUser().setParams(new ArrayList<>() {{
-            add("9");
-            add("Sergey");
-            add("Tkachev");
-            add("yau20");
-            add("1e2jef@mail.ru");
-            add("87654352324");
-            add("2001-10-10");
-            add("zxcvbn");
-            add("12345");
-        }}));
-        putRequestUtil.thread.start();
     }
 }

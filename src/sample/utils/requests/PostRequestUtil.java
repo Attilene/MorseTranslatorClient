@@ -1,14 +1,11 @@
 package sample.utils.requests;
 
-import sample.models.to.dict.DictEnter;
-
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
 public class PostRequestUtil extends RequestsUtil {
     public PostRequestUtil(String url) { thread = new Thread(this, url); }
@@ -36,15 +33,5 @@ public class PostRequestUtil extends RequestsUtil {
             disconnect = true;
             return null;
         } catch (IOException e) { return null; }
-    }
-
-    public static void main(String[] args) {
-        PostRequestUtil postRequestUtil = new PostRequestUtil("/enter");
-        postRequestUtil.setParams(new DictEnter().setParams(new ArrayList<>() {{
-            add("t1mon@gmail.com");
-            add("tyhjns3gddf");
-            add("iouioytry");
-        }}));
-        postRequestUtil.thread.start();
     }
 }

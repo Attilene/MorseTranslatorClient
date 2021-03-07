@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 
 public class DeleteRequestUtil extends RequestsUtil {
     public DeleteRequestUtil(String url) { this.thread = new Thread(this, url); }
@@ -30,11 +29,5 @@ public class DeleteRequestUtil extends RequestsUtil {
             out.close();
             return readInputStream(conn);
         } catch (IOException e) { return null; }
-    }
-
-    public static void main(String[] args) {
-        DeleteRequestUtil deleteRequestUtil = new DeleteRequestUtil("/delete");
-        deleteRequestUtil.setParams(new HashMap<>() {{ put("id", "11"); }});
-        deleteRequestUtil.thread.start();
     }
 }
