@@ -4,10 +4,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
 
 public abstract class AlertsUtil {
     public static boolean showDeleteProfileConfirmationAlert(Stage stage) {
@@ -18,8 +16,7 @@ public abstract class AlertsUtil {
         for (ButtonType type: alert.getButtonTypes())
             ((Button) alert.getDialogPane().lookupButton(type)).setDefaultButton(type == ButtonType.CANCEL);
         addStyleSheetToAlert(alert);
-        Optional<ButtonType> result = alert.showAndWait();
-        return result.get() == ButtonType.OK;
+        return alert.showAndWait().get() == ButtonType.OK;
     }
 
     public static void showInputValidAlert(Stage stage, String message) {
@@ -105,6 +102,16 @@ public abstract class AlertsUtil {
         alert.showAndWait();
     }
 
+    public static void showTranslateFailedAlert(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Перевод не удался");
+        alert.setHeaderText("Не удалось перевести строку");
+        alert.setContentText("Повторите попытку позже или свяжитесь с администратором");
+        addStyleSheetToAlert(alert);
+        alert.showAndWait();
+    }
+
     public static void showInternalServerErrorAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -115,8 +122,9 @@ public abstract class AlertsUtil {
         alert.showAndWait();
     }
 
-    public static void addStyleSheetToAlert(@NotNull Alert alert) {
+    public static void addStyleSheetToAlert(Alert alert) {
         DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setMinHeight(Region.USE_PREF_SIZE);
         dialogPane.getStylesheets().add(
                 AlertsUtil.class.getResource("../resources/styles/DialogStyle.css").toExternalForm());
         dialogPane.getStyleClass().add("dialog-pane");

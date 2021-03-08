@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -8,6 +9,14 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.models.app.Person;
+import sample.models.json.JsonHistory;
+import sample.models.to.dict.DictTranslator;
+import sample.utils.AlertsUtil;
+import sample.utils.requests.PostRequestUtil;
+import sample.utils.requests.RequestsUtil;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class TranslatorPageController {
     @FXML
@@ -27,6 +36,7 @@ public class TranslatorPageController {
 
     private final ToggleGroup groupMorse = new ToggleGroup();
     private final ToggleGroup groupLang = new ToggleGroup();
+    private final Gson gson = new Gson();
     private Stage dialStage;
     private Person person;
     private Main main;
@@ -50,14 +60,30 @@ public class TranslatorPageController {
 
     @FXML
     public void handlerTranslate() {
-        // TODO: Запрос на перевод текста
-        endStringArea.setText(startStringArea.getText());
+        PostRequestUtil postRequestUtil = new PostRequestUtil("/history");
+        postRequestUtil.setParams(new DictTranslator().setParams(new ArrayList<>() {{
+            add(startStringArea.getText());
+            add(person.getId().toString());
+            if (toMorseRadioButton.isSelected()) add("true");
+            else add("false");
+            if (engRadioButton.isSelected()) add("true");
+            else add("false");
+        }}));
+        postRequestUtil.thread.start();
+        RequestsUtil.runningThread(postRequestUtil, dialStage);
+        if (!Objects.equals(postRequestUtil.getResponse(), "")) {
+            JsonHistory jsonHistory = gson.fromJson(postRequestUtil.getResponse(), JsonHistory.class);
+            endStringArea.setText(jsonHistory.getEnd_string());
+        } else if (!postRequestUtil.getDisconnect()
+                && Objects.equals(postRequestUtil.getResponse(), ""))
+            AlertsUtil.showTranslateFailedAlert(dialStage);
     }
 
     @FXML
     public void handlerExitPC() {
         person = null;
         dialStage.close();
+        System.gc();
     }
 
     @FXML
@@ -67,6 +93,7 @@ public class TranslatorPageController {
             if (editPersonPageController.isDelete()) {
                 this.person = null;
                 dialStage.close();
+                System.gc();
             } else {
                 this.person = editPersonPageController.getPerson();
                 loginField.setText(this.person.getLogin());
