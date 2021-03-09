@@ -56,6 +56,8 @@ public class TranslatorPageController {
         fromMorseRadioButton.setToggleGroup(groupMorse);
         rusRadioButton.setToggleGroup(groupLang);
         engRadioButton.setToggleGroup(groupLang);
+        startStringArea.setWrapText(true);
+        endStringArea.setWrapText(true);
     }
 
     @FXML
@@ -71,7 +73,7 @@ public class TranslatorPageController {
         }}));
         postRequestUtil.thread.start();
         RequestsUtil.runningThread(postRequestUtil, dialStage);
-        if (!Objects.equals(postRequestUtil.getResponse(), "")) {
+        if (!Objects.equals(postRequestUtil.getResponse(), "") && postRequestUtil.getResponse() != null) {
             JsonHistory jsonHistory = gson.fromJson(postRequestUtil.getResponse(), JsonHistory.class);
             endStringArea.setText(jsonHistory.getEnd_string());
         } else if (!postRequestUtil.getDisconnect()

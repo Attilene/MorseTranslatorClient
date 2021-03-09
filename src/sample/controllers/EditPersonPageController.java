@@ -95,7 +95,7 @@ public class EditPersonPageController {
                     }}));
                     putRequestUtil.thread.start();
                     RequestsUtil.runningThread(putRequestUtil, dialStage);
-                    if (!Objects.equals(putRequestUtil.getResponse(), "")) {
+                    if (!Objects.equals(putRequestUtil.getResponse(), "") && putRequestUtil.getResponse() != null) {
                         JsonUser jsonUser = gson.fromJson(putRequestUtil.getResponse(), JsonUser.class);
                         JsonPassword jsonPassword = jsonUser.getPassword();
                         person.setFirstName(jsonUser.getFirst_name());
@@ -133,7 +133,7 @@ public class EditPersonPageController {
     @FXML
     private void handleCancel() { dialStage.close(); }
 
-    private boolean isInputValid() {
+    private boolean isInputValid( ) {
         String errorMessage = "";
         if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
             errorMessage += "Нет имени!\n";

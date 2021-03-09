@@ -52,7 +52,7 @@ public class EnterPageController {
                 }}));
                 postRequestUtil.thread.start();
                 RequestsUtil.runningThread(postRequestUtil, dialStage);
-                if (!Objects.equals(postRequestUtil.getResponse(), "")) {
+                if (!Objects.equals(postRequestUtil.getResponse(), "") && postRequestUtil.getResponse() != null) {
                     JsonUser jsonUser = gson.fromJson(postRequestUtil.getResponse(), JsonUser.class);
                     JsonPassword jsonPassword = jsonUser.getPassword();
                     person.setId(jsonUser.getId());
