@@ -1,27 +1,53 @@
 package sample.utils.requests;
 
-import com.google.gson.Gson;
 import javafx.stage.Stage;
 import sample.utils.AlertsUtil;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public abstract class RequestsUtil implements Runnable {
+public class RequestsUtil implements Runnable {
     protected static final String rootURL = "http://localhost:22222";
-    protected static final Gson gson = new Gson();
     protected Boolean disconnect = false;
-    protected static final int TIMEOUT = 10000;
+    protected static final int TIMEOUT = 5000;
     protected Map<String, String> params;
     protected String response;
     public Thread thread;
     protected URL url;
 
-    public abstract String send(String url);
+    @Override
+    public void run() { response = send(thread.getName()); }
+
+    public RequestsUtil(String url) { this.thread = new Thread(this, url); }
+
+    public String send(String url) {
+        try {
+            this.url = new URL(rootURL + url);
+            HttpURLConnection conn = (HttpURLConnection) this.url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("charset", "utf-8");
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setReadTimeout(TIMEOUT);
+            conn.setDoOutput(true);
+            conn.connect();
+            BufferedOutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(createRequestString(params).getBytes(StandardCharsets.UTF_8));
+            out.flush();
+            out.close();
+            return readInputStream(conn);
+        } catch (ConnectException e) {
+            setDisconnect(true);
+            return null;
+        } catch (IOException e) { return null; }
+    }
 
     public void setParams(Map<String, String> params) { this.params = params; }
 

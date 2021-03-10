@@ -37,6 +37,52 @@
     -fx-opacity: 1;
 }
 
+.table-view {
+    -fx-base: #01695e;
+    -fx-control-inner-background: #01695e;
+    -fx-background-color: #01695e;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color:
+            transparent
+            transparent
+            derive(-fx-base, 80%)
+            transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 20pt;
+    -fx-font-family: "SansSerif";
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.split-pane:vertical > .split-pane-divider {
+    -fx-border-color: transparent #01695e transparent #01695e;
+    -fx-background-color: transparent, derive(#01695e,20%);
+}
+
+.split-pane {
+    -fx-padding: 1 0 0 0;
+}
+
 .menu-bar {
     -fx-background-color: derive(#16a291,20%);
 }

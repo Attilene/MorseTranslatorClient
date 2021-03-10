@@ -1,8 +1,6 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,13 +11,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.controllers.*;
 import sample.models.app.Person;
+import sample.models.json.JsonHistory;
 
 import java.io.IOException;
 
 public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private final ObservableList<Person> personData = FXCollections.observableArrayList();
 
     public Main() {}
 
@@ -27,10 +25,8 @@ public class Main extends Application {
 
     public Stage getPrimaryStage() { return primaryStage; }
 
-    public ObservableList<Person> getPersonData() { return personData; }
-
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Переводчик Морзе");
         this.primaryStage.getIcons().add(new Image("file:src/sample/resources/images/icon.png"));
@@ -39,7 +35,7 @@ public class Main extends Application {
     }
 
     @FXML
-    public void initRootLayout() throws IOException {
+    public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/rootLayout.fxml"));
@@ -175,6 +171,28 @@ public class Main extends Application {
             System.out.println("Не удалось загрузить окно!");
             return null;
         }
+    }
+
+    @FXML
+    public void showHistoryPage(Stage stage, JsonHistory[] jsonHistories) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("views/historyPage.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialStage = new Stage();
+            dialStage.setTitle("История переводов");
+            dialStage.initModality(Modality.WINDOW_MODAL);
+            dialStage.initOwner(stage);
+            dialStage.setResizable(false);
+            dialStage.getIcons().add(new Image("file:src/sample/resources/images/icon.png"));
+            Scene scene = new Scene(page);
+            dialStage.setScene(scene);
+            HistoryPageController controller = loader.getController();
+            controller.setDialStage(dialStage);
+            controller.setHistories(jsonHistories);
+            for (JsonHistory jsonHistory: jsonHistories) System.out.println(jsonHistory);
+            dialStage.showAndWait();
+        } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
     public static void main(String[] args) { launch(args); }

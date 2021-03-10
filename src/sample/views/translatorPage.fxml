@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="521.0" prefWidth="600.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.TranslatorPageController">
+<AnchorPane prefHeight="565.0" prefWidth="600.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.TranslatorPageController">
    <children>
       <Label layoutX="131.0" layoutY="34.0" styleClass="label-big-logo" text="Переводчик Морзе">
          <font>
@@ -33,7 +33,7 @@
       </HBox>
       <Label alignment="CENTER" layoutX="84.0" layoutY="202.0" prefHeight="21.0" prefWidth="155.0" text="Текст для перевода:" />
       <Label alignment="CENTER" layoutX="358.0" layoutY="202.0" prefHeight="21.0" prefWidth="162.0" text="Результат перевода:" />
-      <Button layoutX="240.0" layoutY="197.0" mnemonicParsing="false" onAction="#handlerTranslate" prefHeight="32.0" text="Перевести" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="197.0">
+      <Button layoutX="240.0" layoutY="197.0" mnemonicParsing="false" onAction="#handlerTranslate" prefHeight="32.0" text="Перевести" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="197.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -50,6 +50,7 @@
          </children>
       </HBox>
       <TextField fx:id="loginField" alignment="CENTER" editable="false" layoutX="201.0" layoutY="418.0" prefHeight="26.0" prefWidth="196.0" promptText="Логин пользователя" AnchorPane.bottomAnchor="68.60000000000002" AnchorPane.rightAnchor="203.0" />
-      <Line endX="449.6999816894531" layoutX="131.9000015258789" layoutY="407.0" opacity="0.63" startX="-116.4000015258789" stroke="#16a291" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="17.9000244140625" />
+      <Line endX="449.6999816894531" layoutX="131.9000015258789" layoutY="447.0" opacity="0.63" startX="-116.4000015258789" stroke="#16a291" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="17.9000244140625" />
+      <Button layoutX="201.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleHistory" prefHeight="35.0" prefWidth="196.0" text="История переводов" AnchorPane.bottomAnchor="129.8" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="203.0" />
    </children>
 </AnchorPane>

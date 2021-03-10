@@ -12,6 +12,7 @@ import sample.models.app.Person;
 import sample.models.json.JsonHistory;
 import sample.models.to.dict.DictTranslator;
 import sample.utils.AlertsUtil;
+import sample.utils.requests.GetRequestUtil;
 import sample.utils.requests.PostRequestUtil;
 import sample.utils.requests.RequestsUtil;
 
@@ -62,23 +63,25 @@ public class TranslatorPageController {
 
     @FXML
     public void handlerTranslate() {
-        PostRequestUtil postRequestUtil = new PostRequestUtil("/history");
-        postRequestUtil.setParams(new DictTranslator().setParams(new ArrayList<>() {{
-            add(startStringArea.getText());
-            add(person.getId().toString());
-            if (toMorseRadioButton.isSelected()) add("true");
-            else add("false");
-            if (engRadioButton.isSelected()) add("true");
-            else add("false");
-        }}));
-        postRequestUtil.thread.start();
-        RequestsUtil.runningThread(postRequestUtil, dialStage);
-        if (!Objects.equals(postRequestUtil.getResponse(), "") && postRequestUtil.getResponse() != null) {
-            JsonHistory jsonHistory = gson.fromJson(postRequestUtil.getResponse(), JsonHistory.class);
-            endStringArea.setText(jsonHistory.getEnd_string());
-        } else if (!postRequestUtil.getDisconnect()
-                && Objects.equals(postRequestUtil.getResponse(), ""))
-            AlertsUtil.showTranslateFailedAlert(dialStage);
+        if (startStringArea.getText() != null) {
+            PostRequestUtil postRequestUtil = new PostRequestUtil("/history");
+            postRequestUtil.setParams(new DictTranslator().setParams(new ArrayList<>() {{
+                add(startStringArea.getText());
+                add(person.getId().toString());
+                if (toMorseRadioButton.isSelected()) add("true");
+                else add("false");
+                if (engRadioButton.isSelected()) add("true");
+                else add("false");
+            }}));
+            postRequestUtil.thread.start();
+            RequestsUtil.runningThread(postRequestUtil, dialStage);
+            if (!Objects.equals(postRequestUtil.getResponse(), "") && postRequestUtil.getResponse() != null) {
+                JsonHistory jsonHistory = gson.fromJson(postRequestUtil.getResponse(), JsonHistory.class);
+                endStringArea.setText(jsonHistory.getEnd_string());
+            } else if (!postRequestUtil.getDisconnect()
+                    && Objects.equals(postRequestUtil.getResponse(), ""))
+                AlertsUtil.showInternalServerErrorAlert(dialStage);
+        }
     }
 
     @FXML
@@ -101,5 +104,18 @@ public class TranslatorPageController {
                 loginField.setText(this.person.getLogin());
             }
         }
+    }
+
+    @FXML
+    public void handleHistory() {
+        GetRequestUtil getRequestUtil = new GetRequestUtil("/history/" + person.getId());
+        getRequestUtil.thread.start();
+        RequestsUtil.runningThread(getRequestUtil, dialStage);
+        if (!Objects.equals(getRequestUtil.getResponse(), "") && getRequestUtil.getResponse() != null) {
+            JsonHistory[] jsonHistories = gson.fromJson(getRequestUtil.getResponse(), JsonHistory[].class);
+            main.showHistoryPage(dialStage, jsonHistories);
+        } else if (!getRequestUtil.getDisconnect()
+                && Objects.equals(getRequestUtil.getResponse(), ""))
+            AlertsUtil.showInternalServerErrorAlert(dialStage);
     }
 }

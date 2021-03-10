@@ -102,16 +102,6 @@ public abstract class AlertsUtil {
         alert.showAndWait();
     }
 
-    public static void showTranslateFailedAlert(Stage stage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(stage);
-        alert.setTitle("Перевод не удался");
-        alert.setHeaderText("Не удалось перевести строку");
-        alert.setContentText("Повторите попытку позже или свяжитесь с администратором");
-        addStyleSheetToAlert(alert);
-        alert.showAndWait();
-    }
-
     public static void showInternalServerErrorAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
