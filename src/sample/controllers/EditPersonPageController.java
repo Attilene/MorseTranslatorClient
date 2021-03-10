@@ -2,11 +2,9 @@ package sample.controllers;
 
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.app.Person;
+import sample.models.app.RegistrationEditModel;
 import sample.models.json.JsonPassword;
 import sample.models.json.JsonUser;
 import sample.models.to.dict.DictUpdateUser;
@@ -21,24 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class EditPersonPageController {
-    @FXML
-    private TextField firstNameField;
-    @FXML
-    private TextField lastNameField;
-    @FXML
-    private TextField loginField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField phoneNumberField;
-    @FXML
-    private DatePicker birthdayField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private PasswordField repeatPasswordField;
-
+public class EditPersonPageController extends RegistrationEditModel {
     private final Gson gson = new Gson();
     private boolean delete = false;
     private Stage dialStage;
@@ -64,22 +45,9 @@ public class EditPersonPageController {
 
     @FXML
     private void handleUpdate () {
-        if (isInputValid()) {
-            if (isInputValidLength()) {
-                if (!ValidUtil.checkStandard(firstNameField.getText()))
-                    AlertsUtil.showWrongFormatStandardAlert(dialStage, "Имя");
-                else if (!ValidUtil.checkStandard(lastNameField.getText()))
-                    AlertsUtil.showWrongFormatStandardAlert(dialStage, "Фамилия");
-                else if (!ValidUtil.checkStandard(loginField.getText()))
-                    AlertsUtil.showWrongFormatStandardAlert(dialStage, "Логин");
-                else if (!ValidUtil.checkEmail(emailField.getText()))
-                    AlertsUtil.showIncorrectEmailAlert(this.dialStage);
-                else if (!ValidUtil.checkPassword(passwordField.getText()))
-                    AlertsUtil.showWrongFormatPasswordAlert(this.dialStage);
-                else if ((phoneNumberField.getText() != null && phoneNumberField.getText().length() != 0)
-                        && !ValidUtil.checkPhoneNumber(phoneNumberField.getText())) {
-                    AlertsUtil.showWrongFormatPhoneNumberAlert(this.dialStage);
-                } else {
+        if (ValidUtil.isInputValidRegistrationEdit(this, dialStage)) {
+            if (ValidUtil.isInputValidLength(this, dialStage)) {
+                if (ValidUtil.isRegExValidRegistrationEdit(this, dialStage)) {
                     PutRequestUtil putRequestUtil = new PutRequestUtil("/user");
                     putRequestUtil.setParams(new DictUpdateUser().setParams(new ArrayList<>() {{
                         add(person.getId().toString());
@@ -132,56 +100,4 @@ public class EditPersonPageController {
 
     @FXML
     private void handleCancel() { dialStage.close(); }
-
-    private boolean isInputValid( ) {
-        String errorMessage = "";
-        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
-            errorMessage += "Нет имени!\n";
-        }
-        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
-            errorMessage += "Нет фамилии!\n";
-        }
-        if (loginField.getText() == null || loginField.getText().length() == 0) {
-            errorMessage += "Нет логина!\n";
-        }
-        if (emailField.getText() == null || emailField.getText().length() == 0) {
-            errorMessage += "Нет почты!\n";
-        }
-        if (passwordField.getText() == null || passwordField.getText().length() == 0) {
-            errorMessage += "Нет пароля!\n";
-        }
-        if (repeatPasswordField.getText() == null || repeatPasswordField.getText().length() == 0) {
-            errorMessage += "Нет повтора пароля!\n";
-        }
-        if ((passwordField.getText() != null && repeatPasswordField.getText() != null) &&
-                !passwordField.getText().equals(repeatPasswordField.getText())) {
-            errorMessage += "Повтор пароля не совпадает с паролем!\n";
-        }
-        if (errorMessage.length() == 0) {
-            return true;
-        } else {
-            AlertsUtil.showInputValidAlert(dialStage, errorMessage);
-            return false;
-        }
-    }
-
-    private boolean isInputValidLength() {
-        if (!ValidUtil.checkLength(firstNameField.getText(), 40)) {
-            AlertsUtil.showBigStringAlert(dialStage, "Имя", 40);
-            return false;
-        }
-        if (!ValidUtil.checkLength(lastNameField.getText(), 40)) {
-            AlertsUtil.showBigStringAlert(dialStage, "Фамилия", 40);
-            return false;
-        }
-        if (!ValidUtil.checkLength(loginField.getText(), 60)) {
-            AlertsUtil.showBigStringAlert(dialStage, "Логин", 60);
-            return false;
-        }
-        if (!ValidUtil.checkLength(emailField.getText(), 50)) {
-            AlertsUtil.showBigStringAlert(dialStage, "Email", 50);
-            return false;
-        }
-        return true;
-    }
 }

@@ -2,9 +2,8 @@ package sample.controllers;
 
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.models.app.EnterModel;
 import sample.models.app.Person;
 import sample.models.json.JsonPassword;
 import sample.models.json.JsonUser;
@@ -18,12 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class EnterPageController {
-    @FXML
-    private TextField userLogEmailField;
-    @FXML
-    private PasswordField passwordField;
-
+public class EnterPageController extends EnterModel {
     private final Gson gson = new Gson();
     private Stage dialStage;
     private Person person;
@@ -41,9 +35,8 @@ public class EnterPageController {
 
     @FXML
     private void handleEnter() {
-        if (isInputValid()) {
-            if (ValidUtil.checkStandard(userLogEmailField.getText())
-                    || ValidUtil.checkEmail(userLogEmailField.getText())) {
+        if (ValidUtil.isInputValidEnter(this, dialStage)) {
+            if (ValidUtil.isRegExValidEnter(this, dialStage)) {
                 PostRequestUtil postRequestUtil = new PostRequestUtil("/enter");
                 postRequestUtil.setParams(new DictEnter().setParams(new ArrayList<>() {{
                     add(userLogEmailField.getText());
@@ -69,26 +62,9 @@ public class EnterPageController {
                         && Objects.equals(postRequestUtil.getResponse(), ""))
                     AlertsUtil.showNoValidEnterAlert(dialStage);
             }
-            else AlertsUtil.showNoValidEnterAlert(dialStage);
         }
     }
 
     @FXML
     private void handleCancel() { dialStage.close(); }
-
-    private boolean isInputValid() {
-        String errorMessage = "";
-        if (userLogEmailField.getText() == null || userLogEmailField.getText().length() == 0) {
-            errorMessage += "Нет логина/почты!\n";
-        }
-        if (passwordField.getText() == null || passwordField.getText().length() == 0) {
-            errorMessage += "Нет пароля!\n";
-        }
-        if (errorMessage.length() == 0) {
-            return true;
-        } else {
-            AlertsUtil.showInputValidAlert(dialStage, errorMessage);
-            return false;
-        }
-    }
 }

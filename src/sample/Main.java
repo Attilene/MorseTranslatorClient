@@ -50,9 +50,7 @@ public class Main extends Application {
             RootLayoutController controller = loader.getController();
             controller.setMain(this);
             primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
     @FXML
@@ -64,9 +62,7 @@ public class Main extends Application {
             rootLayout.setCenter(mainPage);
             MainPageController controller = loader.getController();
             controller.setMainApp(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
     @FXML
@@ -88,13 +84,13 @@ public class Main extends Application {
             dialStage.showAndWait();
             return controller.getPerson();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Не удалось загрузить окно!");
             return null;
         }
     }
 
     @FXML
-    public boolean showRegistrationPage() {
+    public void showRegistrationPage() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/registrationPage.fxml"));
@@ -110,11 +106,7 @@ public class Main extends Application {
             RegistrationPageController controller = loader.getController();
             controller.setDialStage(dialStage);
             dialStage.showAndWait();
-            return controller.isOkClicked();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+        } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
     @FXML
@@ -136,9 +128,7 @@ public class Main extends Application {
             controller.setPerson(person);
             controller.setMain(this);
             dialStage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
     @FXML
@@ -159,9 +149,7 @@ public class Main extends Application {
             controller.setDialStage(dialStage);
             controller.setHostServices(getHostServices());
             dialStage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
     @FXML
@@ -184,7 +172,7 @@ public class Main extends Application {
             dialStage.showAndWait();
             return controller;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Не удалось загрузить окно!");
             return null;
         }
     }

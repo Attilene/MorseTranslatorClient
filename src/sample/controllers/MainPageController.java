@@ -10,14 +10,11 @@ public class MainPageController {
     @FXML
     private void handleEnterAction() {
         Person person = main.showEnterPage();
-        if (person.getLogin() != null) { main.showTranslatorPage(person); } // TODO: Добавить запрос
+        if (person.getLogin() != null) { main.showTranslatorPage(person); }
     }
 
     @FXML
-    private void handleRegistrationAction() {
-        boolean okClicked = main.showRegistrationPage();
-        if (okClicked) { System.out.println(main.getPersonData().get(0)); } // TODO: Добавить запрос
-    }
+    private void handleRegistrationAction() { main.showRegistrationPage(); }
 
     public void setMainApp(Main main) { this.main = main; }
 }
