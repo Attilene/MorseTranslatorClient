@@ -3,7 +3,7 @@ package sample.models.json;
 import java.io.Serializable;
 import java.util.Date;
 
-public class JsonHistory implements Serializable {
+public class History implements Serializable {
     private Long id;
     private String start_string;
     private String end_string;

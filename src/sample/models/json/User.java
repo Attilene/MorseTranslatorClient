@@ -3,7 +3,7 @@ package sample.models.json;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class JsonUser implements Serializable {
+public class User implements Serializable {
     private Long id;
     private String first_name;
     private String last_name;
@@ -11,8 +11,8 @@ public class JsonUser implements Serializable {
     private String email;
     private String phone_number;
     private String birthday;
-    private JsonPassword password;
-    private JsonHistory[] histories;
+    private Password password;
+    private History[] histories;
 
     public Long getId() { return id; }
 
@@ -28,9 +28,9 @@ public class JsonUser implements Serializable {
 
     public String getBirthday() { return birthday; }
 
-    public JsonPassword getPassword() { return password; }
+    public Password getPassword() { return password; }
 
-    public JsonHistory[] getHistories() { return histories; }
+    public History[] getHistories() { return histories; }
 
     public void setLast_name(String last_name) { this.last_name = last_name; }
 
@@ -42,13 +42,13 @@ public class JsonUser implements Serializable {
 
     public void setBirthday(String birthday) { this.birthday = birthday; }
 
-    public void setHistories(JsonHistory[] histories) { this.histories = histories; }
+    public void setHistories(History[] histories) { this.histories = histories; }
 
     public void setId(Long id) { this.id = id; }
 
     public void setLogin(String login) { this.login = login; }
 
-    public void setPassword(JsonPassword password) { this.password = password; }
+    public void setPassword(Password password) { this.password = password; }
 
     @Override
     public String toString() {

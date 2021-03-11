@@ -102,6 +102,16 @@ public abstract class AlertsUtil {
         alert.showAndWait();
     }
 
+    public static void showNotSelectedHistory(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.initOwner(stage);
+        alert.setTitle("Ничего не выбрано!");
+        alert.setHeaderText("История перевода не выбрана!");
+        alert.setContentText("Пожалуйста, выберите историю!");
+        addStyleSheetToAlert(alert);
+        alert.showAndWait();
+    }
+
     public static void showInternalServerErrorAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);

@@ -52,6 +52,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controllers\AboutPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\controllers\EditPersonPageController.java">
           <value>
             <Attribute>
@@ -95,6 +102,13 @@
           </value>
         </entry>
         <entry key="\src\sample\model\Person.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\models\app\History.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
@@ -193,6 +207,13 @@
           </value>
         </entry>
         <entry key="\src\sample\utils\DateUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\utils\RegExValidUtil.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

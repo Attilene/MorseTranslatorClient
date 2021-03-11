@@ -19,11 +19,11 @@
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                <children>
-                  <TableView prefHeight="262.4" prefWidth="598.4" stylesheets="@../resources/styles/AppStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="historyTableView" prefHeight="262.4" prefWidth="598.4" stylesheets="@../resources/styles/AppStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="273.00001829862595" text="Текст для перевода" />
-                      <TableColumn prefWidth="191.0" text="Результат перевода" />
-                        <TableColumn prefWidth="152.0" text="Дата перевода" />
+                      <TableColumn fx:id="startStringColumn" prefWidth="273.00001829862595" text="Текст для перевода" />
+                      <TableColumn fx:id="endStringColumn" prefWidth="191.0" text="Результат перевода" />
+                        <TableColumn fx:id="operationTimeColumn" prefWidth="152.0" text="Дата перевода" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

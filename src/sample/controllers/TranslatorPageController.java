@@ -9,13 +9,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.models.app.Person;
-import sample.models.json.JsonHistory;
+import sample.models.json.History;
 import sample.models.to.dict.DictTranslator;
 import sample.utils.AlertsUtil;
-import sample.utils.requests.GetRequestUtil;
-import sample.utils.requests.RequestsUtil;
+import sample.utils.RequestsUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class TranslatorPageController {
@@ -75,8 +75,8 @@ public class TranslatorPageController {
             requestsUtil.thread.start();
             RequestsUtil.runningThread(requestsUtil, dialStage);
             if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
-                JsonHistory jsonHistory = gson.fromJson(requestsUtil.getResponse(), JsonHistory.class);
-                endStringArea.setText(jsonHistory.getEnd_string());
+                History history = gson.fromJson(requestsUtil.getResponse(), History.class);
+                endStringArea.setText(history.getEnd_string());
             } else if (!requestsUtil.getDisconnect()
                     && Objects.equals(requestsUtil.getResponse(), ""))
                 AlertsUtil.showInternalServerErrorAlert(dialStage);
@@ -107,14 +107,14 @@ public class TranslatorPageController {
 
     @FXML
     public void handleHistory() {
-        GetRequestUtil getRequestUtil = new GetRequestUtil("/history/" + person.getId());
-        getRequestUtil.thread.start();
-        RequestsUtil.runningThread(getRequestUtil, dialStage);
-        if (!Objects.equals(getRequestUtil.getResponse(), "") && getRequestUtil.getResponse() != null) {
-            JsonHistory[] jsonHistories = gson.fromJson(getRequestUtil.getResponse(), JsonHistory[].class);
-            main.showHistoryPage(dialStage, jsonHistories);
-        } else if (!getRequestUtil.getDisconnect()
-                && Objects.equals(getRequestUtil.getResponse(), ""))
+        RequestsUtil requestsUtil = new RequestsUtil("/histories", "POST");
+        requestsUtil.setParams(new HashMap<>() {{ put("user_id", person.getId().toString()); }});
+        requestsUtil.thread.start();
+        RequestsUtil.runningThread(requestsUtil, dialStage);
+        if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
+            main.showHistoryPage(dialStage, gson.fromJson(requestsUtil.getResponse(), History[].class));
+        } else if (!requestsUtil.getDisconnect()
+                && Objects.equals(requestsUtil.getResponse(), ""))
             AlertsUtil.showInternalServerErrorAlert(dialStage);
     }
 }

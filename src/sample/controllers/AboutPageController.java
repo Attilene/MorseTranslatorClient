@@ -7,16 +7,16 @@ import javafx.stage.Stage;
 
 public class AboutPageController {
     @FXML
-    private Hyperlink vkLink;
+    private static final Hyperlink VK = new Hyperlink("https://vk.com/attilene");
     @FXML
-    private Hyperlink instagramLink;
+    private static final Hyperlink INSTAGRAM = new Hyperlink("https://www.instagram.com/artembakanov/");
     @FXML
-    private Hyperlink telegramLink;
+    private static final Hyperlink TELEGRAM = new Hyperlink("https://t.me/attilene");
     @FXML
-    private Hyperlink githubLink;
+    private static final Hyperlink GITHUB = new Hyperlink("https://github.com/Attilene");
 
     private Stage dialStage;
-    private HostServices hostServices ;
+    private HostServices hostServices;
 
     public HostServices getHostServices() { return hostServices ; }
 
@@ -25,24 +25,16 @@ public class AboutPageController {
     public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
 
     @FXML
-    public void initialize() {
-        vkLink = new Hyperlink("https://vk.com/attilene");
-        instagramLink = new Hyperlink("https://www.instagram.com/artembakanov/");
-        telegramLink = new Hyperlink("https://t.me/attilene");
-        githubLink = new Hyperlink("https://github.com/Attilene");
-    }
+    public void openVKLink() { hostServices.showDocument(VK.getText()); }
 
     @FXML
-    public void openVKLink() { hostServices.showDocument(vkLink.getText()); }
+    public void openInstagramLink() { hostServices.showDocument(INSTAGRAM.getText()); }
 
     @FXML
-    public void openInstagramLink() { hostServices.showDocument(instagramLink.getText()); }
+    public void openTelegramLink() { hostServices.showDocument(TELEGRAM.getText()); }
 
     @FXML
-    public void openTelegramLink() { hostServices.showDocument(telegramLink.getText()); }
-
-    @FXML
-    public void openGithubLink() { hostServices.showDocument(githubLink.getText()); }
+    public void openGithubLink() { hostServices.showDocument(GITHUB.getText()); }
 
     @FXML
     public void handleBackAction() { dialStage.close(); }

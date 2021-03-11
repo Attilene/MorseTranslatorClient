@@ -11,7 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.controllers.*;
 import sample.models.app.Person;
-import sample.models.json.JsonHistory;
+import sample.models.json.History;
 
 import java.io.IOException;
 
@@ -174,7 +174,7 @@ public class Main extends Application {
     }
 
     @FXML
-    public void showHistoryPage(Stage stage, JsonHistory[] jsonHistories) {
+    public void showHistoryPage(Stage stage, History[] histories) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/historyPage.fxml"));
@@ -189,8 +189,8 @@ public class Main extends Application {
             dialStage.setScene(scene);
             HistoryPageController controller = loader.getController();
             controller.setDialStage(dialStage);
-            controller.setHistories(jsonHistories);
-            for (JsonHistory jsonHistory: jsonHistories) System.out.println(jsonHistory);
+            controller.setHistories(histories);
+            controller.showHistoryContent();
             dialStage.showAndWait();
         } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }

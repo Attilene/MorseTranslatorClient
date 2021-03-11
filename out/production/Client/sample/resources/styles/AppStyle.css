@@ -51,7 +51,7 @@
 }
 
 .table-view .column-header, .table-view .filler {
-    -fx-size: 35;
+    -fx-size: 35px;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
     -fx-border-color:
@@ -63,7 +63,7 @@
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 20pt;
+    -fx-font-size: 20px;
     -fx-font-family: "SansSerif";
     -fx-text-fill: white;
     -fx-alignment: center-left;
@@ -74,7 +74,7 @@
     -fx-background-color: -fx-focus-color;
 }
 
-.split-pane:vertical > .split-pane-divider {
+.split-pane:horizontal > .split-pane-divider {
     -fx-border-color: transparent #01695e transparent #01695e;
     -fx-background-color: transparent, derive(#01695e,20%);
 }

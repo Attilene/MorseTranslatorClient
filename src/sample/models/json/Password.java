@@ -2,7 +2,7 @@ package sample.models.json;
 
 import java.io.Serializable;
 
-public class JsonPassword implements Serializable {
+public class Password implements Serializable {
     private Long id;
     private String hash;
     private String salt;

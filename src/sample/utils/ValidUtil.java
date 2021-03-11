@@ -54,19 +54,19 @@ public abstract class ValidUtil {
     }
 
     public static boolean isInputValidLength(RegistrationEditModel model, Stage dialStage) {
-        if (!RegExValidUtil.checkLength(model.firstNameField.getText(), 40)) {
+        if (!ValidUtil.checkLength(model.firstNameField.getText(), 40)) {
             AlertsUtil.showBigStringAlert(dialStage, "Имя", 40);
             return false;
         }
-        if (!RegExValidUtil.checkLength(model.lastNameField.getText(), 40)) {
+        if (!ValidUtil.checkLength(model.lastNameField.getText(), 40)) {
             AlertsUtil.showBigStringAlert(dialStage, "Фамилия", 40);
             return false;
         }
-        if (!RegExValidUtil.checkLength(model.loginField.getText(), 60)) {
+        if (!ValidUtil.checkLength(model.loginField.getText(), 60)) {
             AlertsUtil.showBigStringAlert(dialStage, "Логин", 60);
             return false;
         }
-        if (!RegExValidUtil.checkLength(model.emailField.getText(), 50)) {
+        if (!ValidUtil.checkLength(model.emailField.getText(), 50)) {
             AlertsUtil.showBigStringAlert(dialStage, "Email", 50);
             return false;
         }
@@ -110,4 +110,6 @@ public abstract class ValidUtil {
         }
         return true;
     }
+
+    public static boolean checkLength(String text, int num) { return text.length() <= num; }
 }

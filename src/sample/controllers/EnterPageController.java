@@ -5,12 +5,12 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import sample.models.app.EnterModel;
 import sample.models.app.Person;
-import sample.models.json.JsonPassword;
-import sample.models.json.JsonUser;
+import sample.models.json.Password;
+import sample.models.json.User;
 import sample.models.to.dict.DictEnter;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
-import sample.utils.requests.RequestsUtil;
+import sample.utils.RequestsUtil;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -45,17 +45,17 @@ public class EnterPageController extends EnterModel {
                 requestsUtil.thread.start();
                 RequestsUtil.runningThread(requestsUtil, dialStage);
                 if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
-                    JsonUser jsonUser = gson.fromJson(requestsUtil.getResponse(), JsonUser.class);
-                    JsonPassword jsonPassword = jsonUser.getPassword();
-                    person.setId(jsonUser.getId());
-                    person.setFirstName(jsonUser.getFirst_name());
-                    person.setLastName(jsonUser.getLast_name());
-                    person.setLogin(jsonUser.getLogin());
-                    person.setEmail(jsonUser.getEmail());
-                    person.setPhoneNumber(jsonUser.getPhone_number());
-                    person.setBirthday(LocalDate.parse(jsonUser.getBirthday()));
-                    person.setPassword(jsonPassword.getHash());
-                    person.setRepeatPassword(jsonPassword.getSalt());
+                    User user = gson.fromJson(requestsUtil.getResponse(), User.class);
+                    Password password = user.getPassword();
+                    person.setId(user.getId());
+                    person.setFirstName(user.getFirst_name());
+                    person.setLastName(user.getLast_name());
+                    person.setLogin(user.getLogin());
+                    person.setEmail(user.getEmail());
+                    person.setPhoneNumber(user.getPhone_number());
+                    person.setBirthday(LocalDate.parse(user.getBirthday()));
+                    person.setPassword(password.getHash());
+                    person.setRepeatPassword(password.getSalt());
                     dialStage.close();
                 } else if (!requestsUtil.getDisconnect()
                         && Objects.equals(requestsUtil.getResponse(), ""))

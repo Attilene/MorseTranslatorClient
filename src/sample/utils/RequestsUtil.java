@@ -1,7 +1,6 @@
-package sample.utils.requests;
+package sample.utils;
 
 import javafx.stage.Stage;
-import sample.utils.AlertsUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -14,14 +13,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class RequestsUtil implements Runnable {
-    protected static final String rootURL = "http://localhost:22222";
-    protected static final int TIMEOUT = 5000;
-    protected Boolean disconnect = false;
-    protected Map<String, String> params;
-    protected String response;
-    protected String method;
+    private static final String ROOT_URL = "http://localhost:22222";
+    private static final int TIMEOUT = 5000;
+    private Boolean disconnect = false;
+    private Map<String, String> params;
+    private final String method;
+    private String response;
     public Thread thread;
-    protected URL url;
+    private URL url;
 
     @Override
     public void run() { response = send(thread.getName()); }
@@ -33,7 +32,7 @@ public class RequestsUtil implements Runnable {
 
     public String send(String url) {
         try {
-            this.url = new URL(rootURL + url);
+            this.url = new URL(ROOT_URL + url);
             HttpURLConnection conn = (HttpURLConnection) this.url.openConnection();
             conn.setRequestMethod(method);
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -63,11 +62,9 @@ public class RequestsUtil implements Runnable {
 
     public URL getUrl() { return url; }
 
-    public static String getRootURL() { return rootURL; }
-
     public void setDisconnect(Boolean disconnect) { this.disconnect = disconnect; }
 
-    protected static String readInputStream(HttpURLConnection conn) {
+    private static String readInputStream(HttpURLConnection conn) {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
             String line;
             StringBuilder content = new StringBuilder();
@@ -82,7 +79,7 @@ public class RequestsUtil implements Runnable {
         }
     }
 
-    protected static String createRequestString(Map<String, String> params) {
+    private static String createRequestString(Map<String, String> params) {
         StringBuilder result = new StringBuilder();
         params.forEach((name, value) -> {
             result.append(name);

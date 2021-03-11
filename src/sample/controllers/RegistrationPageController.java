@@ -6,7 +6,7 @@ import sample.models.app.RegistrationEditModel;
 import sample.models.to.dict.DictRegistration;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
-import sample.utils.requests.RequestsUtil;
+import sample.utils.RequestsUtil;
 
 import java.util.ArrayList;
 import java.util.Objects;
