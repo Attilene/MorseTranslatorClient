@@ -10,8 +10,6 @@ import sample.models.json.JsonUser;
 import sample.models.to.dict.DictUpdateUser;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
-import sample.utils.requests.DeleteRequestUtil;
-import sample.utils.requests.PutRequestUtil;
 import sample.utils.requests.RequestsUtil;
 
 import java.time.LocalDate;
@@ -48,8 +46,8 @@ public class EditPersonPageController extends RegistrationEditModel {
         if (ValidUtil.isInputValidRegistrationEdit(this, dialStage)) {
             if (ValidUtil.isInputValidLength(this, dialStage)) {
                 if (ValidUtil.isRegExValidRegistrationEdit(this, dialStage)) {
-                    PutRequestUtil putRequestUtil = new PutRequestUtil("/user");
-                    putRequestUtil.setParams(new DictUpdateUser().setParams(new ArrayList<>() {{
+                    RequestsUtil requestsUtil = new RequestsUtil("/user", "PUT");
+                    requestsUtil.setParams(new DictUpdateUser().setParams(new ArrayList<>() {{
                         add(person.getId().toString());
                         add(firstNameField.getText());
                         add(lastNameField.getText());
@@ -61,10 +59,10 @@ public class EditPersonPageController extends RegistrationEditModel {
                         add(passwordField.getText());
                         add(repeatPasswordField.getText());
                     }}));
-                    putRequestUtil.thread.start();
-                    RequestsUtil.runningThread(putRequestUtil, dialStage);
-                    if (!Objects.equals(putRequestUtil.getResponse(), "") && putRequestUtil.getResponse() != null) {
-                        JsonUser jsonUser = gson.fromJson(putRequestUtil.getResponse(), JsonUser.class);
+                    requestsUtil.thread.start();
+                    RequestsUtil.runningThread(requestsUtil, dialStage);
+                    if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
+                        JsonUser jsonUser = gson.fromJson(requestsUtil.getResponse(), JsonUser.class);
                         JsonPassword jsonPassword = jsonUser.getPassword();
                         person.setFirstName(jsonUser.getFirst_name());
                         person.setLastName(jsonUser.getLast_name());
@@ -75,8 +73,8 @@ public class EditPersonPageController extends RegistrationEditModel {
                         person.setPassword(jsonPassword.getHash());
                         person.setRepeatPassword(jsonPassword.getSalt());
                         dialStage.close();
-                    } else if (!putRequestUtil.getDisconnect()
-                            && Objects.equals(putRequestUtil.getResponse(), ""))
+                    } else if (!requestsUtil.getDisconnect()
+                            && Objects.equals(requestsUtil.getResponse(), ""))
                         AlertsUtil.showUserExistAlert(dialStage);
                 }
             }
@@ -87,13 +85,13 @@ public class EditPersonPageController extends RegistrationEditModel {
     private void handleDeleteProfile() {
         delete = AlertsUtil.showDeleteProfileConfirmationAlert(dialStage);
         if (delete) {
-            DeleteRequestUtil deleteRequestUtil = new DeleteRequestUtil("/user");
-            deleteRequestUtil.setParams(new HashMap<>() {{ put("id", person.getId().toString()); }});
-            deleteRequestUtil.thread.start();
-            RequestsUtil.runningThread(deleteRequestUtil, dialStage);
-            if (Objects.equals(deleteRequestUtil.getResponse(), "delete_success")) dialStage.close();
-            else if (!deleteRequestUtil.getDisconnect()
-                    && Objects.equals(deleteRequestUtil.getResponse(), "delete_failed"))
+            RequestsUtil requestsUtil = new RequestsUtil("/user", "DELETE");
+            requestsUtil.setParams(new HashMap<>() {{ put("id", person.getId().toString()); }});
+            requestsUtil.thread.start();
+            RequestsUtil.runningThread(requestsUtil, dialStage);
+            if (Objects.equals(requestsUtil.getResponse(), "delete_success")) dialStage.close();
+            else if (!requestsUtil.getDisconnect()
+                    && Objects.equals(requestsUtil.getResponse(), "delete_failed"))
                 AlertsUtil.showUserExistAlert(dialStage);
         }
     }

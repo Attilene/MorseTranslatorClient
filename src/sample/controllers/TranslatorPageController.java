@@ -13,7 +13,6 @@ import sample.models.json.JsonHistory;
 import sample.models.to.dict.DictTranslator;
 import sample.utils.AlertsUtil;
 import sample.utils.requests.GetRequestUtil;
-import sample.utils.requests.PostRequestUtil;
 import sample.utils.requests.RequestsUtil;
 
 import java.util.ArrayList;
@@ -64,8 +63,8 @@ public class TranslatorPageController {
     @FXML
     public void handlerTranslate() {
         if (startStringArea.getText() != null) {
-            PostRequestUtil postRequestUtil = new PostRequestUtil("/history");
-            postRequestUtil.setParams(new DictTranslator().setParams(new ArrayList<>() {{
+            RequestsUtil requestsUtil = new RequestsUtil("/history", "POST");
+            requestsUtil.setParams(new DictTranslator().setParams(new ArrayList<>() {{
                 add(startStringArea.getText());
                 add(person.getId().toString());
                 if (toMorseRadioButton.isSelected()) add("true");
@@ -73,13 +72,13 @@ public class TranslatorPageController {
                 if (engRadioButton.isSelected()) add("true");
                 else add("false");
             }}));
-            postRequestUtil.thread.start();
-            RequestsUtil.runningThread(postRequestUtil, dialStage);
-            if (!Objects.equals(postRequestUtil.getResponse(), "") && postRequestUtil.getResponse() != null) {
-                JsonHistory jsonHistory = gson.fromJson(postRequestUtil.getResponse(), JsonHistory.class);
+            requestsUtil.thread.start();
+            RequestsUtil.runningThread(requestsUtil, dialStage);
+            if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
+                JsonHistory jsonHistory = gson.fromJson(requestsUtil.getResponse(), JsonHistory.class);
                 endStringArea.setText(jsonHistory.getEnd_string());
-            } else if (!postRequestUtil.getDisconnect()
-                    && Objects.equals(postRequestUtil.getResponse(), ""))
+            } else if (!requestsUtil.getDisconnect()
+                    && Objects.equals(requestsUtil.getResponse(), ""))
                 AlertsUtil.showInternalServerErrorAlert(dialStage);
         }
     }

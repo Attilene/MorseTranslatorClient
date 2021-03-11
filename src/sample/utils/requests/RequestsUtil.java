@@ -15,23 +15,27 @@ import java.util.Map;
 
 public class RequestsUtil implements Runnable {
     protected static final String rootURL = "http://localhost:22222";
-    protected Boolean disconnect = false;
     protected static final int TIMEOUT = 5000;
+    protected Boolean disconnect = false;
     protected Map<String, String> params;
     protected String response;
+    protected String method;
     public Thread thread;
     protected URL url;
 
     @Override
     public void run() { response = send(thread.getName()); }
 
-    public RequestsUtil(String url) { this.thread = new Thread(this, url); }
+    public RequestsUtil(String url, String method) {
+        this.method = method;
+        this.thread = new Thread(this, url);
+    }
 
     public String send(String url) {
         try {
             this.url = new URL(rootURL + url);
             HttpURLConnection conn = (HttpURLConnection) this.url.openConnection();
-            conn.setRequestMethod("POST");
+            conn.setRequestMethod(method);
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             conn.setRequestProperty("charset", "utf-8");
             conn.setConnectTimeout(TIMEOUT);

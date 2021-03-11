@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class GetRequestUtil extends RequestsUtil {
-    public GetRequestUtil(String url) { super(url); }
+    public GetRequestUtil(String url) { super(url, "GET"); }
 
     @Override
     public String send(String url) {

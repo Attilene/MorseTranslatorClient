@@ -66,6 +66,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controllers\HistoryPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\controllers\RegistrationPageController.java">
           <value>
             <Attribute>
@@ -235,6 +242,13 @@
           </value>
         </entry>
         <entry key="\src\sample\utils\requests\RequestsUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\views\aboutPage.fxml">
           <value>
             <Attribute>
               <option name="separator" value=";" />

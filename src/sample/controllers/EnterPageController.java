@@ -10,7 +10,6 @@ import sample.models.json.JsonUser;
 import sample.models.to.dict.DictEnter;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
-import sample.utils.requests.PostRequestUtil;
 import sample.utils.requests.RequestsUtil;
 
 import java.time.LocalDate;
@@ -37,16 +36,16 @@ public class EnterPageController extends EnterModel {
     private void handleEnter() {
         if (ValidUtil.isInputValidEnter(this, dialStage)) {
             if (ValidUtil.isRegExValidEnter(this, dialStage)) {
-                PostRequestUtil postRequestUtil = new PostRequestUtil("/enter");
-                postRequestUtil.setParams(new DictEnter().setParams(new ArrayList<>() {{
+                RequestsUtil requestsUtil = new RequestsUtil("/enter", "POST");
+                requestsUtil.setParams(new DictEnter().setParams(new ArrayList<>() {{
                     add(userLogEmailField.getText());
                     add(passwordField.getText());
                     add(passwordField.getText());
                 }}));
-                postRequestUtil.thread.start();
-                RequestsUtil.runningThread(postRequestUtil, dialStage);
-                if (!Objects.equals(postRequestUtil.getResponse(), "") && postRequestUtil.getResponse() != null) {
-                    JsonUser jsonUser = gson.fromJson(postRequestUtil.getResponse(), JsonUser.class);
+                requestsUtil.thread.start();
+                RequestsUtil.runningThread(requestsUtil, dialStage);
+                if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
+                    JsonUser jsonUser = gson.fromJson(requestsUtil.getResponse(), JsonUser.class);
                     JsonPassword jsonPassword = jsonUser.getPassword();
                     person.setId(jsonUser.getId());
                     person.setFirstName(jsonUser.getFirst_name());
@@ -58,8 +57,8 @@ public class EnterPageController extends EnterModel {
                     person.setPassword(jsonPassword.getHash());
                     person.setRepeatPassword(jsonPassword.getSalt());
                     dialStage.close();
-                } else if (!postRequestUtil.getDisconnect()
-                        && Objects.equals(postRequestUtil.getResponse(), ""))
+                } else if (!requestsUtil.getDisconnect()
+                        && Objects.equals(requestsUtil.getResponse(), ""))
                     AlertsUtil.showNoValidEnterAlert(dialStage);
             }
         }

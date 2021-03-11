@@ -6,7 +6,6 @@ import sample.models.app.RegistrationEditModel;
 import sample.models.to.dict.DictRegistration;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
-import sample.utils.requests.PostRequestUtil;
 import sample.utils.requests.RequestsUtil;
 
 import java.util.ArrayList;
@@ -34,8 +33,8 @@ public class RegistrationPageController extends RegistrationEditModel {
         if (ValidUtil.isInputValidRegistrationEdit(this, dialStage)) {
             if (ValidUtil.isInputValidLength(this, dialStage)) {
                 if (ValidUtil.isRegExValidRegistrationEdit(this, dialStage)) {
-                    PostRequestUtil postRequestUtil = new PostRequestUtil("/registration");
-                    postRequestUtil.setParams(new DictRegistration().setParams(new ArrayList<>() {{
+                    RequestsUtil requestsUtil = new RequestsUtil("/registration", "POST");
+                    requestsUtil.setParams(new DictRegistration().setParams(new ArrayList<>() {{
                         add(firstNameField.getText());
                         add(lastNameField.getText());
                         add(loginField.getText());
@@ -46,11 +45,11 @@ public class RegistrationPageController extends RegistrationEditModel {
                         add(passwordField.getText());
                         add(repeatPasswordField.getText());
                     }}));
-                    postRequestUtil.thread.start();
-                    RequestsUtil.runningThread(postRequestUtil, dialStage);
-                    if (Objects.equals(postRequestUtil.getResponse(), "registration_success")) dialStage.close();
-                    else if (!postRequestUtil.getDisconnect()
-                            && Objects.equals(postRequestUtil.getResponse(), "registration_failed"))
+                    requestsUtil.thread.start();
+                    RequestsUtil.runningThread(requestsUtil, dialStage);
+                    if (Objects.equals(requestsUtil.getResponse(), "registration_success")) dialStage.close();
+                    else if (!requestsUtil.getDisconnect()
+                            && Objects.equals(requestsUtil.getResponse(), "registration_failed"))
                         AlertsUtil.showUserExistAlert(dialStage);
                 }
             }
