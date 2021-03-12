@@ -1,20 +1,24 @@
 package sample.controllers;
 
+import com.opencsv.CSVWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.models.json.History;
 import sample.utils.AlertsUtil;
 import sample.utils.RequestsUtil;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Objects;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public class HistoryPageController {
     @FXML
@@ -35,8 +39,6 @@ public class HistoryPageController {
         historiesData = FXCollections.observableArrayList();
         historiesData.addAll(Arrays.asList(histories));
     }
-
-    public ObservableList<History> getHistories() { return historiesData; }
 
     public void showHistoryContent() {
         startStringColumn.setCellValueFactory(new PropertyValueFactory<>("start_string"));
@@ -65,11 +67,45 @@ public class HistoryPageController {
     }
 
     @FXML
-    public void handleSaveTXT() {}
+    public void handleSaveTXT() {
+        File file = createFileChooser("txt");
+        if (file != null) {
+            //Save
+            System.out.println("Процесс записи файла .txt");
+        }
+    }
 
     @FXML
-    public void handleSaveCSV() {}
+    public void handleSaveCSV() {
+        File file = createFileChooser("csv");
+        if (file != null) {
+            try {
+                Writer writer = new FileWriter(file.getAbsolutePath(), StandardCharsets.UTF_8);
+                CSVWriter csvWriter = new CSVWriter(writer);
+                csvWriter.writeNext(new String[] { "Текст для перевода", "Результат перевода", "Дата перевода"});
+                for (History history: historiesData) {
+                    csvWriter.writeNext(new String[] {
+                            history.getStart_string(),
+                            history.getEnd_string(),
+                            history.getOperation_time().toString()
+                    });
+                }
+                writer.close();
+            } catch (IOException e) { System.out.println("Не удалось создать файл: " + file.getName()); }
+        }
+    }
 
     @FXML
     private void handleCancel() { dialStage.close(); }
+
+    private File createFileChooser(String suffix) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Сохранение документа");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                suffix.toUpperCase() + " files (*." + suffix + ")",
+                "*." + suffix
+        );
+        fileChooser.getExtensionFilters().add(extFilter);
+        return fileChooser.showSaveDialog(dialStage);
+    }
 }

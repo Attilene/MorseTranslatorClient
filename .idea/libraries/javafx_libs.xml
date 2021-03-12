@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="javafx_libs">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../JavaWorks/Libraries/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/javafx_libs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../JavaWorks/Libraries/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/javafx_libs" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../JavaWorks/Libraries/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/javafx_libs" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../JavaWorks/Libraries/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/javafx_libs" recursive="false" type="SOURCES" />
+  </library>
+</component>

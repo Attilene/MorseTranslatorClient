@@ -15,14 +15,26 @@
       </Label>
       <HBox layoutX="122.0" layoutY="99.0" prefHeight="35.0" prefWidth="356.0" spacing="30.0" AnchorPane.bottomAnchor="386.8" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="99.0">
          <children>
-            <RadioButton fx:id="toMorseRadioButton" layoutX="176.0" layoutY="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" selected="true" text="В Морзе" />
-            <RadioButton fx:id="fromMorseRadioButton" layoutX="327.0" layoutY="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" text="Из Морзе" />
+            <RadioButton fx:id="toMorseRadioButton" layoutX="176.0" layoutY="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" selected="true" text="В Морзе">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></RadioButton>
+            <RadioButton fx:id="fromMorseRadioButton" layoutX="327.0" layoutY="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" text="Из Морзе">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></RadioButton>
          </children>
       </HBox>
       <HBox layoutX="121.0" layoutY="150.0" prefHeight="35.0" prefWidth="356.0" spacing="30.0" AnchorPane.bottomAnchor="335.8" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="123.0" AnchorPane.topAnchor="150.0">
          <children>
-            <RadioButton fx:id="rusRadioButton" layoutX="177.0" layoutY="156.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" selected="true" text="Русский" />
-            <RadioButton fx:id="engRadioButton" layoutX="324.0" layoutY="156.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" text="Английский" />
+            <RadioButton fx:id="rusRadioButton" layoutX="177.0" layoutY="156.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" selected="true" text="Русский">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></RadioButton>
+            <RadioButton fx:id="engRadioButton" layoutX="324.0" layoutY="156.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" text="Английский">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></RadioButton>
          </children>
       </HBox>
       <HBox layoutX="28.0" layoutY="235.0" spacing="15.0">
