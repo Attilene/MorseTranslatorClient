@@ -150,6 +150,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\models\to\dict\DictEnter.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\models\to\dict\DictTranslator.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\models\to\dict\DictUpdateUser.java">
           <value>
             <Attribute>

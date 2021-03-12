@@ -65,5 +65,11 @@ public class HistoryPageController {
     }
 
     @FXML
+    public void handleSaveTXT() {}
+
+    @FXML
+    public void handleSaveCSV() {}
+
+    @FXML
     private void handleCancel() { dialStage.close(); }
 }

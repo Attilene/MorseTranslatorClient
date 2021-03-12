@@ -51,6 +51,9 @@
       </HBox>
       <TextField fx:id="loginField" alignment="CENTER" editable="false" layoutX="201.0" layoutY="418.0" prefHeight="26.0" prefWidth="196.0" promptText="Логин пользователя" AnchorPane.bottomAnchor="68.60000000000002" AnchorPane.rightAnchor="203.0" />
       <Line endX="449.6999816894531" layoutX="131.9000015258789" layoutY="447.0" opacity="0.63" startX="-116.4000015258789" stroke="#16a291" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="17.9000244140625" />
-      <Button layoutX="201.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleHistory" prefHeight="35.0" prefWidth="196.0" text="История переводов" AnchorPane.bottomAnchor="129.8" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="203.0" />
+      <Button layoutX="201.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleHistory" prefHeight="35.0" prefWidth="196.0" text="История переводов" AnchorPane.bottomAnchor="129.8" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="203.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

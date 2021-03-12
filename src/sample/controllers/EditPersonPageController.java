@@ -7,13 +7,11 @@ import sample.models.app.Person;
 import sample.models.app.RegistrationEditModel;
 import sample.models.json.Password;
 import sample.models.json.User;
-import sample.models.to.dict.DictUpdateUser;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
 import sample.utils.RequestsUtil;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -47,18 +45,18 @@ public class EditPersonPageController extends RegistrationEditModel {
             if (ValidUtil.isInputValidLength(this, dialStage)) {
                 if (ValidUtil.isRegExValidRegistrationEdit(this, dialStage)) {
                     RequestsUtil requestsUtil = new RequestsUtil("/user", "PUT");
-                    requestsUtil.setParams(new DictUpdateUser().setParams(new ArrayList<>() {{
-                        add(person.getId().toString());
-                        add(firstNameField.getText());
-                        add(lastNameField.getText());
-                        add(loginField.getText());
-                        add(emailField.getText());
-                        add(phoneNumberField.getText());
-                        if (birthdayField.getValue() == null) add(null);
-                        else add(birthdayField.getValue().toString());
-                        add(passwordField.getText());
-                        add(repeatPasswordField.getText());
-                    }}));
+                    requestsUtil.setParams(new HashMap<>() {{
+                        put("id", person.getId().toString());
+                        put("first_name", firstNameField.getText());
+                        put("last_name", lastNameField.getText());
+                        put("login", loginField.getText());
+                        put("email", emailField.getText());
+                        put("phone_number", phoneNumberField.getText());
+                        if (birthdayField.getValue() == null) put("birthday", null);
+                        else put("birthday", birthdayField.getValue().toString());
+                        put("password_hash", passwordField.getText());
+                        put("salt", repeatPasswordField.getText());
+                    }});
                     requestsUtil.thread.start();
                     RequestsUtil.runningThread(requestsUtil, dialStage);
                     if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {

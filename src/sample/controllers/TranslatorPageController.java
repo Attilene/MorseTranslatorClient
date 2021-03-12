@@ -10,11 +10,9 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.models.app.Person;
 import sample.models.json.History;
-import sample.models.to.dict.DictTranslator;
 import sample.utils.AlertsUtil;
 import sample.utils.RequestsUtil;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -64,14 +62,14 @@ public class TranslatorPageController {
     public void handlerTranslate() {
         if (startStringArea.getText() != null) {
             RequestsUtil requestsUtil = new RequestsUtil("/history", "POST");
-            requestsUtil.setParams(new DictTranslator().setParams(new ArrayList<>() {{
-                add(startStringArea.getText());
-                add(person.getId().toString());
-                if (toMorseRadioButton.isSelected()) add("true");
-                else add("false");
-                if (engRadioButton.isSelected()) add("true");
-                else add("false");
-            }}));
+            requestsUtil.setParams(new HashMap<>() {{
+                put("start_string", startStringArea.getText());
+                put("user_id", person.getId().toString());
+                if (toMorseRadioButton.isSelected()) put("morse", "true");
+                else put("morse", "false");
+                if (engRadioButton.isSelected()) put("language", "true");
+                else put("language", "false");
+            }});
             requestsUtil.thread.start();
             RequestsUtil.runningThread(requestsUtil, dialStage);
             if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
@@ -108,7 +106,9 @@ public class TranslatorPageController {
     @FXML
     public void handleHistory() {
         RequestsUtil requestsUtil = new RequestsUtil("/histories", "POST");
-        requestsUtil.setParams(new HashMap<>() {{ put("user_id", person.getId().toString()); }});
+        requestsUtil.setParams(new HashMap<>() {{
+            put("user_id", person.getId().toString());
+        }});
         requestsUtil.thread.start();
         RequestsUtil.runningThread(requestsUtil, dialStage);
         if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {

@@ -17,45 +17,43 @@ import java.io.IOException;
 
 public class Main extends Application {
     private Stage primaryStage;
-    private BorderPane rootLayout;
 
     public Main() {}
-
-    public BorderPane getRootLayout() { return rootLayout; }
-
-    public Stage getPrimaryStage() { return primaryStage; }
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Переводчик Морзе");
         this.primaryStage.getIcons().add(new Image("file:src/sample/resources/images/icon.png"));
-        initRootLayout();
-        showMainPage();
+        showMainPage(initLayout(this.primaryStage, "views/rootLayout.fxml"));
     }
 
     @FXML
-    public void initRootLayout() {
+    public BorderPane initLayout(Stage stage, String path) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("views/rootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
+            loader.setLocation(Main.class.getResource(path));
+            BorderPane layout = loader.load();
+            Scene scene = new Scene(layout);
+            stage.setScene(scene);
+            stage.setResizable(false);
             RootLayoutController controller = loader.getController();
             controller.setMain(this);
-            primaryStage.show();
-        } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
+            stage.show();
+            return layout;
+        } catch (IOException e) {
+            System.out.println("Не удалось загрузить окно!");
+            return null;
+        }
     }
 
     @FXML
-    public void showMainPage() {
+    public void showMainPage(BorderPane layout) {
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/mainPage.fxml"));
-            AnchorPane mainPage = (AnchorPane) loader.load();
-            rootLayout.setCenter(mainPage);
+            AnchorPane mainPage = loader.load();
+            layout.setCenter(mainPage);
             MainPageController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
@@ -66,7 +64,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/enterPage.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+            AnchorPane page = loader.load();
             Stage dialStage = new Stage();
             dialStage.setTitle("Вход в личный кабинет");
             dialStage.initModality(Modality.WINDOW_MODAL);
@@ -90,7 +88,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/registrationPage.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+            AnchorPane page = loader.load();
             Stage dialStage = new Stage();
             dialStage.setTitle("Регистрация пользователя");
             dialStage.initModality(Modality.WINDOW_MODAL);
@@ -110,7 +108,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/translatorPage.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+            AnchorPane page = loader.load();
             Stage dialStage = new Stage();
             dialStage.setTitle("Переводчик Морзе");
             dialStage.initModality(Modality.WINDOW_MODAL);
@@ -132,7 +130,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/aboutPage.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+            AnchorPane page = loader.load();
             Stage dialStage = new Stage();
             dialStage.setTitle("Справка");
             dialStage.initModality(Modality.WINDOW_MODAL);
@@ -153,7 +151,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/editPersonPage.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+            AnchorPane page = loader.load();
             Stage dialStage = new Stage();
             dialStage.setTitle("Настройка личного кабинета");
             dialStage.initModality(Modality.WINDOW_MODAL);
@@ -178,12 +176,11 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/historyPage.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+            AnchorPane page = loader.load();
             Stage dialStage = new Stage();
             dialStage.setTitle("История переводов");
             dialStage.initModality(Modality.WINDOW_MODAL);
             dialStage.initOwner(stage);
-            dialStage.setResizable(false);
             dialStage.getIcons().add(new Image("file:src/sample/resources/images/icon.png"));
             Scene scene = new Scene(page);
             dialStage.setScene(scene);

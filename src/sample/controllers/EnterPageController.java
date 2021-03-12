@@ -7,13 +7,12 @@ import sample.models.app.EnterModel;
 import sample.models.app.Person;
 import sample.models.json.Password;
 import sample.models.json.User;
-import sample.models.to.dict.DictEnter;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
 import sample.utils.RequestsUtil;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class EnterPageController extends EnterModel {
@@ -37,11 +36,11 @@ public class EnterPageController extends EnterModel {
         if (ValidUtil.isInputValidEnter(this, dialStage)) {
             if (ValidUtil.isRegExValidEnter(this, dialStage)) {
                 RequestsUtil requestsUtil = new RequestsUtil("/enter", "POST");
-                requestsUtil.setParams(new DictEnter().setParams(new ArrayList<>() {{
-                    add(userLogEmailField.getText());
-                    add(passwordField.getText());
-                    add(passwordField.getText());
-                }}));
+                requestsUtil.setParams(new HashMap<>() {{
+                    put("login_email", userLogEmailField.getText());
+                    put("password_hash", passwordField.getText());
+                    put("salt", passwordField.getText());
+                }});
                 requestsUtil.thread.start();
                 RequestsUtil.runningThread(requestsUtil, dialStage);
                 if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
