@@ -22,13 +22,13 @@ public class RequestsUtil implements Runnable {
     public Thread thread;
     private URL url;
 
-    @Override
-    public void run() { response = send(thread.getName()); }
-
     public RequestsUtil(String url, String method) {
         this.method = method;
         this.thread = new Thread(this, url);
     }
+
+    @Override
+    public void run() { response = send(thread.getName()); }
 
     public String send(String url) {
         try {
@@ -51,18 +51,6 @@ public class RequestsUtil implements Runnable {
             return null;
         } catch (IOException e) { return null; }
     }
-
-    public void setParams(Map<String, String> params) { this.params = params; }
-
-    public String getResponse() { return response; }
-
-    public Boolean getDisconnect() { return disconnect; }
-
-    public static int getTIMEOUT() { return TIMEOUT; }
-
-    public URL getUrl() { return url; }
-
-    public void setDisconnect(Boolean disconnect) { this.disconnect = disconnect; }
 
     private static String readInputStream(HttpURLConnection conn) {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
@@ -103,4 +91,14 @@ public class RequestsUtil implements Runnable {
             if (requestsUtil.getResponse() != null) break;
         }
     }
+
+    public String getResponse() { return response; }
+
+    public Boolean getDisconnect() { return disconnect; }
+
+    public URL getUrl() { return url; }
+
+    public void setParams(Map<String, String> params) { this.params = params; }
+
+    public void setDisconnect(Boolean disconnect) { this.disconnect = disconnect; }
 }

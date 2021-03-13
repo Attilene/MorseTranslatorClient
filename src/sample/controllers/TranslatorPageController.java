@@ -39,15 +39,6 @@ public class TranslatorPageController {
     private Person person;
     private Main main;
 
-    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
-
-    public void setPerson(Person person) {
-        this.person = person;
-        loginField.setText(this.person.getLogin());
-    }
-
-    public void setMain(Main main) { this.main = main; }
-
     @FXML
     public void initialize() {
         toMorseRadioButton.setToggleGroup(groupMorse);
@@ -82,13 +73,6 @@ public class TranslatorPageController {
     }
 
     @FXML
-    public void handlerExitPC() {
-        person = null;
-        dialStage.close();
-        System.gc();
-    }
-
-    @FXML
     public void handlerUpdatePC() {
         EditPersonPageController editPersonPageController = main.showEditPersonPage(this.dialStage, this.person);
         if (editPersonPageController != null) {
@@ -117,4 +101,20 @@ public class TranslatorPageController {
                 && Objects.equals(requestsUtil.getResponse(), ""))
             AlertsUtil.showInternalServerErrorAlert(dialStage);
     }
+
+    @FXML
+    public void handlerExitPC() {
+        person = null;
+        dialStage.close();
+        System.gc();
+    }
+
+    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
+
+    public void setPerson(Person person) {
+        this.person = person;
+        loginField.setText(this.person.getLogin());
+    }
+
+    public void setMain(Main main) { this.main = main; }
 }

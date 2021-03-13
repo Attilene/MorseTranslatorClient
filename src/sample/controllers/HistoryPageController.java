@@ -30,20 +30,6 @@ public class HistoryPageController {
     private Stage dialStage;
     private ObservableList<History> historiesData;
 
-    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
-
-    public void setHistories(History[] histories) {
-        historiesData = FXCollections.observableArrayList();
-        historiesData.addAll(Arrays.asList(histories));
-    }
-
-    public void showHistoryContent() {
-        startStringColumn.setCellValueFactory(new PropertyValueFactory<>("start_string"));
-        endStringColumn.setCellValueFactory(new PropertyValueFactory<>("end_string"));
-        operationTimeColumn.setCellValueFactory(new PropertyValueFactory<>("operation_time"));
-        historyTableView.setItems(historiesData);
-    }
-
     @FXML
     private void handleDeleteHistory() {
         int selectedIndex = historyTableView.getSelectionModel().getSelectedIndex();
@@ -107,6 +93,13 @@ public class HistoryPageController {
     @FXML
     private void handleCancel() { dialStage.close(); }
 
+    public void showHistoryContent() {
+        startStringColumn.setCellValueFactory(new PropertyValueFactory<>("start_string"));
+        endStringColumn.setCellValueFactory(new PropertyValueFactory<>("end_string"));
+        operationTimeColumn.setCellValueFactory(new PropertyValueFactory<>("operation_time"));
+        historyTableView.setItems(historiesData);
+    }
+
     private File createFileChooser(String suffix) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Сохранение документа");
@@ -116,5 +109,12 @@ public class HistoryPageController {
         );
         fileChooser.getExtensionFilters().add(extFilter);
         return fileChooser.showSaveDialog(dialStage);
+    }
+
+    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
+
+    public void setHistories(History[] histories) {
+        historiesData = FXCollections.observableArrayList();
+        historiesData.addAll(Arrays.asList(histories));
     }
 }

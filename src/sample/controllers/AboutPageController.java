@@ -18,12 +18,6 @@ public class AboutPageController {
     private Stage dialStage;
     private HostServices hostServices;
 
-    public HostServices getHostServices() { return hostServices ; }
-
-    public void setHostServices(HostServices hostServices) { this.hostServices = hostServices ; }
-
-    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
-
     @FXML
     public void openVKLink() { hostServices.showDocument(VK.getText()); }
 
@@ -38,4 +32,8 @@ public class AboutPageController {
 
     @FXML
     public void handleBackAction() { dialStage.close(); }
+
+    public void setHostServices(HostServices hostServices) { this.hostServices = hostServices ; }
+
+    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
 }
