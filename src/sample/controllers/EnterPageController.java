@@ -2,7 +2,6 @@ package sample.controllers;
 
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 import sample.models.app.EnterModel;
 import sample.models.app.Person;
 import sample.models.json.Password;
@@ -17,7 +16,6 @@ import java.util.Objects;
 
 public class EnterPageController extends EnterModel {
     private final Gson gson = new Gson();
-    private Stage dialStage;
     private Person person;
 
     @FXML
@@ -27,12 +25,10 @@ public class EnterPageController extends EnterModel {
         person = new Person();
     }
 
-    public Person getPerson() { return person; }
-
-    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
-
     @FXML
     private void handleEnter() {
+        if (passwordToggle.isSelected())
+            passwordField.setText(visiblePasswordField.getText());
         if (ValidUtil.isInputValidEnter(this, dialStage)) {
             if (ValidUtil.isRegExValidEnter(this, dialStage)) {
                 RequestsUtil requestsUtil = new RequestsUtil("/enter", "POST");
@@ -52,7 +48,8 @@ public class EnterPageController extends EnterModel {
                     person.setLogin(user.getLogin());
                     person.setEmail(user.getEmail());
                     person.setPhoneNumber(user.getPhone_number());
-                    person.setBirthday(LocalDate.parse(user.getBirthday()));
+                    if (user.getBirthday() == null) person.setBirthday(null);
+                    else person.setBirthday(LocalDate.parse(user.getBirthday()));
                     person.setPassword(password.getHash());
                     person.setRepeatPassword(password.getSalt());
                     dialStage.close();
@@ -63,6 +60,5 @@ public class EnterPageController extends EnterModel {
         }
     }
 
-    @FXML
-    private void handleCancel() { dialStage.close(); }
+    public Person getPerson() { return person; }
 }

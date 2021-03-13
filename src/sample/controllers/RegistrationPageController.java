@@ -1,7 +1,6 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 import sample.models.app.RegistrationEditModel;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
@@ -11,8 +10,6 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class RegistrationPageController extends RegistrationEditModel {
-    private Stage dialStage;
-
     @FXML
     public void initialize() {
         firstNameField.setText(null);
@@ -25,10 +22,12 @@ public class RegistrationPageController extends RegistrationEditModel {
         repeatPasswordField.setText(null);
     }
 
-    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
-
     @FXML
     private void handleRegistration () {
+        if (passwordToggle.isSelected()) {
+            passwordField.setText(visiblePasswordField.getText());
+            repeatPasswordField.setText(visibleRepeatPasswordField.getText());
+        }
         if (ValidUtil.isInputValidRegistrationEdit(this, dialStage)) {
             if (ValidUtil.isInputValidLength(this, dialStage)) {
                 if (ValidUtil.isRegExValidRegistrationEdit(this, dialStage)) {
@@ -54,7 +53,4 @@ public class RegistrationPageController extends RegistrationEditModel {
             }
         }
     }
-
-    @FXML
-    private void handleCancel() { dialStage.close(); }
 }

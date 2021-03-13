@@ -2,7 +2,6 @@ package sample.controllers;
 
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 import sample.models.app.Person;
 import sample.models.app.RegistrationEditModel;
 import sample.models.json.Password;
@@ -18,29 +17,14 @@ import java.util.Objects;
 public class EditPersonPageController extends RegistrationEditModel {
     private final Gson gson = new Gson();
     private boolean delete = false;
-    private Stage dialStage;
     private Person person;
-
-    public void setPerson(Person person) {
-        this.person = person;
-        firstNameField.setText(this.person.getFirstName());
-        lastNameField.setText(this.person.getLastName());
-        loginField.setText(this.person.getLogin());
-        emailField.setText(this.person.getEmail());
-        phoneNumberField.setText(this.person.getPhoneNumber());
-        birthdayField.setValue(this.person.getBirthday());
-        passwordField.setText(this.person.getPassword());
-        repeatPasswordField.setText(this.person.getRepeatPassword());
-    }
-
-    public Person getPerson() { return person; }
-
-    public boolean isDelete() { return delete; }
-
-    public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
 
     @FXML
     private void handleUpdate () {
+        if (passwordToggle.isSelected()) {
+            passwordField.setText(visiblePasswordField.getText());
+            repeatPasswordField.setText(visibleRepeatPasswordField.getText());
+        }
         if (ValidUtil.isInputValidRegistrationEdit(this, dialStage)) {
             if (ValidUtil.isInputValidLength(this, dialStage)) {
                 if (ValidUtil.isRegExValidRegistrationEdit(this, dialStage)) {
@@ -94,6 +78,19 @@ public class EditPersonPageController extends RegistrationEditModel {
         }
     }
 
-    @FXML
-    private void handleCancel() { dialStage.close(); }
+    public boolean isDelete() { return delete; }
+
+    public Person getPerson() { return person; }
+
+    public void setPerson(Person person) {
+        this.person = person;
+        firstNameField.setText(this.person.getFirstName());
+        lastNameField.setText(this.person.getLastName());
+        loginField.setText(this.person.getLogin());
+        emailField.setText(this.person.getEmail());
+        phoneNumberField.setText(this.person.getPhoneNumber());
+        birthdayField.setValue(this.person.getBirthday());
+        passwordField.setText(this.person.getPassword());
+        repeatPasswordField.setText(this.person.getRepeatPassword());
+    }
 }

@@ -230,3 +230,10 @@
     -fx-padding: 5 22 5 22;
     -fx-background-color: #16a291;
 }
+
+.check-box {
+    -fx-font-size: 12pt;
+    -fx-font-family: "SansSerif";
+    -fx-text-fill: #035b5b;
+    -fx-opacity: 0.6;
+}

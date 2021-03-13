@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="482.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RegistrationPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="482.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RegistrationPageController">
    <children>
       <GridPane layoutX="21.0" layoutY="105.0" prefHeight="344.0" prefWidth="370.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="105.0">
         <columnConstraints>
@@ -38,7 +38,9 @@
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="* Повтор пароля:  " GridPane.rowIndex="7" />
             <DatePicker fx:id="birthdayField" editable="false" maxWidth="1.7976931348623157E308" promptText="dd.mm.yyyy" styleClass="date-picker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <PasswordField fx:id="repeatPasswordField" promptText="Введите повтор пароль" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <PasswordField fx:id="repeatPasswordField" promptText="Введите повтор пароля" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="visiblePasswordField" promptText="Введите пароль" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="visibleRepeatPasswordField" promptText="Введите повтор пароля" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <HBox layoutX="93.0" layoutY="475.0" prefHeight="38.0" prefWidth="298.0" spacing="30.0" AnchorPane.bottomAnchor="27.600000000000023" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="91.0">
@@ -58,5 +60,6 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
+      <CheckBox fx:id="passwordToggle" layoutX="164.0" layoutY="465.0" mnemonicParsing="false" onAction="#handleToggleVisiblePassword" text="Показать пароль" />
    </children>
 </AnchorPane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="574.0" prefWidth="482.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditPersonPageController">
+<AnchorPane prefHeight="618.0" prefWidth="482.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditPersonPageController">
    <children>
       <Label layoutX="61.0" layoutY="34.0" styleClass="label-big-logo" text="Настройка кабинета">
          <font>
@@ -44,6 +44,8 @@
             <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <PasswordField fx:id="repeatPasswordField" promptText="Введите повтор пароля" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <DatePicker fx:id="birthdayField" editable="false" maxWidth="1.7976931348623157E308" promptText="dd.mm.yyyy" styleClass="date-picker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="visiblePasswordField" promptText="Введите пароль" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="visibleRepeatPasswordField" promptText="Введите повтор пароля" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <HBox layoutX="93.0" layoutY="99.0" prefHeight="34.0" prefWidth="295.0" spacing="30.0">
@@ -58,9 +60,10 @@
                </cursor></Button>
          </children>
       </HBox>
-      <Button layoutX="133.0" layoutY="514.0" mnemonicParsing="false" onAction="#handleDeleteProfile" prefHeight="38.0" styleClass="button-delete" text="Удалить личный кабинет" textFill="RED" AnchorPane.bottomAnchor="21.600000000000023" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="133.8" AnchorPane.topAnchor="514.0">
+      <Button layoutX="133.0" layoutY="514.0" mnemonicParsing="false" onAction="#handleDeleteProfile" prefHeight="38.0" styleClass="button-delete" text="Удалить личный кабинет" textFill="RED" AnchorPane.bottomAnchor="21.600000000000023" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="133.8">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <CheckBox fx:id="passwordToggle" layoutX="157.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleToggleVisiblePassword" text="Показать пароль" />
    </children>
 </AnchorPane>

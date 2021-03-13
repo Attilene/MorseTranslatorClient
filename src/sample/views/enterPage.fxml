@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="453.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnterPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="453.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnterPageController">
    <children>
       <Label layoutX="181.0" layoutY="33.0" styleClass="label-big-logo" text="Вход">
          <font>
@@ -26,9 +26,10 @@
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Логин/Email:  " />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Пароль:  " GridPane.rowIndex="1" />
             <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="visiblePasswordField" promptText="Введите пароль" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <HBox layoutX="78.0" layoutY="214.0" prefHeight="38.0" prefWidth="297.0" spacing="30.0">
+      <HBox layoutX="78.0" layoutY="240.0" prefHeight="38.0" prefWidth="297.0" spacing="30.0" AnchorPane.bottomAnchor="30.0">
          <children>
             <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="35.0" prefWidth="132.0" text="Вход">
                <cursor>
@@ -40,5 +41,10 @@
                </cursor></Button>
          </children>
       </HBox>
+      <CheckBox fx:id="passwordToggle" layoutX="136.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleToggleVisiblePassword" text="Показать пароль">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </CheckBox>
    </children>
 </AnchorPane>
