@@ -181,6 +181,7 @@ public class Main extends Application {
             dialStage.setTitle("История переводов");
             dialStage.initModality(Modality.WINDOW_MODAL);
             dialStage.initOwner(stage);
+            dialStage.setResizable(false);
             dialStage.getIcons().add(new Image("file:src/sample/resources/images/icon.png"));
             Scene scene = new Scene(page);
             dialStage.setScene(scene);

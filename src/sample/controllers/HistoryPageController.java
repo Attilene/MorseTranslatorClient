@@ -13,10 +13,7 @@ import sample.models.json.History;
 import sample.utils.AlertsUtil;
 import sample.utils.RequestsUtil;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -70,8 +67,20 @@ public class HistoryPageController {
     public void handleSaveTXT() {
         File file = createFileChooser("txt");
         if (file != null) {
-            //Save
-            System.out.println("Процесс записи файла .txt");
+            try {
+                Writer writer = new FileWriter(file.getAbsolutePath(), StandardCharsets.UTF_8);
+                writer.write("Текст для перевода    Результат перевода    Дата перевода\n");
+                writer.flush();
+                for (History history: historiesData) {
+                    writer.write(
+                            history.getStart_string() + "    " +
+                            history.getEnd_string() + "    " +
+                            history.getOperation_time() + "\n"
+                    );
+                    writer.flush();
+                }
+                writer.close();
+            } catch (IOException e) { System.out.println("Не удалось создать файл: " + file.getName()); }
         }
     }
 
@@ -82,7 +91,7 @@ public class HistoryPageController {
             try {
                 Writer writer = new FileWriter(file.getAbsolutePath(), StandardCharsets.UTF_8);
                 CSVWriter csvWriter = new CSVWriter(writer);
-                csvWriter.writeNext(new String[] { "Текст для перевода", "Результат перевода", "Дата перевода"});
+                csvWriter.writeNext(new String[] { "Текст для перевода", "Результат перевода", "Дата перевода" });
                 for (History history: historiesData) {
                     csvWriter.writeNext(new String[] {
                             history.getStart_string(),
