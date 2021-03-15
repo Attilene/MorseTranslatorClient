@@ -68,7 +68,7 @@ public class TranslatorPageController {
                 endStringArea.setText(history.getEnd_string());
             } else if (!requestsUtil.getDisconnect()
                     && Objects.equals(requestsUtil.getResponse(), ""))
-                AlertsUtil.showInternalServerErrorAlert(dialStage);
+                AlertsUtil.showFailedTranslateAlert(dialStage);
         }
     }
 

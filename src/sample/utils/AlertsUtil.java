@@ -122,6 +122,16 @@ public abstract class AlertsUtil {
         alert.showAndWait();
     }
 
+    public static void showFailedTranslateAlert(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Перевод не удался");
+        alert.setHeaderText("Введите правильную строку для перевода!");
+        alert.setContentText("Строка не должна быть пустой.\nЯзык строки должен соответствовать переключателям");
+        addStyleSheetToAlert(alert);
+        alert.showAndWait();
+    }
+
     public static void addStyleSheetToAlert(Alert alert) {
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.setMinHeight(Region.USE_PREF_SIZE);
