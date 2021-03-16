@@ -32,7 +32,7 @@ public abstract class ValidUtil {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            AlertsUtil.showInputValidAlert(dialStage, errorMessage.substring(0, errorMessage.length() - 2));
+            AlertsUtil.showInputValidAlert(dialStage, errorMessage.substring(0, errorMessage.length() - 1));
             return false;
         }
     }
@@ -48,7 +48,7 @@ public abstract class ValidUtil {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            AlertsUtil.showInputValidAlert(dialStage, errorMessage.substring(0, errorMessage.length() - 2));
+            AlertsUtil.showInputValidAlert(dialStage, errorMessage.substring(0, errorMessage.length() - 1));
             return false;
         }
     }

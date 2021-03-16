@@ -135,8 +135,8 @@ public abstract class AlertsUtil {
     public static void addStyleSheetToAlert(Alert alert) {
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.setMinHeight(Region.USE_PREF_SIZE);
-        dialogPane.getStylesheets().add(
-                AlertsUtil.class.getResource("../resources/styles/DialogStyle.css").toExternalForm());
+        dialogPane.getStylesheets().add
+                (AlertsUtil.class.getResource("../resources/styles/DialogStyle.css").toExternalForm());
         dialogPane.getStyleClass().add("dialog-pane");
     }
 }
