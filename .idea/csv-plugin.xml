@@ -241,6 +241,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\utils\CryptoUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\utils\DateUtil.java">
           <value>
             <Attribute>
