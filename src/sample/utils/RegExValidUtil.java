@@ -2,11 +2,13 @@ package sample.utils;
 
 import java.util.regex.Pattern;
 
-public abstract class RegExValidUtil {
+public final class RegExValidUtil {
     private static final String STANDARD_REGEX = "^[^%\"';:]*$";
-    private static final String EMAIL_REGEX = "^[a-zA-Z0-9]+@([a-zA-Z]{2,10}[.]){1,3}(com|by|ru|cc|net|ws)$";
-    private static final String PASSWORD_REGEX = "^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,})$";
+    private static final String EMAIL_REGEX = "^([a-zA-Z0-9_-]+\\.)*[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)*\\.[a-zA-Z]{2,6}$";
+    private static final String PASSWORD_REGEX = "^((?=.*[0-9])(?=.*[a-zа-я])(?=.*[A-ZА-Я])(?=.*[@#$%]).{8,})$";
     private static final String PHONE_NUMBER_REGEX = "^[(+7)8]+([0-9]{10})$";
+
+    private RegExValidUtil() {}
 
     public static boolean checkStandard(String text) { return Pattern.matches(STANDARD_REGEX, text); }
 

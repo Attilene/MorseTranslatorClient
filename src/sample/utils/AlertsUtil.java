@@ -7,7 +7,9 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-public abstract class AlertsUtil {
+public final class AlertsUtil {
+    private AlertsUtil() {}
+
     public static boolean showDeleteProfileConfirmationAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initOwner(stage);
