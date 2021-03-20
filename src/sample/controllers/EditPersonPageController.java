@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import sample.models.app.Person;
 import sample.models.app.RegistrationEditModel;
-import sample.models.json.Password;
 import sample.models.json.User;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
@@ -38,22 +37,20 @@ public class EditPersonPageController extends RegistrationEditModel {
                         put("phone_number", phoneNumberField.getText());
                         if (birthdayField.getValue() == null) put("birthday", null);
                         else put("birthday", birthdayField.getValue().toString());
-                        put("password_hash", passwordField.getText());
-                        put("salt", repeatPasswordField.getText());
+                        put("password", passwordField.getText());
                     }});
                     requestsUtil.thread.start();
                     RequestsUtil.runningThread(requestsUtil, dialStage);
                     if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
                         User user = gson.fromJson(requestsUtil.getResponse(), User.class);
-                        Password password = user.getPassword();
                         person.setFirstName(user.getFirst_name());
                         person.setLastName(user.getLast_name());
                         person.setLogin(user.getLogin());
                         person.setEmail(user.getEmail());
                         person.setPhoneNumber(user.getPhone_number());
                         person.setBirthday(LocalDate.parse(user.getBirthday()));
-                        person.setPassword(password.getHash());
-                        person.setRepeatPassword(password.getSalt());
+                        person.setPassword(passwordField.getText());
+                        person.setRepeatPassword(passwordField.getText());
                         dialStage.close();
                     } else if (!requestsUtil.getDisconnect()
                             && Objects.equals(requestsUtil.getResponse(), ""))
@@ -68,7 +65,10 @@ public class EditPersonPageController extends RegistrationEditModel {
         delete = AlertsUtil.showDeleteProfileConfirmationAlert(dialStage);
         if (delete) {
             RequestsUtil requestsUtil = new RequestsUtil("/user", "DELETE");
-            requestsUtil.setParams(new HashMap<>() {{ put("id", person.getId().toString()); }});
+            requestsUtil.setParams(new HashMap<>() {{
+                put("id", person.getId().toString());
+                put("password", person.getPassword());
+            }});
             requestsUtil.thread.start();
             RequestsUtil.runningThread(requestsUtil, dialStage);
             if (Objects.equals(requestsUtil.getResponse(), "delete_success")) dialStage.close();

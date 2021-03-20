@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import sample.models.app.EnterModel;
 import sample.models.app.Person;
-import sample.models.json.Password;
 import sample.models.json.User;
 import sample.utils.AlertsUtil;
 import sample.utils.ValidUtil;
@@ -34,14 +33,12 @@ public class EnterPageController extends EnterModel {
                 RequestsUtil requestsUtil = new RequestsUtil("/enter", "POST");
                 requestsUtil.setParams(new HashMap<>() {{
                     put("login_email", userLogEmailField.getText());
-                    put("password_hash", passwordField.getText());
-                    put("salt", passwordField.getText());
+                    put("password", passwordField.getText());
                 }});
                 requestsUtil.thread.start();
                 RequestsUtil.runningThread(requestsUtil, dialStage);
                 if (!Objects.equals(requestsUtil.getResponse(), "") && requestsUtil.getResponse() != null) {
                     User user = gson.fromJson(requestsUtil.getResponse(), User.class);
-                    Password password = user.getPassword();
                     person.setId(user.getId());
                     person.setFirstName(user.getFirst_name());
                     person.setLastName(user.getLast_name());
@@ -50,8 +47,8 @@ public class EnterPageController extends EnterModel {
                     person.setPhoneNumber(user.getPhone_number());
                     if (user.getBirthday() == null) person.setBirthday(null);
                     else person.setBirthday(LocalDate.parse(user.getBirthday()));
-                    person.setPassword(password.getHash());
-                    person.setRepeatPassword(password.getSalt());
+                    person.setPassword(passwordField.getText());
+                    person.setRepeatPassword(passwordField.getText());
                     dialStage.close();
                 } else if (!requestsUtil.getDisconnect()
                         && Objects.equals(requestsUtil.getResponse(), ""))

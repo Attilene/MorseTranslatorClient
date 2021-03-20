@@ -40,8 +40,7 @@ public class RegistrationPageController extends RegistrationEditModel {
                         put("phone_number", phoneNumberField.getText());
                         if (birthdayField.getValue() == null) put("birthday", null);
                         else put("birthday", birthdayField.getValue().toString());
-                        put("password_hash", passwordField.getText());
-                        put("salt", repeatPasswordField.getText());
+                        put("password", passwordField.getText());
                     }});
                     requestsUtil.thread.start();
                     RequestsUtil.runningThread(requestsUtil, dialStage);
