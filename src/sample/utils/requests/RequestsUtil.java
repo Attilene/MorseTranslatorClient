@@ -1,6 +1,7 @@
-package sample.utils;
+package sample.utils.requests;
 
 import javafx.stage.Stage;
+import sample.utils.alerts.AlertsUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;

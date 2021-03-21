@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.models.app.Person;
 import sample.models.json.History;
-import sample.utils.AlertsUtil;
-import sample.utils.RequestsUtil;
+import sample.utils.alerts.AlertsUtil;
+import sample.utils.requests.RequestsUtil;
 
 import java.util.HashMap;
 import java.util.Objects;

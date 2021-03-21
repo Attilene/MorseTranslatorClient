@@ -1,4 +1,4 @@
-package sample.models.app;
+package sample.models.app.fields;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;

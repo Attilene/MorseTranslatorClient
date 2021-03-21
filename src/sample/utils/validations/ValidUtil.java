@@ -1,8 +1,9 @@
-package sample.utils;
+package sample.utils.validations;
 
 import javafx.stage.Stage;
-import sample.models.app.EnterModel;
-import sample.models.app.RegistrationEditModel;
+import sample.models.app.fields.EnterModel;
+import sample.models.app.fields.RegistrationEditModel;
+import sample.utils.alerts.AlertsUtil;
 
 public final class ValidUtil {
     private ValidUtil() {}

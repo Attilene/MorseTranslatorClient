@@ -10,8 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.models.json.History;
-import sample.utils.AlertsUtil;
-import sample.utils.RequestsUtil;
+import sample.utils.alerts.AlertsUtil;
+import sample.utils.requests.RequestsUtil;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

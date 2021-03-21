@@ -1,10 +1,10 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
-import sample.models.app.RegistrationEditModel;
-import sample.utils.AlertsUtil;
-import sample.utils.ValidUtil;
-import sample.utils.RequestsUtil;
+import sample.models.app.fields.RegistrationEditModel;
+import sample.utils.alerts.AlertsUtil;
+import sample.utils.validations.ValidUtil;
+import sample.utils.requests.RequestsUtil;
 
 import java.util.HashMap;
 import java.util.Objects;

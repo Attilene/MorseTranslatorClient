@@ -2,12 +2,12 @@ package sample.controllers;
 
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
-import sample.models.app.EnterModel;
+import sample.models.app.fields.EnterModel;
 import sample.models.app.Person;
 import sample.models.json.User;
-import sample.utils.AlertsUtil;
-import sample.utils.ValidUtil;
-import sample.utils.RequestsUtil;
+import sample.utils.alerts.AlertsUtil;
+import sample.utils.validations.ValidUtil;
+import sample.utils.requests.RequestsUtil;
 
 import java.time.LocalDate;
 import java.util.HashMap;
