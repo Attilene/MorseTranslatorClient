@@ -6,6 +6,7 @@ import sample.models.app.fields.EnterModel;
 import sample.models.app.Person;
 import sample.models.json.User;
 import sample.utils.alerts.AlertsUtil;
+import sample.utils.validations.RegExValidUtil;
 import sample.utils.validations.ValidUtil;
 import sample.utils.requests.RequestsUtil;
 
@@ -55,6 +56,27 @@ public class EnterPageController extends EnterModel {
                     AlertsUtil.showNoValidEnterAlert(dialStage);
             }
         }
+    }
+
+    @FXML
+    public void handleRestorePassword() {
+        if (userLogEmailField.getText() != null) {
+            if (RegExValidUtil.checkEmail(userLogEmailField.getText())) {
+                RequestsUtil requestsUtil = new RequestsUtil("/enter/check_email", "POST");
+                requestsUtil.setParams(new HashMap<>() {{
+                    put("email", userLogEmailField.getText());
+                }});
+                requestsUtil.thread.start();
+                RequestsUtil.runningThread(requestsUtil, dialStage);
+                if (Objects.equals(requestsUtil.getResponse(), "mail_send_success"))
+                    AlertsUtil.showMailSentSuccessfully(dialStage, userLogEmailField.getText());
+                else if (!requestsUtil.getDisconnect()
+                        && Objects.equals(requestsUtil.getResponse(), "mail_send_failed"))
+                    AlertsUtil.showUserNotExistAlert(dialStage);
+            } else
+                AlertsUtil.showIncorrectEmailAlert(dialStage);
+        } else
+            AlertsUtil.showIncorrectEmailAlert(dialStage);
     }
 
     public Person getPerson() { return person; }

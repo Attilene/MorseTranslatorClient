@@ -3,9 +3,10 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="453.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnterPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="453.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnterPageController">
    <children>
       <Label layoutX="181.0" layoutY="33.0" styleClass="label-big-logo" text="Вход">
          <font>
@@ -29,7 +30,7 @@
             <TextField fx:id="visiblePasswordField" promptText="Введите пароль" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <HBox layoutX="78.0" layoutY="240.0" prefHeight="38.0" prefWidth="297.0" spacing="30.0" AnchorPane.bottomAnchor="30.0">
+      <HBox layoutX="80.0" layoutY="247.0" prefHeight="38.0" prefWidth="297.0" spacing="30.0" AnchorPane.bottomAnchor="99.60000000000002">
          <children>
             <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="35.0" prefWidth="132.0" text="Вход">
                <cursor>
@@ -46,5 +47,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </CheckBox>
+      <Line endX="298.1000061035156" layoutX="136.0" layoutY="305.0" startX="689.2000122070312" stroke="#16a291" AnchorPane.leftAnchor="30.0" />
+      <Button layoutX="148.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleRestorePassword" prefHeight="35.0" text="Забыли пароль?" AnchorPane.bottomAnchor="25.0" />
    </children>
 </AnchorPane>

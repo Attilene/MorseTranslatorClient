@@ -48,7 +48,8 @@ public class EditPersonPageController extends RegistrationEditModel {
                         person.setLogin(user.getLogin());
                         person.setEmail(user.getEmail());
                         person.setPhoneNumber(user.getPhone_number());
-                        person.setBirthday(LocalDate.parse(user.getBirthday()));
+                        if (user.getBirthday() != null)
+                            person.setBirthday(LocalDate.parse(user.getBirthday()));
                         person.setPassword(passwordField.getText());
                         person.setRepeatPassword(passwordField.getText());
                         dialStage.close();

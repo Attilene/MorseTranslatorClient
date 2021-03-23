@@ -21,6 +21,16 @@ public final class AlertsUtil {
         return alert.showAndWait().get() == ButtonType.OK;
     }
 
+    public static void showMailSentSuccessfully(Stage stage, String email) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initOwner(stage);
+        alert.setTitle("Письмо отправлено");
+        alert.setHeaderText("Письмо для восстановления пароля успшено отправлено!");
+        alert.setContentText("Проверьте входящие сообщения и спам на электронной почте: " + email);
+        addStyleSheetToAlert(alert);
+        alert.showAndWait();
+    }
+
     public static void showInputValidAlert(Stage stage, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -100,6 +110,16 @@ public final class AlertsUtil {
         alert.setTitle("Пользователь существует");
         alert.setHeaderText("Пользователь с такими данными уже существует!");
         alert.setContentText("Логин, почта или номер телефона должны быть уникальными");
+        addStyleSheetToAlert(alert);
+        alert.showAndWait();
+    }
+
+    public static void showUserNotExistAlert(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Пользователь не существует");
+        alert.setHeaderText("Пользователь с такой электронной почтой не существует!");
+        alert.setContentText("Введите корректную почту");
         addStyleSheetToAlert(alert);
         alert.showAndWait();
     }

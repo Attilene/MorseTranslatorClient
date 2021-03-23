@@ -276,6 +276,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\utils\alerts\AlertsUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\utils\requests\DeleteRequestUtil.java">
           <value>
             <Attribute>
