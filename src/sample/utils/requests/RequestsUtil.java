@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class RequestsUtil implements Runnable {
     private static final String ROOT_URL = "http://localhost:22222";
-    private static final int TIMEOUT = 5000;
+    private static final int TIMEOUT = 10000;
     private Boolean disconnect = false;
     private Map<String, String> params;
     private final String method;
@@ -83,6 +83,7 @@ public class RequestsUtil implements Runnable {
     }
 
     public static void runningThread(RequestsUtil requestsUtil, Stage stage) {
+        long time = System.currentTimeMillis();
         while (!requestsUtil.thread.isInterrupted()) {
             if (requestsUtil.getDisconnect()) {
                 AlertsUtil.showInternalServerErrorAlert(stage);
@@ -90,6 +91,7 @@ public class RequestsUtil implements Runnable {
                 break;
             }
             if (requestsUtil.getResponse() != null) break;
+            if (System.currentTimeMillis() - time > TIMEOUT) requestsUtil.setDisconnect(true);
         }
     }
 

@@ -25,7 +25,7 @@ public final class AlertsUtil {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initOwner(stage);
         alert.setTitle("Письмо отправлено");
-        alert.setHeaderText("Письмо для восстановления пароля успшено отправлено!");
+        alert.setHeaderText("Письмо для восстановления пароля успешно отправлено!");
         alert.setContentText("Проверьте входящие сообщения и спам на электронной почте: " + email);
         addStyleSheetToAlert(alert);
         alert.showAndWait();
