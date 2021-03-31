@@ -7,9 +7,20 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+/**
+ * Class that contained alerts of JavaFX application Morse Translator
+ *
+ * @author  Artem Bakanov aka Attilene
+ */
 public final class AlertsUtil {
     private AlertsUtil() {}
 
+    /**
+     * Confirmation alert about deleting user`s private cabinet
+     *
+     * @param   stage  window where displaying alert
+     * @return         true, if button "OK" is pressed, or false, if if any other button is pressed
+     */
     public static boolean showDeleteProfileConfirmationAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initOwner(stage);
@@ -21,6 +32,12 @@ public final class AlertsUtil {
         return alert.showAndWait().get() == ButtonType.OK;
     }
 
+    /**
+     * Information alert about sending recovery message to the email address
+     *
+     * @param  stage  window where displaying alert
+     * @param  email  user`s email address
+     */
     public static void showMailSentSuccessfully(Stage stage, String email) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initOwner(stage);
@@ -31,6 +48,12 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert about missing values in fields
+     *
+     * @param  stage    window where displaying alert
+     * @param  message  information about empty fields
+     */
     public static void showInputValidAlert(Stage stage, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -41,6 +64,12 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert about incorrect filling in fields
+     *
+     * @param  stage  window where displaying alert
+     * @param  name   name of the field
+     */
     public static void showWrongFormatStandardAlert(Stage stage, String name) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -51,6 +80,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert about failing sign in
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showNoValidEnterAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -61,6 +95,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert about incorrect format of the email address
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showIncorrectEmailAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -70,6 +109,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert about incorrect format of the password
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showWrongFormatPasswordAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -84,6 +128,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert about incorrect format of the phone number
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showWrongFormatPhoneNumberAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -94,6 +143,13 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert about exceeding the allowed field length
+     *
+     * @param  stage    window where displaying alert
+     * @param  name     name of the field
+     * @param  symbols  acceptable length of the string
+     */
     public static void showBigStringAlert(Stage stage, String name, int symbols) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -104,6 +160,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert that user is already exist
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showUserExistAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -114,6 +175,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert that user does not exist yet
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showUserNotExistAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -124,6 +190,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert that user does not exist yet
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showNotSelectedHistory(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.initOwner(stage);
@@ -134,6 +205,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert that the server is temporarily unavailable
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showInternalServerErrorAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -144,6 +220,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Error alert about failed text translation attempt
+     *
+     * @param  stage  window where displaying alert
+     */
     public static void showFailedTranslateAlert(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -154,6 +235,11 @@ public final class AlertsUtil {
         alert.showAndWait();
     }
 
+    /**
+     * Adding style to alert message
+     *
+     * @param  alert  alert to attach the css-file to
+     */
     public static void addStyleSheetToAlert(Alert alert) {
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.setMinHeight(Region.USE_PREF_SIZE);

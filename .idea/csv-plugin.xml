@@ -318,6 +318,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\utils\validations\RegExValidUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\utils\validations\ValidUtil.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\views\aboutPage.fxml">
           <value>
             <Attribute>

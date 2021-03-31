@@ -5,9 +5,22 @@ import sample.models.app.fields.EnterModel;
 import sample.models.app.fields.RegistrationEditModel;
 import sample.utils.alerts.AlertsUtil;
 
+/**
+ * Class for validation methods for checking input data
+ *
+ * @author  Artem Bakanov aka Attilene
+ */
 public final class ValidUtil {
     private ValidUtil() {}
 
+    /**
+     * Initial validation of registration fields on a non-empty value and
+     * checking equality of Password field and RepeatPassword field
+     *
+     * @param   model      instance containing the fields to be checked
+     * @param   dialStage  window where displaying alert
+     * @return             true, if no errors found, or false, if the opposite is true
+     */
     public static boolean isInputValidRegistrationEdit(RegistrationEditModel model, Stage dialStage) {
         String errorMessage = "";
         if (model.firstNameField.getText() == null || model.firstNameField.getText().length() == 0)
@@ -32,6 +45,13 @@ public final class ValidUtil {
         }
     }
 
+    /**
+     * Initial validation of enter fields on a non-empty value
+     *
+     * @param   model      instance containing the fields to be checked
+     * @param   dialStage  window where displaying alert
+     * @return             true, if no errors found, or false, if the opposite is true
+     */
     public static boolean isInputValidEnter(EnterModel model, Stage dialStage) {
         String errorMessage = "";
         if (model.userLogEmailField.getText() == null || model.userLogEmailField.getText().length() == 0)
@@ -45,6 +65,13 @@ public final class ValidUtil {
         }
     }
 
+    /**
+     * Checking length of registration fields
+     *
+     * @param   model      instance containing the fields to be checked
+     * @param   dialStage  window where displaying alert
+     * @return             true, if no errors found, or false, if the opposite is true
+     */
     public static boolean isInputValidLength(RegistrationEditModel model, Stage dialStage) {
         if (!ValidUtil.checkLength(model.firstNameField.getText(), 40))
             AlertsUtil.showBigStringAlert(dialStage, "Имя", 40);
@@ -59,6 +86,13 @@ public final class ValidUtil {
         return false;
     }
 
+    /**
+     * Checking correct format of enter fields with regular expressions
+     *
+     * @param   model      instance containing the fields to be checked
+     * @param   dialStage  window where displaying alert
+     * @return             true, if no errors found, or false, if the opposite is true
+     */
     public static boolean isRegExValidEnter(EnterModel model, Stage dialStage) {
         if (RegExValidUtil.checkStandard(model.userLogEmailField.getText())
                 || RegExValidUtil.checkEmail(model.userLogEmailField.getText()))
@@ -69,6 +103,13 @@ public final class ValidUtil {
         }
     }
 
+    /**
+     * Checking correct format of registration fields with regular expressions
+     *
+     * @param   model      instance containing the fields to be checked
+     * @param   dialStage  window where displaying alert
+     * @return             true, if no errors found, or false, if the opposite is true
+     */
     public static boolean isRegExValidRegistrationEdit(RegistrationEditModel model, Stage dialStage) {
         if (!RegExValidUtil.checkStandard(model.firstNameField.getText()))
             AlertsUtil.showWrongFormatStandardAlert(dialStage, "Имя");
@@ -88,5 +129,12 @@ public final class ValidUtil {
         return false;
     }
 
+    /**
+     * Checking length of string
+     *
+     * @param   text  string to be checked
+     * @param   num   acceptable length of the string
+     * @return        true, if length of string less or equal acceptable, or false, if the opposite is true
+     */
     public static boolean checkLength(String text, int num) { return text.length() <= num; }
 }
