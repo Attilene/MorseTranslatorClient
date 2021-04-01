@@ -143,6 +143,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\models\json\History.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\models\json\JsonHistory.java">
           <value>
             <Attribute>
@@ -165,6 +172,20 @@
           </value>
         </entry>
         <entry key="\src\sample\models\json\JsonUser.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\models\json\Password.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\models\json\User.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
