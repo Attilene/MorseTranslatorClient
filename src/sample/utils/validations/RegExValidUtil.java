@@ -28,6 +28,9 @@ public final class RegExValidUtil {
      */
     private static final String PHONE_NUMBER_REGEX = "^[(+7)8]+([0-9]{10})$";
 
+    /**
+     * Private constructor for locking changes in a constant class
+     */
     private RegExValidUtil() {}
 
     /**

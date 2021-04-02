@@ -11,6 +11,9 @@ import sample.utils.alerts.AlertsUtil;
  * @author  Artem Bakanov aka Attilene
  */
 public final class ValidUtil {
+    /**
+     * Private constructor for locking changes in a constant class
+     */
     private ValidUtil() {}
 
     /**

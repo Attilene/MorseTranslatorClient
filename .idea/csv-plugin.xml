@@ -143,6 +143,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\models\app\fields\EnterModel.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\models\app\fields\RegistrationEditModel.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\models\json\History.java">
           <value>
             <Attribute>

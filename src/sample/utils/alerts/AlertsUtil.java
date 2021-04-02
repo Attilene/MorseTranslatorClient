@@ -13,6 +13,9 @@ import javafx.stage.Stage;
  * @author  Artem Bakanov aka Attilene
  */
 public final class AlertsUtil {
+    /**
+     * Private constructor for locking changes in a constant class
+     */
     private AlertsUtil() {}
 
     /**
