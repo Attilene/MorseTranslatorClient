@@ -15,11 +15,29 @@ import sample.models.json.History;
 
 import java.io.IOException;
 
+/**
+ * Class for running the Morse translator client application
+ *
+ * @author  Artem Bakanov aka Attilene
+ * @since   15.0.2
+ * @version 1.0
+ */
 public class Main extends Application {
+    /**
+     * Main window for displaying project fxml forms
+     */
     private Stage primaryStage;
 
+    /**
+     * Basic empty constructor
+     */
     public Main() {}
 
+    /**
+     * Method that is executed first when running a javafx application
+     *
+     * @param  primaryStage  main window for displaying project fxml forms
+     */
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -28,6 +46,13 @@ public class Main extends Application {
         showMainPage(initLayout(this.primaryStage, "views/rootLayout.fxml"));
     }
 
+    /**
+     * Method for displaying background border of main window form
+     *
+     * @param   stage  window for displaying fxml form
+     * @param   path   path to fxml file that will be displayed
+     * @return         layout of border pane
+     */
     @FXML
     public BorderPane initLayout(Stage stage, String path) {
         try {
@@ -47,6 +72,11 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Show main scene of application
+     *
+     * @param  layout  layout of border pane
+     */
     @FXML
     public void showMainPage(BorderPane layout) {
         try{
@@ -59,6 +89,11 @@ public class Main extends Application {
         } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
+    /**
+     * Show enter scene for log in to private cabinet of application
+     *
+     * @return  instance of Person model contained private date of a person
+     */
     @FXML
     public Person showEnterPage() {
         try {
@@ -83,6 +118,9 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Show registration scene for sign up to private cabinet of application
+     */
     @FXML
     public void showRegistrationPage() {
         try {
@@ -103,6 +141,11 @@ public class Main extends Application {
         } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
+    /**
+     * Show translator scene for managing translations, translate processes and private cabinet
+     *
+     * @param  person  instance of Person model contained private date of a person
+     */
     @FXML
     public void showTranslatorPage(Person person) {
         try {
@@ -125,6 +168,10 @@ public class Main extends Application {
         } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
+    /**
+     * Show about scene for calling up summary information
+     * about application and author
+     */
     @FXML
     public void showAboutPage() {
         try {
@@ -146,6 +193,13 @@ public class Main extends Application {
         } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
+    /**
+     * Show edit person scene for managing person data and private cabinet
+     *
+     * @param   stage   stage which is owner of the current stage
+     * @param   person  instance of Person model contained private date of a person
+     * @return          instance of EditPersonPageController class
+     */
     @FXML
     public EditPersonPageController showEditPersonPage(Stage stage, Person person) {
         try {
@@ -171,6 +225,12 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Show history scene for bring out user`s history of translations
+     *
+     * @param  stage      stage which is owner of the current stage
+     * @param  histories  user`s history of translations
+     */
     @FXML
     public void showHistoryPage(Stage stage, History[] histories) {
         try {
@@ -193,5 +253,10 @@ public class Main extends Application {
         } catch (IOException e) { System.out.println("Не удалось загрузить окно!"); }
     }
 
+    /**
+     * Main method for running the project
+     *
+     * @param  args  project variables
+     */
     public static void main(String[] args) { launch(args); }
 }
