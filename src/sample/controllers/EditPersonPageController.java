@@ -13,11 +13,31 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Controller for managing editPersonPage.fxml form
+ *
+ * @see     RegistrationEditModel
+ * @author  Artem Bakanov aka Attilene
+ */
 public class EditPersonPageController extends RegistrationEditModel {
+    /**
+     * Google tool for converting data to json format and back
+     */
     private final Gson gson = new Gson();
+
+    /**
+     * Flag which tracking the existence of user`s private cabinet
+     */
     private boolean delete = false;
+
+    /**
+     * User`s personal data wrapped into instance of Person model class
+     */
     private Person person;
 
+    /**
+     * Method for update button for changing user`s personal data
+     */
     @FXML
     private void handleUpdate () {
         if (passwordToggle.isSelected()) {
@@ -61,6 +81,9 @@ public class EditPersonPageController extends RegistrationEditModel {
         }
     }
 
+    /**
+     * Method for delete button for deleting user`s private cabinet
+     */
     @FXML
     private void handleDeleteProfile() {
         delete = AlertsUtil.showDeleteProfileConfirmationAlert(dialStage);
@@ -79,10 +102,25 @@ public class EditPersonPageController extends RegistrationEditModel {
         }
     }
 
+    /**
+     * Getter for current condition of user`s private cabinet
+     *
+     * @return  tracked deleting flag
+     */
     public boolean isDelete() { return delete; }
 
+    /**
+     * Getter for user`s personal data
+     *
+     * @return  instance of Person model contained user`s data
+     */
     public Person getPerson() { return person; }
 
+    /**
+     * Setter for user`s personal data
+     *
+     * @param  person  user`s personal data wrapped into instance of Person model class
+     */
     public void setPerson(Person person) {
         this.person = person;
         firstNameField.setText(this.person.getFirstName());

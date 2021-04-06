@@ -14,10 +14,27 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Controller for managing enterPage.fxml form
+ *
+ * @see     EnterModel
+ * @author  Artem Bakanov aka Attilene
+ */
 public class EnterPageController extends EnterModel {
+    /**
+     * Google tool for converting data to json format and back
+     */
     private final Gson gson = new Gson();
+
+    /**
+     * User`s personal data wrapped into instance of Person model class
+     */
     private Person person;
 
+    /**
+     * The initializing method of the controller, which is started
+     * at creation of instance of EnterPageController class
+     */
     @FXML
     private void initialize() {
         userLogEmailField.setText(null);
@@ -25,6 +42,9 @@ public class EnterPageController extends EnterModel {
         person = new Person();
     }
 
+    /**
+     * Method for enter button for log in user`s private cabinet
+     */
     @FXML
     private void handleEnter() {
         if (passwordToggle.isSelected())
@@ -58,6 +78,10 @@ public class EnterPageController extends EnterModel {
         }
     }
 
+    /**
+     * Method for sending mail on user`s email address
+     * for restore forgotten password
+     */
     @FXML
     public void handleRestorePassword() {
         if (userLogEmailField.getText() != null) {
@@ -79,5 +103,10 @@ public class EnterPageController extends EnterModel {
             AlertsUtil.showIncorrectEmailAlert(dialStage);
     }
 
+    /**
+     * Getter for user`s personal data
+     *
+     * @return  instance of Person model contained user`s data
+     */
     public Person getPerson() { return person; }
 }

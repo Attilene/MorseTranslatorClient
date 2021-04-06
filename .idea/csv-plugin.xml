@@ -101,6 +101,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controllers\MainPageController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\controllers\RegistrationPageController.java">
           <value>
             <Attribute>
