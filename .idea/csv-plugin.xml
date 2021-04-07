@@ -115,6 +115,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\sample\controllers\RootLayoutController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\sample\controllers\TranslatorPageController.java">
           <value>
             <Attribute>

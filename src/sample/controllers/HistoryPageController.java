@@ -17,19 +17,52 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+/**
+ * Controller for managing historyPage.fxml form
+ *
+ * @author  Artem Bakanov aka Attilene
+ */
 public class HistoryPageController {
+    /**
+     * TableView contained list of user`s translate history
+     */
     @FXML
     private TableView<History> historyTableView;
+
+    /**
+     * TableColumn in historyTableView containing start_string
+     * of records of list of user`s translate history
+     */
     @FXML
     private TableColumn<History, String> startStringColumn;
+
+    /**
+     * TableColumn in historyTableView containing end_string
+     * of records of list of user`s translate history
+     */
     @FXML
     private TableColumn<History, String> endStringColumn;
+
+    /**
+     * TableColumn in historyTableView containing operation_time
+     * of records of list of user`s translate history
+     */
     @FXML
     private TableColumn<History, Date> operationTimeColumn;
 
+    /**
+     * Window where displaying fxml form
+     */
     private Stage dialStage;
+
+    /**
+     * List which containing records of user`s translate history
+     */
     private ObservableList<History> historiesData;
 
+    /**
+     * Method for delete history button for deleting record of user`s translate history
+     */
     @FXML
     private void handleDeleteHistory() {
         int selectedIndex = historyTableView.getSelectionModel().getSelectedIndex();
@@ -49,6 +82,9 @@ public class HistoryPageController {
         else { AlertsUtil.showNotSelectedHistory(dialStage); }
     }
 
+    /**
+     * Saving records of user`s translate history to TXT file
+     */
     @FXML
     public void handleSaveTXT() {
         File file = createFileChooser("txt");
@@ -70,6 +106,9 @@ public class HistoryPageController {
         }
     }
 
+    /**
+     * Saving records of user`s translate history to CSV file
+     */
     @FXML
     public void handleSaveCSV() {
         File file = createFileChooser("csv");
@@ -90,9 +129,15 @@ public class HistoryPageController {
         }
     }
 
+    /**
+     * Close the application window
+     */
     @FXML
     private void handleCancel() { dialStage.close(); }
 
+    /**
+     * Adding records of user`s translate history to the TableView object
+     */
     public void showHistoryContent() {
         startStringColumn.setCellValueFactory(new PropertyValueFactory<>("start_string"));
         endStringColumn.setCellValueFactory(new PropertyValueFactory<>("end_string"));
@@ -100,6 +145,13 @@ public class HistoryPageController {
         historyTableView.setItems(historiesData);
     }
 
+    /**
+     * Method for creating file chooser object for saving
+     * list of records of user`s translate history
+     *
+     * @param   suffix  the suffix of the file name that defines the type of data to be saved
+     * @return          new FileChooser object
+     */
     private File createFileChooser(String suffix) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Сохранение документа");
@@ -111,8 +163,18 @@ public class HistoryPageController {
         return fileChooser.showSaveDialog(dialStage);
     }
 
+    /**
+     * Setter for window`s stage
+     *
+     * @param  dialStage  window`s stage
+     */
     public void setDialStage(Stage dialStage) { this.dialStage = dialStage; }
 
+    /**
+     * Setter for list of records of user`s translate history
+     *
+     * @param  histories  list of records of user`s translate history
+     */
     public void setHistories(History[] histories) {
         historiesData = FXCollections.observableArrayList();
         historiesData.addAll(Arrays.asList(histories));

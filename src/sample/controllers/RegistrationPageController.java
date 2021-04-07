@@ -9,7 +9,17 @@ import sample.utils.requests.RequestsUtil;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Controller for managing registrationPage.fxml form
+ *
+ * @see     RegistrationEditModel
+ * @author  Artem Bakanov aka Attilene
+ */
 public class RegistrationPageController extends RegistrationEditModel {
+    /**
+     * The initializing method of the controller, which is started
+     * at creation of instance of RegistrationPageController class
+     */
     @FXML
     public void initialize() {
         firstNameField.setText(null);
@@ -22,6 +32,9 @@ public class RegistrationPageController extends RegistrationEditModel {
         repeatPasswordField.setText(null);
     }
 
+    /**
+     * Method for registration button for sign up and creating user`s private cabinet
+     */
     @FXML
     private void handleRegistration () {
         if (passwordToggle.isSelected()) {
