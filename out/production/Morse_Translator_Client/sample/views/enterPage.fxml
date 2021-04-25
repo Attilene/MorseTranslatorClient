@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="453.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EnterPageController">
+   <children>
+      <Label layoutX="181.0" layoutY="33.0" styleClass="label-big-logo" text="Вход">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="20.0" layoutY="100.0" prefHeight="85.0" prefWidth="360.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="94.6" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="412.0" minWidth="10.0" prefWidth="276.6" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="userLogEmailField" promptText="Введите логин/email" GridPane.columnIndex="1" />
+            <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Логин/Email:  " />
+            <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Пароль:  " GridPane.rowIndex="1" />
+            <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="visiblePasswordField" promptText="Введите пароль" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <HBox layoutX="80.0" layoutY="247.0" prefHeight="38.0" prefWidth="297.0" spacing="30.0" AnchorPane.bottomAnchor="99.60000000000002">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleEnter" prefHeight="35.0" prefWidth="132.0" text="Вход">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="35.0" prefWidth="132.0" text="Отмена">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
+      <CheckBox fx:id="passwordToggle" layoutX="136.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleToggleVisiblePassword" text="Показать пароль">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </CheckBox>
+      <Line endX="298.1000061035156" layoutX="136.0" layoutY="305.0" startX="689.2000122070312" stroke="#16a291" AnchorPane.leftAnchor="30.0" />
+      <Button layoutX="148.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleRestorePassword" prefHeight="35.0" text="Забыли пароль?" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="148.00000000000003" AnchorPane.rightAnchor="147.4" AnchorPane.topAnchor="324.8">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

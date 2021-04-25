@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="565.0" prefWidth="600.0" styleClass="background" stylesheets="@../resources/styles/AppStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.TranslatorPageController">
+   <children>
+      <Label layoutX="131.0" layoutY="34.0" styleClass="label-big-logo" text="Переводчик Морзе">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <HBox layoutX="122.0" layoutY="99.0" prefHeight="35.0" prefWidth="356.0" spacing="30.0" AnchorPane.bottomAnchor="386.8" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="99.0">
+         <children>
+            <RadioButton fx:id="toMorseRadioButton" layoutX="176.0" layoutY="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" selected="true" text="В Морзе">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></RadioButton>
+            <RadioButton fx:id="fromMorseRadioButton" layoutX="327.0" layoutY="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" text="Из Морзе">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></RadioButton>
+         </children>
+      </HBox>
+      <HBox layoutX="121.0" layoutY="150.0" prefHeight="35.0" prefWidth="356.0" spacing="30.0" AnchorPane.bottomAnchor="335.8" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="123.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <RadioButton fx:id="rusRadioButton" layoutX="177.0" layoutY="156.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" selected="true" text="Русский">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></RadioButton>
+            <RadioButton fx:id="engRadioButton" layoutX="324.0" layoutY="156.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" text="Английский">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></RadioButton>
+         </children>
+      </HBox>
+      <HBox layoutX="28.0" layoutY="235.0" spacing="15.0">
+         <children>
+            <TextArea fx:id="startStringArea" layoutX="28.0" layoutY="214.0" prefHeight="153.0" prefWidth="263.0" promptText="Ввод текста" styleClass="text-area" />
+            <TextArea fx:id="endStringArea" editable="false" layoutX="305.0" layoutY="214.0" prefHeight="153.0" prefWidth="263.0" promptText="Вывод текста" styleClass="text-area" />
+         </children>
+      </HBox>
+      <Label alignment="CENTER" layoutX="84.0" layoutY="202.0" prefHeight="21.0" prefWidth="155.0" text="Текст для перевода:" />
+      <Label alignment="CENTER" layoutX="358.0" layoutY="202.0" prefHeight="21.0" prefWidth="162.0" text="Результат перевода:" />
+      <Button layoutX="240.0" layoutY="197.0" mnemonicParsing="false" onAction="#handlerTranslate" prefHeight="32.0" text="Перевести" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="197.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <HBox layoutX="56.0" layoutY="462.0" prefHeight="35.0" prefWidth="485.0" spacing="20.0" AnchorPane.bottomAnchor="23.80000000000001">
+         <children>
+            <Button layoutX="103.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerExitPC" prefHeight="35.0" prefWidth="232.0" text="Выйти из личного кабинета">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="345.0" layoutY="408.0" mnemonicParsing="false" onAction="#handlerUpdatePC" prefHeight="35.0" prefWidth="232.0" text="Настроить личный кабинет">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
+      <TextField fx:id="loginField" alignment="CENTER" editable="false" layoutX="201.0" layoutY="418.0" prefHeight="26.0" prefWidth="196.0" promptText="Логин пользователя" AnchorPane.bottomAnchor="68.60000000000002" AnchorPane.rightAnchor="203.0" />
+      <Line endX="449.6999816894531" layoutX="131.9000015258789" layoutY="447.0" opacity="0.63" startX="-116.4000015258789" stroke="#16a291" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="17.9000244140625" />
+      <Button layoutX="201.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleHistory" prefHeight="35.0" prefWidth="196.0" text="История переводов" AnchorPane.bottomAnchor="129.8" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="203.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>
